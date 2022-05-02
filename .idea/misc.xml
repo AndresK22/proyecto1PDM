@@ -3,7 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/romero/AndroidStudioProjects/proyecto1PDM/app/src/main/res/drawable-anydpi/ic_contra.xml" value="0.3365" />
+        <entry key="..\:/Users/romero/AndroidStudioProjects/proyecto1PDM/app/src/main/res/drawable-anydpi/ic_usuario.xml" value="0.3365" />
+        <entry key="..\:/Users/romero/AndroidStudioProjects/proyecto1PDM/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.3365" />
         <entry key="..\:/Users/romero/AndroidStudioProjects/proyecto1PDM/app/src/main/res/drawable/ic_launcher_background.xml" value="0.3625" />
+        <entry key="..\:/Users/romero/AndroidStudioProjects/proyecto1PDM/app/src/main/res/drawable/ic_ues_logo.xml" value="0.3365" />
         <entry key="..\:/Users/romero/AndroidStudioProjects/proyecto1PDM/app/src/main/res/layout/activity_crear_estudiante.xml" value="0.25" />
         <entry key="..\:/Users/romero/AndroidStudioProjects/proyecto1PDM/app/src/main/res/layout/activity_main.xml" value="0.3625" />
       </map>
