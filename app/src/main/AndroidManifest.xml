@@ -10,6 +10,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ServicioSocial">
         <activity
+            android:name=".ConsultarEstadoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ConsultarMateriaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CrearMateriaActivity"
+            android:exported="false" />
+        <activity
             android:name=".CrearEstudianteActivity"
             android:exported="false"
             android:label="Crear Estudiante"/>
