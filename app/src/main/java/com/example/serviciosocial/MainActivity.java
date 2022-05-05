@@ -10,9 +10,15 @@ import android.widget.Button;
 public class MainActivity extends AppCompatActivity {
 
     Button botonPrueba;
+    DataBaseHelper DBHelper;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        DBHelper = new DataBaseHelper(this);
+        //abriendo la base para prueba, recordar quitar
+        DBHelper.getWritableDatabase();
+
         setContentView(R.layout.activity_main);
 
         botonPrueba = findViewById(R.id.button);
@@ -23,5 +29,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+
     }
 }
