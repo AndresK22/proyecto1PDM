@@ -10,10 +10,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
 
+
 public class ControlBD {
+
+    //Tablas base de datos
+    //Aqui van agregando los de las demas tablas
     private static final String[] camposMateria = new String[] {"cod_materia", "id_area", "nombre_materia"};
     private static final String[] camposEstado = new String[] {"id_estado", "estado"};
-    //Aqui van agregando los de las demas tablas
+    private static final String[] camposCategoria = new String[] {"id_categoria", "nombre_categoria"};
+
 
     private final Context context;
     private DatabaseHelper DBHelper;
@@ -36,11 +41,16 @@ public class ControlBD {
         public void onCreate(SQLiteDatabase db){
             try{
                 //Agregar los CREATE TABLE
+
+                //Tabla materia
                 db.execSQL("CREATE TABLE materia (cod_materia CHAR(6) NOT NULL, id_area CHAR(2), nombre_materia VARCHAR(25) NOT NULL, PRIMARY KEY (cod_materia));");
-
+                //Tabla estado
                 db.execSQL("CREATE TABLE estado (id_estado INTEGER NOT NULL, estado CHAR(25), PRIMARY KEY (id_estado));");
+                //Tabla
+                db.execSQL("CREATE TABLE categoria (id_categoria INTEGER PRIMARY KEY AUTOINCREMENT, nombre_categoria CHAR(25) NOT NULL);");
+                //Insert
                 db.execSQL("INSERT INTO estado (id_estado, estado) VALUES (1, 'Finalizado');");
-
+                db.execSQL("INSERT INTO categoria (id_categoria, nombre_categoria) VALUES (1, 'Desarrollo web');");
 
 
                 //Agregar los triggers
@@ -66,6 +76,7 @@ public class ControlBD {
 
 
     //INSERTS
+    // Materia
     public String insertar(Materia materia){
         String regInsertados = "Registro Insertado No = ";
         long contador = 0;
@@ -76,6 +87,23 @@ public class ControlBD {
         mate.put("nombre_materia", materia.getNombre_materia());
         contador = db.insert("materia", null, mate);
 
+        if(contador == -1 || contador == 0){
+            regInsertados = "Error al insertar el registro. Registro duplicado. Verificar insercion";
+        } else{
+            regInsertados = regInsertados + contador;
+        }
+        return regInsertados;
+    }
+    //Categoria
+    public String insertar(Categoria categoria)
+    {
+        String regInsertados = "Registro Insertado No = ";
+        long contador = 0;
+
+        ContentValues cate = new ContentValues();
+        cate.put("id_categoria", (Integer) null);
+        cate.put("nombre_categoria", categoria.getNombre_categoria());
+        contador = db.insert("categoria", null, cate);
         if(contador == -1 || contador == 0){
             regInsertados = "Error al insertar el registro. Registro duplicado. Verificar insercion";
         } else{
@@ -100,9 +128,26 @@ public class ControlBD {
         }
         return null;
     }
+    public String actualizar(Categoria categoria){
+        try
+        {
+            String[] id = {String.valueOf((categoria.getId_categoria()))};
+            ContentValues cv = new ContentValues();
+            cv.put("nombre_categoria", categoria.getNombre_categoria());
+            db.update("categoria", cv, "id_categoria = ?",  id);
+
+            return "Registro Actualizado Correctamente";
+        }
+        catch (SQLException e)
+        {
+            e.printStackTrace();
+        }
+        return null;
+    }
 
 
     //DELETES
+    //Materia
     public String eliminar(Materia materia){
         String regAfectados="filas afectadas= ";
         int contador=0;
@@ -122,6 +167,14 @@ public class ControlBD {
             e.printStackTrace();
         }
         return null;
+    }
+    //Categoria
+    public String eliminar(Categoria categoria){
+        String regAfectados="filas afectadas= ";
+        int contador=0;
+        contador+=db.delete("categoria", "id_categoria'"+categoria.getId_categoria()+"'", null);
+        regAfectados+=contador;
+        return regAfectados;
     }
 
 
@@ -159,6 +212,22 @@ public class ControlBD {
         }else {
             return null;
         }
+    }
+    Cursor leerTodoCategoria(){
+        String query = "SELECT * FROM categoria";
+        SQLiteDatabase db;
+        db = DBHelper.getReadableDatabase();
+        Cursor cursor = null;
+
+        if(db != null){
+            cursor = db.rawQuery(query,null);
+        }
+
+        return cursor;
+    }
+    void borrarTodoCategoria(){
+        SQLiteDatabase db = DBHelper.getWritableDatabase();
+        db.execSQL("DELETE FROM categoria");
     }
 
 

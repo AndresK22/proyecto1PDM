@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
         botonPrueba.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, CrearEstudianteActivity.class);
+                Intent intent = new Intent(MainActivity.this, ConsultarCategoriaActivity.class);
                 startActivity(intent);
             }
         });

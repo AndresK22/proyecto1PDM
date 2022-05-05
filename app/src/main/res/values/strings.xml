@@ -17,4 +17,12 @@
     <string name="btnCrear">Crear</string>
     <string name="btnModificar">Modificar</string>
     <string name="btnEliminar">Eliminar</string>
+
+    <!-- STRINGS DE CATEGORIA -->
+    <string name="nom_cate">Categoría</string>
+    <string name="opciones">Opciones></string>
+    <string name="insertar">Agregar</string>
+    <string name="cabecera_cate">Categorías</string>
+>
+
 </resources>

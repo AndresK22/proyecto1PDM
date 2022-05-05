@@ -10,6 +10,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ServicioSocial">
         <activity
+            android:name=".CrearCategoriaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ActualizarCategoriaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ConsultarCategoriaActivity"
+            android:exported="false" />
+        <activity
             android:name=".ConsultarEstadoActivity"
             android:exported="false" />
         <activity
@@ -21,7 +30,7 @@
         <activity
             android:name=".CrearEstudianteActivity"
             android:exported="false"
-            android:label="Crear Estudiante"/>
+            android:label="Crear Estudiante" />
         <activity
             android:name=".MainActivity"
             android:exported="true"
