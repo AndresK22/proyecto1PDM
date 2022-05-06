@@ -42,47 +42,6 @@ public class ControlBD {
                 db.execSQL("CREATE TABLE estado (id_estado INTEGER NOT NULL, estado CHAR(25), PRIMARY KEY (id_estado));");
                 db.execSQL("INSERT INTO estado (id_estado, estado) VALUES (1, 'Finalizado');");
 
-                //TABLAS PARA INICIO DE SESION
-                db.execSQL("create table USUARIO (" +
-                        "ID_USUARIO           INTEGER primary key autoincrement," +
-                        "NOMBRE_USUARIO       VARCHAR(30)          not null," +
-                        "CLAVE                CHAR(5)              not null);"
-                );
-
-                db.execSQL("create table OPCION_CRUD (" +
-                        "ID_OPCION            CHAR(3)              not null," +
-                        "DESC_OPCION          VARCHAR(30)          not null," +
-                        "NUM_CRUD             INTEGER              not null," +
-                        "primary key (ID_OPCION));"
-                );
-
-                db.execSQL("create table ACCESO_USUARIO (" +
-                        "ID_OPCION            CHAR(3)              not null," +
-                        "ID_USUARIO           INTEGER              not null," +
-                        "primary key (ID_OPCION, ID_USUARIO)," +
-                        "foreign key (ID_USUARIO)" +
-                        "      references USUARIO (ID_USUARIO)," +
-                        "foreign key (ID_OPCION)" +
-                        "      references OPCION_CRUD (ID_OPCION)" +
-                        ");"
-                );
-
-                db.execSQL("create unique index ACCESO_USUARIO_PK on ACCESO_USUARIO (" +
-                        "ID_OPCION ASC," +
-                        "ID_USUARIO ASC);"
-                );
-
-                db.execSQL("create  index ACCESO_USUARIO2_FK on ACCESO_USUARIO (" +
-                        "ID_USUARIO ASC);"
-                );
-
-                db.execSQL("create  index ACCESO_USUARIO_FK on ACCESO_USUARIO (" +
-                        "ID_OPCION ASC);"
-                );
-
-
-
-
                 //Agregar los triggers
                 //db.execSQL("CREATE TRIGGER materia (cod_materia CHAR(6) NOT NULL, id_area CHAR(2), nombre_materia VARCHAR(25) NOT NULL, PRIMARY KEY (cod_materia));");
             } catch (SQLException e){
@@ -123,21 +82,6 @@ public class ControlBD {
         }
         return regInsertados;
     }
-
-    public void insertar(Usuario usuario){
-        long result = 0;
-        ContentValues u = new ContentValues();
-        u.put("NOMBRE_USUARIO",usuario.getNomUsuario());
-        u.put("CLAVE",usuario.getClave());
-        result = db.insert("USUARIO",null,u);
-
-        if(result == -1){
-            Toast.makeText(context,"Failed",Toast.LENGTH_SHORT).show();
-        } else {
-            Toast.makeText(context,"Added successfully",Toast.LENGTH_SHORT).show();
-        }
-    }
-
 
     //UPDATES
     public String actualizar(Materia materia){
@@ -213,21 +157,6 @@ public class ControlBD {
         }else {
             return null;
         }
-    }
-
-
-    //Llenado de la base inicial
-    public void llenarBD(){
-
-        //Llenando usuarios
-        Usuario Tutor = new Usuario("Tutor","Tutor123");
-        Usuario Alumno = new Usuario("Alumno","Alumno123");
-        Usuario Admin = new Usuario("Admin","Admin123");
-
-        insertar(Tutor);
-        insertar(Alumno);
-        insertar(Admin);
-
     }
 
     /*
