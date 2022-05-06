@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.serviciosocial.estado.ConsultarEstadoActivity;
+
 public class MainActivity extends AppCompatActivity {
 
     Button botonPrueba;
@@ -14,12 +16,13 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        this.deleteDatabase("proyecto.s3db");
 
         botonPrueba = findViewById(R.id.button);
         botonPrueba.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, CrearEstudianteActivity.class);
+                Intent intent = new Intent(MainActivity.this, ConsultarEstadoActivity.class);
                 startActivity(intent);
             }
         });

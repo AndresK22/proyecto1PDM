@@ -14,7 +14,11 @@
     <string name="tituloConsultarEstado">Estados de proyectos</string>
     <string name="cabecera1">ID</string>
     <string name="cabecera2">Estado</string>
+    <string name="cabecera3">Acciones</string>
     <string name="btnCrear">Crear</string>
     <string name="btnModificar">Modificar</string>
     <string name="btnEliminar">Eliminar</string>
+
+    <string name="editTextEstado">Estado</string>
+    <string name="btnGuardarEstado">Guardar</string>
 </resources>

@@ -6,9 +6,11 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.TextView;
+
+import com.example.serviciosocial.estado.Estado;
+import com.example.serviciosocial.materia.Materia;
+
+import java.util.ArrayList;
 
 public class ControlBD {
     private static final String[] camposMateria = new String[] {"cod_materia", "id_area", "nombre_materia"};
@@ -40,6 +42,8 @@ public class ControlBD {
 
                 db.execSQL("CREATE TABLE estado (id_estado INTEGER NOT NULL, estado CHAR(25), PRIMARY KEY (id_estado));");
                 db.execSQL("INSERT INTO estado (id_estado, estado) VALUES (1, 'Finalizado');");
+                db.execSQL("INSERT INTO estado (id_estado, estado) VALUES (2, 'En proceso');");
+                db.execSQL("INSERT INTO estado (id_estado, estado) VALUES (3, 'Asignado');");
 
 
 
@@ -84,6 +88,23 @@ public class ControlBD {
         return regInsertados;
     }
 
+    public String insertar(Estado estado){
+        String regInsertados = "Registro Insertado No = ";
+        long contador = 0;
+
+        ContentValues est = new ContentValues();
+        est.put("id_estado", estado.getId_estado());
+        est.put("estado", estado.getEstado());
+        contador = db.insert("estado", null, est);
+
+        if(contador == -1 || contador == 0){
+            regInsertados = "Error al insertar el registro. Registro duplicado. Verificar insercion";
+        } else{
+            regInsertados = regInsertados + contador;
+        }
+        return regInsertados;
+    }
+
 
     //UPDATES
     public String actualizar(Materia materia){
@@ -94,7 +115,21 @@ public class ControlBD {
             cv.put("nombre_materia", materia.getNombre_materia());
             db.update("materia", cv, "cod_materia = ?", id);
 
-            return "Registro Actualizado Correctamente";
+            return "Materia actualizada correctamente";
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public String actualizar(Estado estado){
+        try{
+            String[] id = {String.valueOf(estado.getId_estado())};
+            ContentValues cv = new ContentValues();
+            cv.put("estado", estado.getEstado());
+            db.update("estado", cv, "id_estado = ?", id);
+
+            return "Estado actualizado correctamente";
         }catch (SQLException e){
             e.printStackTrace();
         }
@@ -106,15 +141,29 @@ public class ControlBD {
     public String eliminar(Materia materia){
         String regAfectados="filas afectadas= ";
         int contador=0;
+        //Borrar la nota con un trigger/ o validar trigger que aparezca mensaje que antes tiene que borrar la nota
 
-        try {
-            contador += db.delete("nota", "cod_materia='"+materia.getCod_materia()+"'", null);
-        } catch (SQLException e){
+        String[] id = {String.valueOf(materia.getCod_materia())};
+        try{
+            contador += db.delete("materia", "cod_materia = ?", id);
+            regAfectados += contador;
+
+            return regAfectados;
+        } catch (SQLException e) {
             e.printStackTrace();
         }
+        return null;
+    }
 
+    public String eliminar(Estado estado){
+        String regAfectados="filas afectadas= ";
+        int contador=0;
+
+        //Borrar los registros de las tablas relacionadas con un trigger/ o validar trigger que aparezca mensaje que antes tiene que borrar esos registros
+
+        String[] id = {String.valueOf(estado.getId_estado())};
         try{
-            contador += db.delete("materia", "cod_materia='"+materia.getCod_materia()+"'", null);
+            contador += db.delete("estado", "id_estado = ?", id);
             regAfectados += contador;
 
             return regAfectados;
@@ -139,23 +188,30 @@ public class ControlBD {
         }
     }
 
-    public View consultarEstados(Context cont){
-        View registro = LayoutInflater.from(cont).inflate(R.layout.item_table_layout_estado, null, false);
-        TextView id_estado = (TextView) registro.findViewById(R.id.txtIdEstado);
-        TextView txtEstado = (TextView) registro.findViewById(R.id.txtEstado);
-
+    public ArrayList<Estado> consultarEstados(){
+        ArrayList <Estado> lisEstados = new ArrayList<Estado>();
         Cursor cursor = db.query("estado", camposEstado, null, null, null, null, null);
+
         if(cursor.moveToFirst()){
             do {
                 Estado estado = new Estado();
                 estado.setId_estado(cursor.getInt(0));
                 estado.setEstado(cursor.getString(1));
-
-                id_estado.setText(estado.getId_estado());
-                txtEstado.setText(estado.getEstado());
+                lisEstados.add(estado);
             }while (cursor.moveToNext());
 
-            return registro;
+            return lisEstados;
+        }else {
+            return null;
+        }
+    }
+    public Estado consultarEstados(String[] id){
+        Cursor cursor = db.query("estado", camposEstado, "id_estado = ?", id, null, null, null);
+        if(cursor.moveToFirst()){
+            Estado estado = new Estado();
+            estado.setId_estado(cursor.getInt(0));
+            estado.setEstado(cursor.getString(1));
+            return estado;
         }else {
             return null;
         }
