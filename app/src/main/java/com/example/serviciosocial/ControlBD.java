@@ -9,6 +9,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class ControlBD {
     private static final String[] camposMateria = new String[] {"cod_materia", "id_area", "nombre_materia"};
@@ -40,8 +41,6 @@ public class ControlBD {
 
                 db.execSQL("CREATE TABLE estado (id_estado INTEGER NOT NULL, estado CHAR(25), PRIMARY KEY (id_estado));");
                 db.execSQL("INSERT INTO estado (id_estado, estado) VALUES (1, 'Finalizado');");
-
-
 
                 //Agregar los triggers
                 //db.execSQL("CREATE TRIGGER materia (cod_materia CHAR(6) NOT NULL, id_area CHAR(2), nombre_materia VARCHAR(25) NOT NULL, PRIMARY KEY (cod_materia));");
@@ -83,7 +82,6 @@ public class ControlBD {
         }
         return regInsertados;
     }
-
 
     //UPDATES
     public String actualizar(Materia materia){
@@ -161,8 +159,6 @@ public class ControlBD {
         }
     }
 
-
-    //Llenado de la base inicial
     /*
     public String llenarBDCarnet(){
         final String[] VAcarnet = {"OO12035", "OF12044", "GG11098", "CC12021"};
