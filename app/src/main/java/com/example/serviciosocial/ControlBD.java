@@ -38,12 +38,15 @@ public class ControlBD {
         public void onCreate(SQLiteDatabase db){
             try{
                 //Agregar los CREATE TABLE
-                db.execSQL("CREATE TABLE materia (cod_materia CHAR(6) NOT NULL, id_area CHAR(2), nombre_materia VARCHAR(25) NOT NULL, PRIMARY KEY (cod_materia));");
+                db.execSQL("CREATE TABLE materia (cod_materia CHAR(6), id_area CHAR(2), nombre_materia VARCHAR(25) NOT NULL, PRIMARY KEY (cod_materia));");
+                db.execSQL("INSERT INTO materia (cod_materia, id_area, nombre_materia) VALUES ('iai115', 'pr', 'introduccion');");
+                db.execSQL("INSERT INTO materia (cod_materia, id_area, nombre_materia) VALUES ('mat115', 'cb', 'matematica i');");
+                db.execSQL("INSERT INTO materia (cod_materia, id_area, nombre_materia) VALUES ('abc115', 'pt', 'avver');");
 
-                db.execSQL("CREATE TABLE estado (id_estado INTEGER NOT NULL, estado CHAR(25), PRIMARY KEY (id_estado));");
-                db.execSQL("INSERT INTO estado (id_estado, estado) VALUES (1, 'Finalizado');");
-                db.execSQL("INSERT INTO estado (id_estado, estado) VALUES (2, 'En proceso');");
-                db.execSQL("INSERT INTO estado (id_estado, estado) VALUES (3, 'Asignado');");
+                db.execSQL("CREATE TABLE estado (id_estado INTEGER, estado CHAR(25), PRIMARY KEY (id_estado));");
+                db.execSQL("INSERT INTO estado (estado) VALUES ('Finalizado');");
+                db.execSQL("INSERT INTO estado (estado) VALUES ('En proceso');");
+                db.execSQL("INSERT INTO estado (estado) VALUES ('Asignado');");
 
 
 
@@ -93,7 +96,6 @@ public class ControlBD {
         long contador = 0;
 
         ContentValues est = new ContentValues();
-        est.put("id_estado", estado.getId_estado());
         est.put("estado", estado.getEstado());
         contador = db.insert("estado", null, est);
 
@@ -175,8 +177,27 @@ public class ControlBD {
 
 
     //SELECTS
-    public Materia consultarMateria(){
+    public ArrayList<Materia> consultarMateria(){
+        ArrayList <Materia> lisMaterias = new ArrayList<Materia>();
         Cursor cursor = db.query("materia", camposMateria, null, null, null, null, null);
+
+        if(cursor.moveToFirst()){
+            do {
+                Materia materia = new Materia();
+                materia.setCod_materia(cursor.getString(0));
+                materia.setId_area(cursor.getString(1));
+                materia.setNombre_materia(cursor.getString(2));
+                lisMaterias.add(materia);
+            }while (cursor.moveToNext());
+
+            return lisMaterias;
+        }else {
+            return null;
+        }
+    }
+    public Materia consultarMateria(String[] id){
+        Cursor cursor = db.query("materia", camposMateria, "cod_materia = ?", id, null, null, null);
+
         if(cursor.moveToFirst()){
             Materia materia = new Materia();
             materia.setCod_materia(cursor.getString(0));

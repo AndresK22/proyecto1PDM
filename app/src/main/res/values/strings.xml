@@ -6,18 +6,27 @@
     <string name="boton_ingresar">Ingresar</string>
 
     <!-- STRINGS DE Materia -->
-    <string name="editTextArea">Area</string>
-    <string name="editTextMateria">Materia</string>
+    <string name="tituloConsultarMateria">Materias</string>
+    <string name="tituloCrearMateria">Crear materia</string>
+    <string name="cabeceraMateria1">Codigo</string>
+    <string name="cabeceraMateria2">Materia</string>
+    <string name="txtCodMateria">Codigo de materia</string>
+    <string name="txtArea">Area</string>
+    <string name="txtMateria">Materia</string>
+    <string name="btnCrearMateria">Crear</string>
+    <string name="btnModificarMateria">Modificar</string>
+    <string name="btnEliminarMateria">Eliminar</string>
+
     <string name="btnGuardarMateria">Guardar</string>
 
     <!-- STRINGS DE Estado -->
     <string name="tituloConsultarEstado">Estados de proyectos</string>
-    <string name="cabecera1">ID</string>
-    <string name="cabecera2">Estado</string>
-    <string name="cabecera3">Acciones</string>
-    <string name="btnCrear">Crear</string>
-    <string name="btnModificar">Modificar</string>
-    <string name="btnEliminar">Eliminar</string>
+    <string name="tituloCrearEstado">Crear estados de proyectos</string>
+    <string name="cabeceraEstado1">ID</string>
+    <string name="cabeceraEstado2">Estado</string>
+    <string name="btnCrearEstado">Crear</string>
+    <string name="btnModificarEstado">Modificar</string>
+    <string name="btnEliminarEstado">Eliminar</string>
 
     <string name="editTextEstado">Estado</string>
     <string name="btnGuardarEstado">Guardar</string>

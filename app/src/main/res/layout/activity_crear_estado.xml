@@ -5,7 +5,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="24sp"
-    tools:context=".estado.ModificarEstadoActivity">
+    tools:context=".estado.CrearEstadoActivity">
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/tituloCrearEstado"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/editTextEstado"
@@ -18,31 +33,19 @@
         android:inputType="text"
         android:maxLength="25"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.666"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3"
         tools:ignore="TextContrastCheck" />
 
     <Button
-        android:id="@+id/btnModificar"
+        android:id="@+id/btnGuardarEstado"
         android:layout_width="match_parent"
         android:layout_height="51dp"
-        android:layout_marginTop="36dp"
-        android:text="@string/btnModificarEstado"
-        android:onClick="modificarEstado"
+        android:layout_marginTop="40dp"
+        android:onClick="guardarEstado"
+        android:text="@string/btnGuardarEstado"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextEstado" />
 
-    <Button
-        android:id="@+id/btnEliminar"
-        android:layout_width="match_parent"
-        android:layout_height="51dp"
-        android:layout_marginTop="36dp"
-        android:text="@string/btnEliminarEstado"
-        android:onClick="eliminarEstado"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.666"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnModificar" />
 </androidx.constraintlayout.widget.ConstraintLayout>

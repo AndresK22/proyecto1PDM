@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:id="@+id/itemsEstados">
+    android:id="@+id/itemsMaterias">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -18,10 +18,10 @@
             android:padding="12sp">
 
             <TextView
-                android:id="@+id/txtIdEstado"
+                android:id="@+id/txtCodMateria"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/cabeceraEstado1"
+                android:text="@string/cabeceraMateria1"
                 android:textColor="@color/black"
                 android:textSize="40sp"
                 android:textStyle="bold"
@@ -29,42 +29,30 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/txtEstado"
+                android:id="@+id/txtMateria"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="40dp"
                 android:layout_marginTop="12dp"
-                android:text="@string/cabeceraEstado2"
+                android:text="@string/cabeceraMateria2"
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                app:layout_constraintStart_toEndOf="@+id/txtIdEstado"
-                app:layout_constraintTop_toTopOf="@+id/txtIdEstado" />
-
-            <!--<TextView
-                android:id="@+id/txtIdEstado"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/cabecera1"
-                android:textColor="@color/black"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintStart_toEndOf="@+id/txtCodMateria"
+                app:layout_constraintTop_toTopOf="@+id/txtCodMateria" />
 
             <TextView
-                android:id="@+id/txtEstado"
+                android:id="@+id/txtId_area"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:text="@string/cabecera2"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="12dp"
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/txtIdEstado"
-                app:layout_constraintTop_toTopOf="parent" />-->
+                android:visibility="invisible"
+                tools:ignore="MissingConstraints" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>

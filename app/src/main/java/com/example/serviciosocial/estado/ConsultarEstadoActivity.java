@@ -44,7 +44,7 @@ public class ConsultarEstadoActivity extends AppCompatActivity {
         add_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(ConsultarEstadoActivity.this, ModificarEstadoActivity.class);
+                Intent intent = new Intent(ConsultarEstadoActivity.this, CrearEstadoActivity.class);
                 startActivity(intent);
             }
         });
@@ -66,7 +66,7 @@ public class ConsultarEstadoActivity extends AppCompatActivity {
     }
 
 
-    void consultarEstado(){
+    public void consultarEstado(){
         helper.abrir();
         ArrayList<Estado> registros = helper.consultarEstados();
         helper.cerrar();
