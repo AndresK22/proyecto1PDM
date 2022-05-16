@@ -53,10 +53,17 @@ public class LoginActivity extends AppCompatActivity {
                 if(iniciar){
                     guardarSesion(checkBox.isChecked());
                     startActivity(new Intent(LoginActivity.this,MainActivity.class));
+                    editTextUsuario.setText("");
+                    editTextContra.setText("");
+                    checkBox.setChecked(false);
                 }
                 else{
                     Toast.makeText(LoginActivity.this,"Usuario o contra invalidos",Toast.LENGTH_SHORT).show();
+                    editTextUsuario.setText("");
+                    editTextContra.setText("");
+                    checkBox.setChecked(false);
                 }
+
             }
         });
     }

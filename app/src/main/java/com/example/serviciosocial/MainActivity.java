@@ -35,8 +35,6 @@ public class MainActivity extends AppCompatActivity {
 
         preferences = this.getSharedPreferences("sesion", Context.MODE_PRIVATE);
         editor = preferences.edit();
-        /*editor.putBoolean("sesion",false);
-        editor.apply();*/
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
@@ -87,4 +85,17 @@ public class MainActivity extends AppCompatActivity {
         return super.onKeyDown(keyCode, event);
     }
 
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        switch (item.getItemId()){
+            case R.id.action_logout:
+                editor.putBoolean("sesion",false);
+                editor.apply();
+                this.finish();
+                break;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
 }
