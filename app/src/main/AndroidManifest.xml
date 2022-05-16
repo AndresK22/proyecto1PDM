@@ -10,6 +10,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ServicioSocial">
         <activity
+            android:name=".MainActivity"
+            android:exported="false"
+            android:label="@string/title_activity_main"
+            android:theme="@style/Theme.ServicioSocial.NoActionBar" />
+        <activity
             android:name=".LoginActivity"
             android:exported="true"
             android:theme="@style/Theme.ServicioSocial.NoActionBar">
@@ -32,11 +37,6 @@
             android:name=".CrearEstudianteActivity"
             android:exported="false"
             android:label="Crear Estudiante" />
-        <activity
-            android:name=".MainActivity"
-            android:exported="true">
-
-        </activity>
     </application>
 
 </manifest>
