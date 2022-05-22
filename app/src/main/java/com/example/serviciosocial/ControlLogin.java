@@ -16,6 +16,7 @@ import javax.crypto.spec.SecretKeySpec;
 class ControlLogin {
 
     private static final String[] camposUsuario = new String[] {"ID_USUARIO", "NOMBRE_USUARIO", "CLAVE"};
+    private static final String[] camposAccesoUsuario = new String[] {"ID_OPCION", "ID_USUARIO"};
 
     private final Context context;
     private DatabaseHelper DBHelper;
@@ -106,9 +107,9 @@ class ControlLogin {
         result = db.insert("USUARIO",null,u);
 
         if(result == -1){
-            Toast.makeText(context,"Failed",Toast.LENGTH_SHORT).show();
+            Toast.makeText(context,"Fallo al insertar",Toast.LENGTH_SHORT).show();
         } else {
-            Toast.makeText(context,"Added successfully",Toast.LENGTH_SHORT).show();
+            Toast.makeText(context,"Insertado satisfactoriamente",Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -153,26 +154,73 @@ class ControlLogin {
         Usuario Alumno = new Usuario("Alumno","Alumno123");
         Usuario Admin = new Usuario("Admin","Admin123");
 
+        if(!consultarUsuarioExiste(Admin.getNomUsuario())){
+            insertar(Admin);
+        }
         if(!consultarUsuarioExiste(Tutor.getNomUsuario())){
             insertar(Tutor);
         }
         if(!consultarUsuarioExiste(Alumno.getNomUsuario())){
             insertar(Alumno);
         }
-        if(!consultarUsuarioExiste(Admin.getNomUsuario())){
-            insertar(Admin);
-        }
+
+        //Llenando OPCION_CRUD --> ID_OPCION, DESC_OPCION, NUM_CRUD
+        db.execSQL("INSERT OR IGNORE INTO OPCION_CRUD VALUES('001','Gestión Usuario',1)");
+        db.execSQL("INSERT OR IGNORE INTO OPCION_CRUD VALUES('002','Gestión Opcion CRUD',2)");
+        db.execSQL("INSERT OR IGNORE INTO OPCION_CRUD VALUES('003','Gestion acceso_usuario',3)");
+        db.execSQL("INSERT OR IGNORE INTO OPCION_CRUD VALUES('004','Gestion de carrera',4)");
+        db.execSQL("INSERT OR IGNORE INTO OPCION_CRUD VALUES('005','Gestion de areas por carreras',5)");
+        db.execSQL("INSERT OR IGNORE INTO OPCION_CRUD VALUES('006','Gestion de materias',6)");
+        db.execSQL("INSERT OR IGNORE INTO OPCION_CRUD VALUES('007','Gestion de estudiantes',7)");
+        db.execSQL("INSERT OR IGNORE INTO OPCION_CRUD VALUES('008','Gestion de categorias',8)");
+        db.execSQL("INSERT OR IGNORE INTO OPCION_CRUD VALUES('009','Gestión de modalidad',9)");
+        db.execSQL("INSERT OR IGNORE INTO OPCION_CRUD VALUES('010','Gestion de docentes',10)");
+        db.execSQL("INSERT OR IGNORE INTO OPCION_CRUD VALUES('011','Gestion de estados del proyecto',11)");
+        db.execSQL("INSERT OR IGNORE INTO OPCION_CRUD VALUES('012','Gestion de notas',12)");
+
+        db.execSQL("INSERT OR IGNORE INTO OPCION_CRUD VALUES('013','Gestion de proyectos',13)");
+        db.execSQL("INSERT OR IGNORE INTO OPCION_CRUD VALUES('014','Gestion de grupos asignados por proyecto',14)");
+        db.execSQL("INSERT OR IGNORE INTO OPCION_CRUD VALUES('015','Record academico',15)");
+        db.execSQL("INSERT OR IGNORE INTO OPCION_CRUD VALUES('016','Gestion del resumen social',16)");
+
+        db.execSQL("INSERT OR IGNORE INTO OPCION_CRUD VALUES('017','Gestion de bitacoras',17)");
+        db.execSQL("INSERT OR IGNORE INTO OPCION_CRUD VALUES('018','Gestion del resumen social (alumno)',18)");
+        db.execSQL("INSERT OR IGNORE INTO OPCION_CRUD VALUES('019','Consultar record academico',19)");
+        db.execSQL("INSERT OR IGNORE INTO OPCION_CRUD VALUES('020','Consultar proyectos en los que participa',20)");
+
+        //Llenando ACCESO_USUARIO --> ID_OPCION ID_USUARIO
+        db.execSQL("INSERT OR IGNORE INTO ACCESO_USUARIO VALUES('001',1)");
+        db.execSQL("INSERT OR IGNORE INTO ACCESO_USUARIO VALUES('002',1)");
+        db.execSQL("INSERT OR IGNORE INTO ACCESO_USUARIO VALUES('003',1)");
+        db.execSQL("INSERT OR IGNORE INTO ACCESO_USUARIO VALUES('004',1)");
+        db.execSQL("INSERT OR IGNORE INTO ACCESO_USUARIO VALUES('005',1)");
+        db.execSQL("INSERT OR IGNORE INTO ACCESO_USUARIO VALUES('006',1)");
+        db.execSQL("INSERT OR IGNORE INTO ACCESO_USUARIO VALUES('007',1)");
+        db.execSQL("INSERT OR IGNORE INTO ACCESO_USUARIO VALUES('008',1)");
+        db.execSQL("INSERT OR IGNORE INTO ACCESO_USUARIO VALUES('009',1)");
+        db.execSQL("INSERT OR IGNORE INTO ACCESO_USUARIO VALUES('010',1)");
+        db.execSQL("INSERT OR IGNORE INTO ACCESO_USUARIO VALUES('011',1)");
+        db.execSQL("INSERT OR IGNORE INTO ACCESO_USUARIO VALUES('012',1)");
+
+        db.execSQL("INSERT OR IGNORE INTO ACCESO_USUARIO VALUES('013',2)");
+        db.execSQL("INSERT OR IGNORE INTO ACCESO_USUARIO VALUES('014',2)");
+        db.execSQL("INSERT OR IGNORE INTO ACCESO_USUARIO VALUES('015',2)");
+        db.execSQL("INSERT OR IGNORE INTO ACCESO_USUARIO VALUES('016',2)");
+
+        db.execSQL("INSERT OR IGNORE INTO ACCESO_USUARIO VALUES('017',3)");
+        db.execSQL("INSERT OR IGNORE INTO ACCESO_USUARIO VALUES('018',3)");
+        db.execSQL("INSERT OR IGNORE INTO ACCESO_USUARIO VALUES('019',3)");
+        db.execSQL("INSERT OR IGNORE INTO ACCESO_USUARIO VALUES('020',3)");
+
+
 
     }
-
-    //OTROS METODOS
 
     public boolean iniciarSesion(String usuario,String contra){
 
         if (consultarUsuarioExiste(usuario)){
 
-            Usuario usuarioConsulta = new Usuario();
-            usuarioConsulta = consultarUsuario(usuario);
+            Usuario usuarioConsulta = consultarUsuario(usuario);
 
             if (usuario.equals(usuarioConsulta.getNomUsuario()) && contra.equals(usuarioConsulta.getClave())){
                 return true;
@@ -184,8 +232,13 @@ class ControlLogin {
         }
     }
 
+    public Cursor getAccesoUsuario(int id){
 
+        String[] idUsuario = {Integer.toString(id)};
+        Cursor cursor = db.query("ACCESO_USUARIO", camposAccesoUsuario, "ID_USUARIO = ?", idUsuario, null, null, null);
+        return  cursor;
 
+    }
 
 }
 

@@ -5,17 +5,111 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_home"
+            android:id="@+id/nav_usuario"
             android:icon="@drawable/ic_menu_camera"
-            android:title="@string/menu_home" />
+            android:title="Gestion usuario"
+            android:visible="false"/>
         <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="@string/menu_gallery" />
+            android:id="@+id/nav_opcionCrud"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Opcion CRUD"
+            android:visible="false"/>
         <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="@string/menu_slideshow" />
+            android:id="@+id/nav_accesoUsuario"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Acceso usuario"
+            android:visible="false"/>
+        <item
+            android:id="@+id/nav_gestionCarrera"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Gestion de carreras"
+            android:visible="false"/>
+        <item
+            android:id="@+id/nav_gestionAreaCarrera"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Area por carreras"
+            android:visible="false"/>
+        <item
+            android:id="@+id/nav_gestionMaterias"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Gestion de materias"
+            android:visible="false"/>
+        <item
+            android:id="@+id/nav_gestionEstudiantes"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Gestion de estudiantes"
+            android:visible="false"/>
+        <item
+            android:id="@+id/nav_gestionCategorias"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Gestion de categorias"
+            android:visible="false"/>
+        <item
+            android:id="@+id/nav_gestionModalidad"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Gestion de modalidad"
+            android:visible="false"/>
+        <item
+            android:id="@+id/nav_gestionDocentes"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Gestion de docentes"
+            android:visible="false"/>
+        <item
+            android:id="@+id/nav_gestionEstadoProyectos"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Estado de proyectos"
+            android:visible="false"/>
+        <item
+            android:id="@+id/nav_gestionNotas"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Gestion de notas"
+            android:visible="false"/>
+
+
+        <item
+            android:id="@+id/nav_gestionProyectos"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Gestion de proyectos"
+            android:visible="false"/>
+        <item
+            android:id="@+id/nav_gestionGruposProyectos"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Grupos de proyectos"
+            android:visible="false"/>
+        <item
+            android:id="@+id/nav_recordAcademico"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Record academico"
+            android:visible="false"/>
+        <item
+            android:id="@+id/nav_gestionResumenSocial"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Resumen Social"
+            android:visible="false"/>
+
+
+        <item
+            android:id="@+id/nav_gestionBitacoras"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Gestion de Bitacoras"
+            android:visible="false"/>
+        <item
+            android:id="@+id/nav_gestionResumenSocialAlumno"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Resumen Social"
+            android:visible="false"/>
+        <item
+            android:id="@+id/nav_consultarRecordAcademico"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Record academico"
+            android:visible="false"/>
+        <item
+            android:id="@+id/nav_consultarProyectos"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Mis Proyectos"
+            android:visible="false"/>
+
 
     </group>
 </menu>
+

@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -29,7 +30,6 @@ public class LoginActivity extends AppCompatActivity {
 
         controlLogin.abrir();
         controlLogin.llenarUsuarios();
-        controlLogin.cerrar();
 
         preferences = this.getSharedPreferences("sesion",Context.MODE_PRIVATE);
         editor = preferences.edit();
@@ -48,7 +48,7 @@ public class LoginActivity extends AppCompatActivity {
 
                 controlLogin.abrir();
                 boolean iniciar = controlLogin.iniciarSesion(editTextUsuario.getText().toString(),editTextContra.getText().toString());
-                controlLogin.cerrar();
+                //controlLogin.cerrar();
 
                 if(iniciar){
                     guardarSesion(checkBox.isChecked());
@@ -70,8 +70,14 @@ public class LoginActivity extends AppCompatActivity {
 
     private void guardarSesion(boolean checked){
         editor.putBoolean(llave,checked);
-        editor.putString("usuario",editTextUsuario.getText().toString());
-        editor.putString("contra",editTextContra.getText().toString());
+
+        controlLogin.abrir();
+        Usuario usuario = controlLogin.consultarUsuario(editTextUsuario.getText().toString());
+
+        editor.putInt("id",usuario.getIdUsuario());
+        editor.putString("usuario",usuario.getNomUsuario());
+        editor.putString("contra",usuario.getClave());
+
         editor.apply();
     }
     public boolean consultarSesion(){
@@ -81,7 +87,7 @@ public class LoginActivity extends AppCompatActivity {
 
         controlLogin.abrir();
         boolean sesionvalida = controlLogin.iniciarSesion(usuario,contra);
-        controlLogin.cerrar();
+        //controlLogin.cerrar();
 
         if(sesionvalida && this.preferences.getBoolean(llave,false)){
             flag = true;

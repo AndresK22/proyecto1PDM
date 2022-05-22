@@ -1,7 +1,9 @@
 package com.example.serviciosocial;
 
+import android.content.ClipData;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.MenuItem;
@@ -28,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
     SharedPreferences preferences;
     SharedPreferences.Editor editor;
+    ControlLogin controlLogin = new ControlLogin(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,9 +60,22 @@ public class MainActivity extends AppCompatActivity {
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
+        //Cargamos los menus que corresponden al acceso del usuario
+        cargarAcceso(navigationView);
         NavigationUI.setupWithNavController(navigationView, navController);
 
 
+    }
+
+    private void cargarAcceso(NavigationView navigationView) {
+        controlLogin.abrir();
+        Cursor cursor = controlLogin.getAccesoUsuario(this.preferences.getInt("id",0));
+
+        while (cursor.moveToNext()) {
+            String idopcionstr = cursor.getString(0);
+            int idopcion = Integer.parseInt(idopcionstr) - 1;
+            navigationView.getMenu().getItem(idopcion).setVisible(true);
+        }
     }
 
     @Override
