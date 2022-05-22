@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
 
         while (cursor.moveToNext()) {
             String idopcionstr = cursor.getString(0);
-            int idopcion = Integer.parseInt(idopcionstr) - 1;
+            int idopcion = Integer.parseInt(idopcionstr);
             navigationView.getMenu().getItem(idopcion).setVisible(true);
         }
     }
