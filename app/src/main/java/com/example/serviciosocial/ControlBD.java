@@ -48,6 +48,11 @@ public class ControlBD {
                 db.execSQL("INSERT INTO estado (estado) VALUES ('En proceso');");
                 db.execSQL("INSERT INTO estado (estado) VALUES ('Asignado');");
 
+                db.execSQL("CREATE TABLE record_academico (id_record INTEGER NOT NULL, carnet CHAR(8), id_area CHAR(2), materias_aprobadas INTEGER NOT NULL, progreso DECIMAL(5,2), promedio DECIMAL(4,2), PRIMARY KEY (id_record));");
+                db.execSQL("INSERT INTO record_academico (carnet, id_area, materias_aprobadas, progreso, promedio) VALUES ('hg19010', 'pr', 0, 25, 6.5);");
+                db.execSQL("INSERT INTO record_academico (carnet, id_area, materias_aprobadas, progreso, promedio) VALUES ('aa19012', 'cb', 0, 25, 6.5);");
+                db.execSQL("INSERT INTO record_academico (carnet, id_area, materias_aprobadas, progreso, promedio) VALUES ('cc19114', 'pt', 0, 25, 6.5);");
+
 
 
                 //Agregar los triggers
@@ -141,7 +146,7 @@ public class ControlBD {
 
     //DELETES
     public String eliminar(Materia materia){
-        String regAfectados="filas afectadas= ";
+        String regAfectados="filas afectadas = ";
         int contador=0;
         //Borrar la nota con un trigger/ o validar trigger que aparezca mensaje que antes tiene que borrar la nota
 
@@ -158,7 +163,7 @@ public class ControlBD {
     }
 
     public String eliminar(Estado estado){
-        String regAfectados="filas afectadas= ";
+        String regAfectados="filas afectadas = ";
         int contador=0;
 
         //Borrar los registros de las tablas relacionadas con un trigger/ o validar trigger que aparezca mensaje que antes tiene que borrar esos registros
@@ -178,64 +183,84 @@ public class ControlBD {
 
     //SELECTS
     public ArrayList<Materia> consultarMateria(){
-        ArrayList <Materia> lisMaterias = new ArrayList<Materia>();
-        Cursor cursor = db.query("materia", camposMateria, null, null, null, null, null);
+        try {
+            ArrayList<Materia> lisMaterias = new ArrayList<Materia>();
+            Cursor cursor = db.query("materia", camposMateria, null, null, null, null, null);
 
-        if(cursor.moveToFirst()){
-            do {
+            if (cursor.moveToFirst()) {
+                do {
+                    Materia materia = new Materia();
+                    materia.setCod_materia(cursor.getString(0));
+                    materia.setId_area(cursor.getString(1));
+                    materia.setNombre_materia(cursor.getString(2));
+                    lisMaterias.add(materia);
+                } while (cursor.moveToNext());
+
+                return lisMaterias;
+            } else {
+                return null;
+            }
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+    public Materia consultarMateria(String[] id){
+        try {
+            Cursor cursor = db.query("materia", camposMateria, "cod_materia = ?", id, null, null, null);
+
+            if (cursor.moveToFirst()) {
                 Materia materia = new Materia();
                 materia.setCod_materia(cursor.getString(0));
                 materia.setId_area(cursor.getString(1));
                 materia.setNombre_materia(cursor.getString(2));
-                lisMaterias.add(materia);
-            }while (cursor.moveToNext());
-
-            return lisMaterias;
-        }else {
-            return null;
+                return materia;
+            } else {
+                return null;
+            }
+        } catch (SQLException e){
+            e.printStackTrace();
         }
-    }
-    public Materia consultarMateria(String[] id){
-        Cursor cursor = db.query("materia", camposMateria, "cod_materia = ?", id, null, null, null);
-
-        if(cursor.moveToFirst()){
-            Materia materia = new Materia();
-            materia.setCod_materia(cursor.getString(0));
-            materia.setId_area(cursor.getString(1));
-            materia.setNombre_materia(cursor.getString(2));
-            return materia;
-        }else {
-            return null;
-        }
+        return null;
     }
 
     public ArrayList<Estado> consultarEstados(){
-        ArrayList <Estado> lisEstados = new ArrayList<Estado>();
-        Cursor cursor = db.query("estado", camposEstado, null, null, null, null, null);
+        try {
+            ArrayList<Estado> lisEstados = new ArrayList<Estado>();
+            Cursor cursor = db.query("estado", camposEstado, null, null, null, null, null);
 
-        if(cursor.moveToFirst()){
-            do {
+            if (cursor.moveToFirst()) {
+                do {
+                    Estado estado = new Estado();
+                    estado.setId_estado(cursor.getInt(0));
+                    estado.setEstado(cursor.getString(1));
+                    lisEstados.add(estado);
+                } while (cursor.moveToNext());
+
+                return lisEstados;
+            } else {
+                return null;
+            }
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+    public Estado consultarEstados(String[] id){
+        try {
+            Cursor cursor = db.query("estado", camposEstado, "id_estado = ?", id, null, null, null);
+            if (cursor.moveToFirst()) {
                 Estado estado = new Estado();
                 estado.setId_estado(cursor.getInt(0));
                 estado.setEstado(cursor.getString(1));
-                lisEstados.add(estado);
-            }while (cursor.moveToNext());
-
-            return lisEstados;
-        }else {
-            return null;
+                return estado;
+            } else {
+                return null;
+            }
+        } catch (SQLException e){
+            e.printStackTrace();
         }
-    }
-    public Estado consultarEstados(String[] id){
-        Cursor cursor = db.query("estado", camposEstado, "id_estado = ?", id, null, null, null);
-        if(cursor.moveToFirst()){
-            Estado estado = new Estado();
-            estado.setId_estado(cursor.getInt(0));
-            estado.setEstado(cursor.getString(1));
-            return estado;
-        }else {
-            return null;
-        }
+        return null;
     }
 
 

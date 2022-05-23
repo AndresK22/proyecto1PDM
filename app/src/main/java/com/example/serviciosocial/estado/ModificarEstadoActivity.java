@@ -25,8 +25,6 @@ public class ModificarEstadoActivity extends AppCompatActivity {
     String id_estado;
     String estado;
 
-    boolean campEst;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,32 +37,11 @@ public class ModificarEstadoActivity extends AppCompatActivity {
         modificar = findViewById(R.id.btnModificar);
         eliminar = findViewById(R.id.btnEliminar);
         txtEstado.setText(estado);
-        campEst = true;
 
-
-        //Validaciones de campos vacios
-        txtEstado.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int start, int i1, int i2) {
-
-            }
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int before, int count) {
-                if (count>0){ //count es cantidad de caracteres que tiene
-                    campEst = true;
-                }else{
-                    campEst = false;
-                }
-            }
-            @Override
-            public void afterTextChanged(Editable editable) {
-
-            }
-        });
     }
 
     public void modificarEstado(View v) {
-        if (verificarCamposLlenos(campEst)) {
+        if (verificarCamposLlenos()) {
             Estado estado = new Estado();
             estado.setId_estado(Integer.valueOf(id_estado));
             estado.setEstado(txtEstado.getText().toString());
@@ -120,12 +97,12 @@ public class ModificarEstadoActivity extends AppCompatActivity {
 
     }
 
-    public boolean verificarCamposLlenos(boolean cmpEst) {
-        if (cmpEst) {
-            //Si el campo es verdadero (tiene contenido) devuelve verdadero
-            return true;
-        }else {
+    public boolean verificarCamposLlenos() {
+        if (txtEstado.getText().toString().isEmpty() || txtEstado.getText().toString() == null) {
+            //Si esta vacio devuelve falso
             return false;
+        }else {
+            return true;
         }
     }
 }

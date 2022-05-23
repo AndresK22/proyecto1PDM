@@ -39,7 +39,7 @@ public class ModificarMateriaActivity extends AppCompatActivity {
     EditText txtMateria;
     Button btnGuardar;
 
-    boolean campCod, campAre, campMater;
+    boolean campAre = false; //True si no se ha seleccionado nada
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,10 +57,6 @@ public class ModificarMateriaActivity extends AppCompatActivity {
         extraMateria = getIntent().getExtras().getString("nombre_materia");
         txtCodMateria.setText(extraCod_materia);
         txtMateria.setText(extraMateria);
-
-        campCod = true;
-        campAre = true;
-        campMater = true;
 
         id_area = new ArrayList<>();
         descrip_area = new ArrayList<>();
@@ -89,67 +85,28 @@ public class ModificarMateriaActivity extends AppCompatActivity {
         spinerArea.setSelection(aux + 1);
 
         //Validaciones de campos vacios
-        txtCodMateria.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int start, int i1, int i2) {
-
-            }
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int before, int count) {
-                if (count>0){ //count es cantidad de caracteres que tiene
-                    campCod = true;
-                }else{
-                    campCod = false;
-                }
-            }
-            @Override
-            public void afterTextChanged(Editable editable) {
-
-            }
-        });
-
         spinerArea.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 if (i != 0) {
                     id_are = id_area.get(i - 1); //Guarda el id del area seleccionada en la variable global, para usarla en el update
-                    campAre = true;
-                } else {
                     campAre = false;
+                } else {
+                    campAre = true;
                 }
-
             }
-
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
 
             }
         });
 
-        txtMateria.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int start, int i1, int i2) {
-
-            }
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int before, int count) {
-                if (count>0){ //count es cantidad de caracteres que tiene
-                    campMater = true;
-                }else{
-                    campMater = false;
-                }
-            }
-            @Override
-            public void afterTextChanged(Editable editable) {
-
-            }
-        });
     }
 
     public void modificarMateria(View v) {
-        if (verificarCamposLlenos(campCod, campAre, campMater)) {
+        if (verificarCamposLlenos(campAre)) {
             Materia materia = new Materia();
-            materia.setCod_materia(txtCodMateria.getText().toString());
+            materia.setCod_materia(extraCod_materia);
             materia.setId_area(id_are);
             materia.setNombre_materia(txtMateria.getText().toString());
 
@@ -167,8 +124,6 @@ public class ModificarMateriaActivity extends AppCompatActivity {
     }
 
     public void eliminarMateria(View v) {
-
-
         //Confirmacion de eliminacion
         AlertDialog dialogo = new AlertDialog
                 .Builder(ModificarMateriaActivity.this)
@@ -202,18 +157,21 @@ public class ModificarMateriaActivity extends AppCompatActivity {
                 .setMessage("¿Deseas eliminar la materia '" + extraMateria + "'?") // El mensaje
                 .create();// crea el AlertDialog
 
-
         dialogo.show();
 
     }
 
 
-    public boolean verificarCamposLlenos(boolean cmpCod, boolean cmpAre, boolean cmpMater) {
-        if (cmpCod & cmpAre & cmpMater) {
-            //Si los 3 campos son verdadero (tienen contenido) devuelve verdadero
-            return true;
-        }else {
+    public boolean verificarCamposLlenos(boolean cmpAre) {
+        if (txtCodMateria.getText().toString().isEmpty() || txtCodMateria.getText().toString() == null){
             return false;
+        }else if (txtMateria.getText().toString().isEmpty() || txtMateria.getText().toString() == null) {
+            return false;
+        }else if (cmpAre) {
+            return false;
+
+        }else {
+            return true;
         }
     }
 }
