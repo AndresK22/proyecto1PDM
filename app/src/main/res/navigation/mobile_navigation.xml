@@ -10,16 +10,10 @@
         android:name="com.example.serviciosocial.ui.home.HomeFragment"
         android:label="@string/menu_home"
         tools:layout="@layout/fragment_home" />
-
     <fragment
-        android:id="@+id/nav_gallery"
-        android:name="com.example.serviciosocial.ui.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
+        android:id="@+id/nav_gestionUsuario"
+        android:name="com.example.serviciosocial.ui.gestionUsuario.GestionUsuarioFragment"
+        android:label="Gestion Usuario"
+        tools:layout="@layout/fragment_gestion_usuario" />
 
-    <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="com.example.serviciosocial.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
 </navigation>
