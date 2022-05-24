@@ -14,13 +14,9 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.serviciosocial.ControlBD;
 import com.example.serviciosocial.R;
-import com.example.serviciosocial.estado.ConsultarEstadoActivity;
-import com.example.serviciosocial.estado.Estado;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.Iterator;

@@ -13,8 +13,6 @@ import android.widget.Toast;
 
 import com.example.serviciosocial.ControlBD;
 import com.example.serviciosocial.R;
-import com.example.serviciosocial.materia.ConsultarMateriaActivity;
-import com.example.serviciosocial.materia.Materia;
 
 public class CrearEstadoActivity extends AppCompatActivity {
 

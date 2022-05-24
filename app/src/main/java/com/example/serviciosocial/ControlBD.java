@@ -9,12 +9,14 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import com.example.serviciosocial.estado.Estado;
 import com.example.serviciosocial.materia.Materia;
+import com.example.serviciosocial.recordAcademico.RecordAcademico;
 
 import java.util.ArrayList;
 
 public class ControlBD {
     private static final String[] camposMateria = new String[] {"cod_materia", "id_area", "nombre_materia"};
     private static final String[] camposEstado = new String[] {"id_estado", "estado"};
+    private static final String[] camposRecord = new String[] {"id_record", "carnet", "id_area", "materias_aprobadas", "progreso", "promedio"};
     //Aqui van agregando los de las demas tablas
 
     private final Context context;
@@ -254,6 +256,80 @@ public class ControlBD {
                 estado.setId_estado(cursor.getInt(0));
                 estado.setEstado(cursor.getString(1));
                 return estado;
+            } else {
+                return null;
+            }
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public ArrayList<RecordAcademico> consultarRecords(){
+        try {
+            ArrayList<RecordAcademico> lisRecords = new ArrayList<RecordAcademico>();
+            Cursor cursor = db.query("record_academico", camposRecord, null, null, null, null, null);
+
+            if (cursor.moveToFirst()) {
+                do {
+                    RecordAcademico record = new RecordAcademico();
+                    record.setId_record(cursor.getInt(0));
+                    record.setCarnet(cursor.getString(1));
+                    record.setId_area(cursor.getString(2));
+                    record.setMaterias_aprobadas(cursor.getInt(3));
+                    record.setProgreso(cursor.getDouble(4));
+                    record.setPromedio(cursor.getDouble(5));
+                    lisRecords.add(record);
+                } while (cursor.moveToNext());
+
+                return lisRecords;
+            } else {
+                return null;
+            }
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+    public ArrayList<RecordAcademico> consultarRecordsPorCarrera(String[] idCarrera){
+        try {
+            ArrayList<RecordAcademico> lisRecords = new ArrayList<RecordAcademico>();
+            Cursor cursor = db.rawQuery("SELECT rec.id_record, rec.carnet, rec.id_area, rec.materias_aprobadas, rec.progreso, rec.promedio FROM record_academico rec, area_carrera are, carrera car WHERE(rec.id_area = are.id_area AND are.id_carrera = car.id_carrera AND car.id_carrera = ?);", idCarrera);
+
+            if (cursor.moveToFirst()) {
+                do {
+                    RecordAcademico record = new RecordAcademico();
+                    record.setId_record(cursor.getInt(0));
+                    record.setCarnet(cursor.getString(1));
+                    record.setId_area(cursor.getString(2));
+                    record.setMaterias_aprobadas(cursor.getInt(3));
+                    record.setProgreso(cursor.getDouble(4));
+                    record.setPromedio(cursor.getDouble(5));
+                    lisRecords.add(record);
+                } while (cursor.moveToNext());
+
+                return lisRecords;
+            } else {
+                return null;
+            }
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+    public RecordAcademico consultarRecords(String[] id){
+        try {
+            Cursor cursor = db.query("record_academico", camposRecord, "id_record = ?", id, null, null, null);
+
+            if (cursor.moveToFirst()) {
+                RecordAcademico record = new RecordAcademico();
+                record.setId_record(cursor.getInt(0));
+                record.setCarnet(cursor.getString(1));
+                record.setId_area(cursor.getString(2));
+                record.setMaterias_aprobadas(cursor.getInt(3));
+                record.setProgreso(cursor.getDouble(4));
+                record.setPromedio(cursor.getDouble(5));
+                return record;
             } else {
                 return null;
             }

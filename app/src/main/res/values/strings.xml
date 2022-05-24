@@ -27,7 +27,19 @@
     <string name="btnCrearEstado">Crear</string>
     <string name="btnModificarEstado">Modificar</string>
     <string name="btnEliminarEstado">Eliminar</string>
-
     <string name="editTextEstado">Estado</string>
     <string name="btnGuardarEstado">Guardar</string>
+
+    <!-- STRINGS DE Record academico -->
+    <string name="tituloConsultarRecord">Records academicos</string>
+    <string name="tituloCrearRecord">Crear record</string>
+    <string name="cabeceraRecord1">ID</string>
+    <string name="cabeceraRecord2">Carnet</string>
+    <string name="txtIdRecord">ID</string>
+    <string name="txtCarnet_Record">Carnet</string>
+    <string name="txtId_area_Record">Area</string>
+    <string name="txtMaterias_aprobadas">Materias aprobadas</string>
+    <string name="txtProgreso">Progreso</string>
+    <string name="txtPromedio">Promedio</string>
+    <string name="txtCarrera">Seleccionar carrera</string>
 </resources>

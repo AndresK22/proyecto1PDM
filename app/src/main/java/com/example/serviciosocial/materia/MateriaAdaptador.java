@@ -14,8 +14,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.serviciosocial.R;
-import com.example.serviciosocial.estado.EstadoAdaptador;
-import com.example.serviciosocial.estado.ModificarEstadoActivity;
 
 import java.util.ArrayList;
 
@@ -73,7 +71,7 @@ public class MateriaAdaptador extends RecyclerView.Adapter<MateriaAdaptador.MyVi
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             cod_materia = itemView.findViewById(R.id.txtCodMateria);
-            id_area = itemView.findViewById(R.id.txtId_area);
+            id_area = itemView.findViewById(R.id.txtId_area_Materia);
             nombre_materia = itemView.findViewById(R.id.txtMateria);
             itemsMaterias = itemView.findViewById(R.id.itemsMaterias);
         }

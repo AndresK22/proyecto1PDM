@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:id="@+id/itemsMaterias">
+    android:id="@+id/itemsRecords">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -18,10 +18,10 @@
             android:padding="12sp">
 
             <TextView
-                android:id="@+id/txtCodMateria"
+                android:id="@+id/txtIdRecord"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/cabeceraMateria1"
+                android:text="@string/cabeceraRecord1"
                 android:textColor="@color/black"
                 android:textSize="40sp"
                 android:textStyle="bold"
@@ -29,20 +29,53 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/txtMateria"
+                android:id="@+id/txtCarnet_Record"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="40dp"
                 android:layout_marginTop="12dp"
-                android:text="@string/cabeceraMateria2"
+                android:text="@string/cabeceraRecord2"
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                app:layout_constraintStart_toEndOf="@+id/txtCodMateria"
-                app:layout_constraintTop_toTopOf="@+id/txtCodMateria" />
+                app:layout_constraintStart_toEndOf="@+id/txtIdRecord"
+                app:layout_constraintTop_toTopOf="@+id/txtIdRecord" />
 
             <TextView
-                android:id="@+id/txtId_area_Materia"
+                android:id="@+id/txtId_area_Record"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="12dp"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:visibility="invisible"
+                tools:ignore="MissingConstraints" />
+            <TextView
+                android:id="@+id/txtMaterias_aprobadas"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="12dp"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:visibility="invisible"
+                tools:ignore="MissingConstraints" />
+            <TextView
+                android:id="@+id/txtProgreso"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="12dp"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:visibility="invisible"
+                tools:ignore="MissingConstraints" />
+            <TextView
+                android:id="@+id/txtPromedio"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="40dp"

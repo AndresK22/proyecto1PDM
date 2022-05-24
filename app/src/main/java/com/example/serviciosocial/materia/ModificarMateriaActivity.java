@@ -4,12 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -18,9 +15,6 @@ import android.content.DialogInterface;
 
 import com.example.serviciosocial.ControlBD;
 import com.example.serviciosocial.R;
-import com.example.serviciosocial.estado.ConsultarEstadoActivity;
-import com.example.serviciosocial.estado.Estado;
-import com.example.serviciosocial.estado.ModificarEstadoActivity;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -37,7 +31,6 @@ public class ModificarMateriaActivity extends AppCompatActivity {
 
     EditText txtCodMateria;
     EditText txtMateria;
-    Button btnGuardar;
 
     boolean campAre = false; //True si no se ha seleccionado nada
 
@@ -50,7 +43,6 @@ public class ModificarMateriaActivity extends AppCompatActivity {
         spinerArea = (Spinner) findViewById(R.id.spinnerArea);
         txtCodMateria = (EditText) findViewById(R.id.txtCodMateria);
         txtMateria = (EditText) findViewById(R.id.txtMateria);
-        btnGuardar = (Button) findViewById(R.id.btnGuardarMateria);
 
         extraCod_materia = getIntent().getExtras().getString("cod_materia");
         extraIdArea = getIntent().getExtras().getString("id_area");

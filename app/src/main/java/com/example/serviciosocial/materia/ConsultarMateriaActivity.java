@@ -3,19 +3,14 @@ package com.example.serviciosocial.materia;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.Spinner;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.serviciosocial.ControlBD;
 import com.example.serviciosocial.R;
-import com.example.serviciosocial.estado.ConsultarEstadoActivity;
-import com.example.serviciosocial.estado.CrearEstadoActivity;
-import com.example.serviciosocial.estado.Estado;
+
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
