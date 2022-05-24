@@ -10,6 +10,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ServicioSocial">
         <activity
+            android:name=".nota.CrearNotaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".nota.ModificarNotaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".nota.ConsultarNotaActivity"
+            android:exported="false" />
+        <activity
             android:name=".recordAcademico.ModificarRecordActivity"
             android:exported="false" />
         <activity

@@ -42,4 +42,16 @@
     <string name="txtProgreso">Progreso</string>
     <string name="txtPromedio">Promedio</string>
     <string name="txtCarrera">Seleccionar carrera</string>
+
+    <!-- STRINGS DE Nota -->
+    <string name="tituloConsultarNota">Notas</string>
+    <string name="tituloCrearNota">Crear nota</string>
+    <string name="cabeceraNota1">Materia</string>
+    <string name="cabeceraNota2">Carnet</string>
+    <string name="txtCodMateria_Nota">Codigo de materia</string>
+    <string name="txtCarnet_Nota">Carnet</string>
+    <string name="txtCalificacion">Calificacion</string>
+    <string name="btnModificarNota">Modificar</string>
+    <string name="btnEliminarNota">Eliminar</string>
+    <string name="btnGuardarNota">Guardar</string>
 </resources>

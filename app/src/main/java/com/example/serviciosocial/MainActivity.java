@@ -9,6 +9,7 @@ import android.widget.Button;
 
 import com.example.serviciosocial.estado.ConsultarEstadoActivity;
 import com.example.serviciosocial.materia.ConsultarMateriaActivity;
+import com.example.serviciosocial.nota.ConsultarNotaActivity;
 import com.example.serviciosocial.recordAcademico.ConsultarRecordActivity;
 
 public class MainActivity extends AppCompatActivity {
@@ -24,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
         botonPrueba.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, ConsultarRecordActivity.class);
+                Intent intent = new Intent(MainActivity.this, ConsultarEstadoActivity.class);
                 startActivity(intent);
             }
         });

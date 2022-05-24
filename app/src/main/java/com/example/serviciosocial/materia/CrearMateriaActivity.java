@@ -2,9 +2,6 @@ package com.example.serviciosocial.materia;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -25,14 +22,14 @@ public class CrearMateriaActivity extends AppCompatActivity {
 
     ControlBD helper;
     Spinner spinerArea;
-    ArrayList<String> id_area, descrip_area; //para el spinne
+    ArrayList<String> id_area, descrip_area; //para el spinner
     String id_are;
 
     EditText txtCodMateria;
     EditText txtMateria;
     Button btnGuardar;
 
-    boolean campCod, campAre, campMater;
+    boolean campAre = false; //True si no se ha seleccionado nada
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,33 +67,14 @@ public class CrearMateriaActivity extends AppCompatActivity {
         spinerArea.setAdapter(adaptador);
 
         //Validaciones de campos vacios
-        txtCodMateria.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int start, int i1, int i2) {
-
-            }
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int before, int count) {
-                if (count>0){ //count es cantidad de caracteres que tiene
-                    campCod = true;
-                }else{
-                    campCod = false;
-                }
-            }
-            @Override
-            public void afterTextChanged(Editable editable) {
-
-            }
-        });
-
         spinerArea.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 if (i != 0) {
                     id_are = id_area.get(i - 1); //Guarda el id del area seleccionada en la variable global, para usarla en el create
-                    campAre = true;
-                } else {
                     campAre = false;
+                } else {
+                    campAre = true;
                 }
 
             }
@@ -106,32 +84,11 @@ public class CrearMateriaActivity extends AppCompatActivity {
 
             }
         });
-
-        txtMateria.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int start, int i1, int i2) {
-
-            }
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int before, int count) {
-                if (count>0){ //count es cantidad de caracteres que tiene
-                    campMater = true;
-                }else{
-                    campMater = false;
-                }
-            }
-            @Override
-            public void afterTextChanged(Editable editable) {
-
-            }
-        });
-
-
     }
 
 
     public void guardarMateria(View v) {
-        if (verificarCamposLlenos(campCod, campAre, campMater)) {
+        if (verificarCamposLlenos(campAre)) {
             String codMateria = txtCodMateria.getText().toString();
             String idArea = id_are;
             String nomMateria = txtMateria.getText().toString();
@@ -156,12 +113,16 @@ public class CrearMateriaActivity extends AppCompatActivity {
     }
 
 
-    public boolean verificarCamposLlenos(boolean cmpCod, boolean cmpAre, boolean cmpMater) {
-        if (cmpCod & cmpAre & cmpMater) {
-            //Si los 3 campos son verdadero (tienen contenido) devuelve verdadero
-            return true;
-        }else {
+    public boolean verificarCamposLlenos(boolean cmpAre) {
+        if (txtCodMateria.getText().toString().isEmpty() || txtCodMateria.getText().toString() == null){
             return false;
+        }else if (txtMateria.getText().toString().isEmpty() || txtMateria.getText().toString() == null) {
+            return false;
+        }else if (cmpAre) {
+            return false;
+
+        }else {
+            return true;
         }
     }
 }
