@@ -52,12 +52,12 @@ public class ControlBD {
                 db.execSQL("INSERT INTO estado (estado) VALUES ('En proceso');");
                 db.execSQL("INSERT INTO estado (estado) VALUES ('Asignado');");
 
-                db.execSQL("CREATE TABLE record_academico (id_record INTEGER NOT NULL, carnet CHAR(8), id_area CHAR(2), materias_aprobadas INTEGER NOT NULL, progreso DECIMAL(5,2), promedio DECIMAL(4,2) NOT NULL, PRIMARY KEY (id_record));");
+                db.execSQL("CREATE TABLE record_academico (id_record INTEGER NOT NULL, carnet CHAR(7), id_area CHAR(2), materias_aprobadas INTEGER NOT NULL, progreso DECIMAL(5,2), promedio DECIMAL(4,2) NOT NULL, PRIMARY KEY (id_record));");
                 db.execSQL("INSERT INTO record_academico (carnet, id_area, materias_aprobadas, progreso, promedio) VALUES ('hg19010', 'pr', 0, 25, 6.5);");
                 db.execSQL("INSERT INTO record_academico (carnet, id_area, materias_aprobadas, progreso, promedio) VALUES ('aa19012', 'cb', 0, 25, 6.5);");
                 db.execSQL("INSERT INTO record_academico (carnet, id_area, materias_aprobadas, progreso, promedio) VALUES ('cc19114', 'pt', 0, 25, 6.5);");
 
-                db.execSQL("CREATE TABLE nota (cod_materia CHAR(6) NOT NULL, carnet CHAR(8) NOT NULL, calificacion DECIMAL(4,2), PRIMARY KEY (cod_materia, carnet));");
+                db.execSQL("CREATE TABLE nota (cod_materia CHAR(6) NOT NULL, carnet CHAR(7) NOT NULL, calificacion DECIMAL(4,2), PRIMARY KEY (cod_materia, carnet));");
                 db.execSQL("INSERT INTO nota (cod_materia, carnet, calificacion) VALUES ('iai115', 'hg19010', 2.5);");
                 db.execSQL("INSERT INTO nota (cod_materia, carnet, calificacion) VALUES ('mat115', 'aa19012', 9);");
                 db.execSQL("INSERT INTO nota (cod_materia, carnet, calificacion) VALUES ('abc115', 'cc19114', 7.5);");
@@ -93,7 +93,7 @@ public class ControlBD {
         mate.put("cod_materia", materia.getCod_materia());
         mate.put("id_area", materia.getId_area());
         mate.put("nombre_materia", materia.getNombre_materia());
-        contador = db.insert("materia", null, mate);
+        contador = db.insertOrThrow("materia", null, mate);
 
         if(contador == -1 || contador == 0){
             regInsertados = "Error al insertar el registro. Registro duplicado. Verificar insercion";

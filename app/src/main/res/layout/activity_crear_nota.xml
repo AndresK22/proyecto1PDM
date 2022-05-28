@@ -43,7 +43,7 @@
         android:ems="10"
         android:hint="@string/txtCarnet_Nota"
         android:inputType="text"
-        android:maxLength="8"
+        android:maxLength="7"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextCod_Materia"
