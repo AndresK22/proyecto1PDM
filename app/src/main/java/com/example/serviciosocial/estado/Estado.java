@@ -1,4 +1,4 @@
-package com.example.serviciosocial;
+package com.example.serviciosocial.estado;
 
 public class Estado {
     private int id_estado;

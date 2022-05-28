@@ -12,6 +12,11 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.serviciosocial.estado.ConsultarEstadoActivity;
+import com.example.serviciosocial.materia.ConsultarMateriaActivity;
+import com.example.serviciosocial.nota.ConsultarNotaActivity;
+import com.example.serviciosocial.recordAcademico.ConsultarRecordActivity;
+
 public class MainActivity extends AppCompatActivity {
 
     Button botonPrueba;
@@ -22,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        this.deleteDatabase("proyecto.s3db");
 
         preferences = this.getSharedPreferences("sesion", Context.MODE_PRIVATE);
         editor = preferences.edit();
@@ -30,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         botonPrueba.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, CrearEstudianteActivity.class);
+                Intent intent = new Intent(MainActivity.this, ConsultarEstadoActivity.class);
                 startActivity(intent);
             }
         });

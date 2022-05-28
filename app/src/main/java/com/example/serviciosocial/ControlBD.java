@@ -11,9 +11,18 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.serviciosocial.estado.Estado;
+import com.example.serviciosocial.materia.Materia;
+import com.example.serviciosocial.nota.Nota;
+import com.example.serviciosocial.recordAcademico.RecordAcademico;
+
+import java.util.ArrayList;
+
 public class ControlBD {
     private static final String[] camposMateria = new String[] {"cod_materia", "id_area", "nombre_materia"};
     private static final String[] camposEstado = new String[] {"id_estado", "estado"};
+    private static final String[] camposRecord = new String[] {"id_record", "carnet", "id_area", "materias_aprobadas", "progreso", "promedio"};
+    private static final String[] camposNota = new String[] {"cod_materia", "carnet", "calificacion"};
     //Aqui van agregando los de las demas tablas
 
     private final Context context;
@@ -37,10 +46,25 @@ public class ControlBD {
         public void onCreate(SQLiteDatabase db){
             try{
                 //Agregar los CREATE TABLE
-                db.execSQL("CREATE TABLE materia (cod_materia CHAR(6) NOT NULL, id_area CHAR(2), nombre_materia VARCHAR(25) NOT NULL, PRIMARY KEY (cod_materia));");
+                db.execSQL("CREATE TABLE materia (cod_materia CHAR(6) NOT NULL, id_area CHAR(2) NOT NULL, nombre_materia VARCHAR(25) NOT NULL, PRIMARY KEY (cod_materia));");
+                db.execSQL("INSERT INTO materia (cod_materia, id_area, nombre_materia) VALUES ('iai115', 'pr', 'introduccion');");
+                db.execSQL("INSERT INTO materia (cod_materia, id_area, nombre_materia) VALUES ('mat115', 'cb', 'matematica i');");
+                db.execSQL("INSERT INTO materia (cod_materia, id_area, nombre_materia) VALUES ('abc115', 'pt', 'avver');");
 
-                db.execSQL("CREATE TABLE estado (id_estado INTEGER NOT NULL, estado CHAR(25), PRIMARY KEY (id_estado));");
-                db.execSQL("INSERT INTO estado (id_estado, estado) VALUES (1, 'Finalizado');");
+                db.execSQL("CREATE TABLE estado (id_estado INTEGER NOT NULL, estado CHAR(25) NOT NULL, PRIMARY KEY (id_estado));");
+                db.execSQL("INSERT INTO estado (estado) VALUES ('Finalizado');");
+                db.execSQL("INSERT INTO estado (estado) VALUES ('En proceso');");
+                db.execSQL("INSERT INTO estado (estado) VALUES ('Asignado');");
+
+                db.execSQL("CREATE TABLE record_academico (id_record INTEGER NOT NULL, carnet CHAR(8), id_area CHAR(2), materias_aprobadas INTEGER NOT NULL, progreso DECIMAL(5,2), promedio DECIMAL(4,2) NOT NULL, PRIMARY KEY (id_record));");
+                db.execSQL("INSERT INTO record_academico (carnet, id_area, materias_aprobadas, progreso, promedio) VALUES ('hg19010', 'pr', 0, 25, 6.5);");
+                db.execSQL("INSERT INTO record_academico (carnet, id_area, materias_aprobadas, progreso, promedio) VALUES ('aa19012', 'cb', 0, 25, 6.5);");
+                db.execSQL("INSERT INTO record_academico (carnet, id_area, materias_aprobadas, progreso, promedio) VALUES ('cc19114', 'pt', 0, 25, 6.5);");
+
+                db.execSQL("CREATE TABLE nota (cod_materia CHAR(6) NOT NULL, carnet CHAR(8) NOT NULL, calificacion DECIMAL(4,2), PRIMARY KEY (cod_materia, carnet));");
+                db.execSQL("INSERT INTO nota (cod_materia, carnet, calificacion) VALUES ('iai115', 'hg19010', 2.5);");
+                db.execSQL("INSERT INTO nota (cod_materia, carnet, calificacion) VALUES ('mat115', 'aa19012', 9);");
+                db.execSQL("INSERT INTO nota (cod_materia, carnet, calificacion) VALUES ('abc115', 'cc19114', 7.5);");
 
                 //Agregar los triggers
                 //db.execSQL("CREATE TRIGGER materia (cod_materia CHAR(6) NOT NULL, id_area CHAR(2), nombre_materia VARCHAR(25) NOT NULL, PRIMARY KEY (cod_materia));");
@@ -83,6 +107,41 @@ public class ControlBD {
         return regInsertados;
     }
 
+    public String insertar(Estado estado){
+        String regInsertados = "Registro Insertado No = ";
+        long contador = 0;
+
+        ContentValues est = new ContentValues();
+        est.put("estado", estado.getEstado());
+        contador = db.insert("estado", null, est);
+
+        if(contador == -1 || contador == 0){
+            regInsertados = "Error al insertar el registro. Registro duplicado. Verificar insercion";
+        } else{
+            regInsertados = regInsertados + contador;
+        }
+        return regInsertados;
+    }
+
+    public String insertar(Nota nota){
+        String regInsertados = "Registro Insertado No = ";
+        long contador = 0;
+
+        ContentValues not = new ContentValues();
+        not.put("cod_materia", nota.getCod_materia());
+        not.put("carnet", nota.getCarnet());
+        not.put("calificacion", nota.getCalificacion());
+        contador = db.insert("nota", null, not);
+
+        if(contador == -1 || contador == 0){
+            regInsertados = "Error al insertar el registro. Registro duplicado. Verificar insercion";
+        } else{
+            regInsertados = regInsertados + contador;
+        }
+        return regInsertados;
+    }
+
+
     //UPDATES
     public String actualizar(Materia materia){
         try{
@@ -92,7 +151,35 @@ public class ControlBD {
             cv.put("nombre_materia", materia.getNombre_materia());
             db.update("materia", cv, "cod_materia = ?", id);
 
-            return "Registro Actualizado Correctamente";
+            return "Materia actualizada correctamente";
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public String actualizar(Estado estado){
+        try{
+            String[] id = {String.valueOf(estado.getId_estado())};
+            ContentValues cv = new ContentValues();
+            cv.put("estado", estado.getEstado());
+            db.update("estado", cv, "id_estado = ?", id);
+
+            return "Estado actualizado correctamente";
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public String actualizar(Nota nota){
+        try{
+            String[] id = {nota.getCod_materia(), nota.getCarnet()};
+            ContentValues cv = new ContentValues();
+            cv.put("calificacion", nota.getCalificacion());
+            db.update("nota", cv, "cod_materia = ? AND carnet = ?", id);
+
+            return "Nota actualizada correctamente";
         }catch (SQLException e){
             e.printStackTrace();
         }
@@ -102,17 +189,49 @@ public class ControlBD {
 
     //DELETES
     public String eliminar(Materia materia){
-        String regAfectados="filas afectadas= ";
+        String regAfectados="filas afectadas = ";
         int contador=0;
+        //Borrar la nota con un trigger/ o validar trigger que aparezca mensaje que antes tiene que borrar la nota
 
-        try {
-            contador += db.delete("nota", "cod_materia='"+materia.getCod_materia()+"'", null);
-        } catch (SQLException e){
+        String[] id = {String.valueOf(materia.getCod_materia())};
+        try{
+            contador += db.delete("materia", "cod_materia = ?", id);
+            regAfectados += contador;
+
+            return regAfectados;
+        } catch (SQLException e) {
             e.printStackTrace();
         }
+        return null;
+    }
 
+    public String eliminar(Estado estado){
+        String regAfectados="filas afectadas = ";
+        int contador=0;
+
+        //Borrar los registros de las tablas relacionadas con un trigger/ o validar trigger que aparezca mensaje que antes tiene que borrar esos registros
+
+        String[] id = {String.valueOf(estado.getId_estado())};
         try{
-            contador += db.delete("materia", "cod_materia='"+materia.getCod_materia()+"'", null);
+            contador += db.delete("estado", "id_estado = ?", id);
+            regAfectados += contador;
+
+            return regAfectados;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public String eliminar(Nota nota){
+        String regAfectados="filas afectadas = ";
+        int contador=0;
+
+        //Borrar los registros de las tablas relacionadas con un trigger/ o validar trigger que aparezca mensaje que antes tiene que borrar esos registros
+
+        String[] id = {nota.getCod_materia(), nota.getCarnet()};
+        try{
+            contador += db.delete("nota", "cod_materia = ? AND carnet = ?", id);
             regAfectados += contador;
 
             return regAfectados;
@@ -124,39 +243,224 @@ public class ControlBD {
 
 
     //SELECTS
-    public Materia consultarMateria(){
-        Cursor cursor = db.query("materia", camposMateria, null, null, null, null, null);
-        if(cursor.moveToFirst()){
-            Materia materia = new Materia();
-            materia.setCod_materia(cursor.getString(0));
-            materia.setId_area(cursor.getString(1));
-            materia.setNombre_materia(cursor.getString(2));
-            return materia;
-        }else {
-            return null;
+    public ArrayList<Materia> consultarMateria(){
+        try {
+            ArrayList<Materia> lisMaterias = new ArrayList<Materia>();
+            Cursor cursor = db.query("materia", camposMateria, null, null, null, null, null);
+
+            if (cursor.moveToFirst()) {
+                do {
+                    Materia materia = new Materia();
+                    materia.setCod_materia(cursor.getString(0));
+                    materia.setId_area(cursor.getString(1));
+                    materia.setNombre_materia(cursor.getString(2));
+                    lisMaterias.add(materia);
+                } while (cursor.moveToNext());
+
+                return lisMaterias;
+            } else {
+                return null;
+            }
+        } catch (SQLException e){
+            e.printStackTrace();
         }
+        return null;
+    }
+    public Materia consultarMateria(String[] id){
+        try {
+            Cursor cursor = db.query("materia", camposMateria, "cod_materia = ?", id, null, null, null);
+
+            if (cursor.moveToFirst()) {
+                Materia materia = new Materia();
+                materia.setCod_materia(cursor.getString(0));
+                materia.setId_area(cursor.getString(1));
+                materia.setNombre_materia(cursor.getString(2));
+                return materia;
+            } else {
+                return null;
+            }
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+        return null;
     }
 
-    public View consultarEstados(Context cont){
-        View registro = LayoutInflater.from(cont).inflate(R.layout.item_table_layout_estado, null, false);
-        TextView id_estado = (TextView) registro.findViewById(R.id.txtIdEstado);
-        TextView txtEstado = (TextView) registro.findViewById(R.id.txtEstado);
+    public ArrayList<Estado> consultarEstados(){
+        try {
+            ArrayList<Estado> lisEstados = new ArrayList<Estado>();
+            Cursor cursor = db.query("estado", camposEstado, null, null, null, null, null);
 
-        Cursor cursor = db.query("estado", camposEstado, null, null, null, null, null);
-        if(cursor.moveToFirst()){
-            do {
+            if (cursor.moveToFirst()) {
+                do {
+                    Estado estado = new Estado();
+                    estado.setId_estado(cursor.getInt(0));
+                    estado.setEstado(cursor.getString(1));
+                    lisEstados.add(estado);
+                } while (cursor.moveToNext());
+
+                return lisEstados;
+            } else {
+                return null;
+            }
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+    public Estado consultarEstados(String[] id){
+        try {
+            Cursor cursor = db.query("estado", camposEstado, "id_estado = ?", id, null, null, null);
+            if (cursor.moveToFirst()) {
                 Estado estado = new Estado();
                 estado.setId_estado(cursor.getInt(0));
                 estado.setEstado(cursor.getString(1));
-
-                id_estado.setText(estado.getId_estado());
-                txtEstado.setText(estado.getEstado());
-            }while (cursor.moveToNext());
-
-            return registro;
-        }else {
-            return null;
+                return estado;
+            } else {
+                return null;
+            }
+        } catch (SQLException e){
+            e.printStackTrace();
         }
+        return null;
+    }
+
+    public ArrayList<RecordAcademico> consultarRecords(){
+        try {
+            ArrayList<RecordAcademico> lisRecords = new ArrayList<RecordAcademico>();
+            Cursor cursor = db.query("record_academico", camposRecord, null, null, null, null, null);
+
+            if (cursor.moveToFirst()) {
+                do {
+                    RecordAcademico record = new RecordAcademico();
+                    record.setId_record(cursor.getInt(0));
+                    record.setCarnet(cursor.getString(1));
+                    record.setId_area(cursor.getString(2));
+                    record.setMaterias_aprobadas(cursor.getInt(3));
+                    record.setProgreso(cursor.getDouble(4));
+                    record.setPromedio(cursor.getDouble(5));
+                    lisRecords.add(record);
+                } while (cursor.moveToNext());
+
+                return lisRecords;
+            } else {
+                return null;
+            }
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+    public ArrayList<RecordAcademico> consultarRecordsPorCarrera(String[] idCarrera){
+        try {
+            ArrayList<RecordAcademico> lisRecords = new ArrayList<RecordAcademico>();
+            Cursor cursor = db.rawQuery("SELECT rec.id_record, rec.carnet, rec.id_area, rec.materias_aprobadas, rec.progreso, rec.promedio FROM record_academico rec, area_carrera are, carrera car WHERE(rec.id_area = are.id_area AND are.id_carrera = car.id_carrera AND car.id_carrera = ?);", idCarrera);
+
+            if (cursor.moveToFirst()) {
+                do {
+                    RecordAcademico record = new RecordAcademico();
+                    record.setId_record(cursor.getInt(0));
+                    record.setCarnet(cursor.getString(1));
+                    record.setId_area(cursor.getString(2));
+                    record.setMaterias_aprobadas(cursor.getInt(3));
+                    record.setProgreso(cursor.getDouble(4));
+                    record.setPromedio(cursor.getDouble(5));
+                    lisRecords.add(record);
+                } while (cursor.moveToNext());
+
+                return lisRecords;
+            } else {
+                return null;
+            }
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+    public RecordAcademico consultarRecords(String[] id){
+        try {
+            Cursor cursor = db.query("record_academico", camposRecord, "id_record = ?", id, null, null, null);
+
+            if (cursor.moveToFirst()) {
+                RecordAcademico record = new RecordAcademico();
+                record.setId_record(cursor.getInt(0));
+                record.setCarnet(cursor.getString(1));
+                record.setId_area(cursor.getString(2));
+                record.setMaterias_aprobadas(cursor.getInt(3));
+                record.setProgreso(cursor.getDouble(4));
+                record.setPromedio(cursor.getDouble(5));
+                return record;
+            } else {
+                return null;
+            }
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public ArrayList<Nota> consultarNotas(){
+        try {
+            ArrayList<Nota> lisNotas = new ArrayList<Nota>();
+            Cursor cursor = db.query("nota", camposNota, null, null, null, null, null);
+
+            if (cursor.moveToFirst()) {
+                do {
+                    Nota not = new Nota();
+                    not.setCod_materia(cursor.getString(0));
+                    not.setCarnet(cursor.getString(1));
+                    not.setCalificacion(cursor.getDouble(2));
+                    lisNotas.add(not);
+                } while (cursor.moveToNext());
+
+                return lisNotas;
+            } else {
+                return null;
+            }
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+    public ArrayList<Nota> consultarNotasPorCarrera(String[] idCarrera){
+        try {
+            ArrayList<Nota> lisNotas = new ArrayList<Nota>();
+            Cursor cursor = db.rawQuery("SELECT nott.COD_MATERIA, nott.carnet, nott.CALIFICACION FROM nota nott, materia mat, area_carrera are, carrera car WHERE(nott.COD_MATERIA = mat.COD_MATERIA AND mat.ID_AREA = are.ID_AREA AND are.id_carrera = car.id_carrera AND car.id_carrera = ?);", idCarrera);
+
+            if (cursor.moveToFirst()) {
+                do {
+                    Nota not = new Nota();
+                    not.setCod_materia(cursor.getString(0));
+                    not.setCarnet(cursor.getString(1));
+                    not.setCalificacion(cursor.getDouble(2));
+                    lisNotas.add(not);
+                } while (cursor.moveToNext());
+
+                return lisNotas;
+            } else {
+                return null;
+            }
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+    public Nota consultarNotas(String[] id){
+        try {
+            Cursor cursor = db.query("nota", camposRecord, "cod_materia = ? AND carnet = ?", id, null, null, null);
+
+            if (cursor.moveToFirst()) {
+                Nota not = new Nota();
+                not.setCod_materia(cursor.getString(0));
+                not.setCarnet(cursor.getString(1));
+                not.setCalificacion(cursor.getDouble(2));
+                return not;
+            } else {
+                return null;
+            }
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+        return null;
     }
 
     /*

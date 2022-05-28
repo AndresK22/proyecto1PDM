@@ -15,18 +15,42 @@
             android:theme="@style/Theme.ServicioSocial.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name=".ConsultarEstadoActivity"
+            android:name=".nota.CrearNotaActivity"
             android:exported="false" />
         <activity
-            android:name=".ConsultarMateriaActivity"
+            android:name=".nota.ModificarNotaActivity"
             android:exported="false" />
         <activity
-            android:name=".CrearMateriaActivity"
+            android:name=".nota.ConsultarNotaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".recordAcademico.ModificarRecordActivity"
+            android:exported="false" />
+        <activity
+            android:name=".recordAcademico.ConsultarRecordActivity"
+            android:exported="false" />
+        <activity
+            android:name=".materia.ModificarMateriaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".estado.CrearEstadoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".estado.ModificarEstadoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".estado.ConsultarEstadoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".materia.ConsultarMateriaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".materia.CrearMateriaActivity"
             android:exported="false" />
         <activity
             android:name=".CrearEstudianteActivity"
