@@ -1,9 +1,14 @@
 package com.example.serviciosocial.ui.gestionUsuario;
 
+import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,8 +16,12 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.example.serviciosocial.AgregarUsuarioActivity;
+import com.example.serviciosocial.ControlLogin;
+import com.example.serviciosocial.CustomAdapterUsuario;
 import com.example.serviciosocial.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -22,6 +31,10 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 public class GestionUsuarioFragment extends Fragment {
 
     FloatingActionButton buttonAgregarUsuario;
+    ControlLogin controlLogin;
+    ArrayList<String> id_usuario,nombre_usuario,contra_usuario,rol_usuario;
+    CustomAdapterUsuario customAdapterUsuario;
+    RecyclerView recyclerView;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -67,10 +80,38 @@ public class GestionUsuarioFragment extends Fragment {
     }
 
     @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view =  inflater.inflate(R.layout.fragment_gestion_usuario, container, false);
+        recyclerView = view.findViewById(R.id.recyclerView);
+
+        controlLogin = new ControlLogin(view.getContext());
+        id_usuario = new ArrayList<>();
+        nombre_usuario = new ArrayList<>();
+        contra_usuario = new ArrayList<>();
+        rol_usuario = new ArrayList<>();
+
+        Cursor cursor = controlLogin.consultarUsuarios();
+
+        while (cursor.moveToNext()){
+            id_usuario.add(Integer.toString(cursor.getInt(0)));
+            nombre_usuario.add(cursor.getString(1));
+            contra_usuario.add(cursor.getString(2));
+            rol_usuario.add(controlLogin.getRolusuario(cursor.getInt(0)));
+        }
+
+        customAdapterUsuario = new CustomAdapterUsuario(getActivity(),view.getContext(),id_usuario,nombre_usuario,contra_usuario,rol_usuario);
+        recyclerView.setAdapter(customAdapterUsuario);
+        recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
+
+
 
         buttonAgregarUsuario = (FloatingActionButton) view.findViewById(R.id.fab);
         buttonAgregarUsuario.setOnClickListener(new View.OnClickListener() {
@@ -82,4 +123,5 @@ public class GestionUsuarioFragment extends Fragment {
 
         return view;
     }
+
 }

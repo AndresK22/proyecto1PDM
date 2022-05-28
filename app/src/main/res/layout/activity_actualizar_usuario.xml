@@ -5,10 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="24sp"
-    tools:context=".AgregarUsuarioActivity">
+    tools:context=".ActualizarUsuarioActivity">
 
     <EditText
-        android:id="@+id/editTextNombreUsuario"
+        android:id="@+id/editTextNombreUsuarioA"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="112dp"
@@ -24,59 +24,45 @@
         tools:ignore="DuplicateSpeakableTextCheck" />
 
     <Spinner
-        android:id="@+id/spinnerRolUsuario"
+        android:id="@+id/spinnerRolUsuarioA"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:minHeight="48dp"
         app:layout_constraintTop_toBottomOf="@+id/textViewRol"
-        tools:layout_editor_absoluteX="24dp"
-        />
+        tools:layout_editor_absoluteX="24dp" />
 
     <Button
-        android:id="@+id/buttonAgregarUsuario"
+        android:id="@+id/buttonActualizarUsuario"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:layout_marginTop="50dp"
-        android:text="Agregar"
+        android:layout_marginTop="24dp"
+        android:text="Actualizar"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@+id/editTextContra2"
-        tools:layout_editor_absoluteX="32dp" />
+        app:layout_constraintTop_toBottomOf="@+id/spinnerRolUsuarioA"
+        tools:layout_editor_absoluteX="24dp" />
 
-    <EditText
-        android:id="@+id/editTextContra"
+    <Button
+        android:id="@+id/buttonEliminarUsuario"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
         android:layout_marginTop="16dp"
-        android:ems="10"
-        android:hint="Contraseña"
-        android:inputType="textPassword"
-        android:minHeight="16dp"
-        app:layout_constraintTop_toBottomOf="@+id/spinnerRolUsuario"
-        tools:layout_editor_absoluteX="32dp" />
-
-    <EditText
-        android:id="@+id/editTextContra2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:ems="10"
-        android:hint="Confirmar Contraseña"
-        android:inputType="textPassword"
-        android:minHeight="48dp"
-        app:layout_constraintTop_toBottomOf="@+id/editTextContra"
-        tools:layout_editor_absoluteX="32dp" />
+        android:text="Eliminar"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@+id/buttonActualizarUsuario"
+        tools:layout_editor_absoluteX="16dp" />
 
     <TextView
         android:id="@+id/textViewRol"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Rol del usuario:"
         android:paddingHorizontal="5dp"
+        android:text="Rol del usuario:"
         android:textSize="17sp"
-        app:layout_constraintTop_toBottomOf="@+id/editTextNombreUsuario"
+        app:layout_constraintTop_toBottomOf="@+id/editTextNombreUsuarioA"
         tools:layout_editor_absoluteX="24dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

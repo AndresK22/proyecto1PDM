@@ -10,10 +10,12 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.net.IDN;
+
 import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
 
-class ControlLogin {
+public class ControlLogin {
 
     private static final String[] camposUsuario = new String[] {"ID_USUARIO", "NOMBRE_USUARIO", "CLAVE"};
     private static final String[] camposAccesoUsuario = new String[] {"ID_OPCION", "ID_USUARIO"};
@@ -113,23 +115,138 @@ class ControlLogin {
         }
     }
 
-    //UPDATES
+    public void insertar(int rol) {
 
+        AccesoUsuario acceso = new AccesoUsuario();
+        int id = 0;
+
+        Cursor cursor = db.rawQuery("SELECT MAX(ID_USUARIO) FROM USUARIO", null);
+        if(cursor.moveToFirst()){
+            id = cursor.getInt(0);
+        }
+
+       switch (rol){
+            case 0:
+                insertarAccesoAdmin(id);
+                break;
+            case 1:
+                insertarAccesoDocente(id);
+                break;
+            case 2:
+                insertarAccesoAlumno(id);
+                break;
+        }
+
+    }
+
+    private void insertarAccesoAlumno(int id) {
+        db.execSQL("INSERT OR IGNORE INTO ACCESO_USUARIO VALUES('017',"+id+")");
+        db.execSQL("INSERT OR IGNORE INTO ACCESO_USUARIO VALUES('018',"+id+")");
+        db.execSQL("INSERT OR IGNORE INTO ACCESO_USUARIO VALUES('019',"+id+")");
+        db.execSQL("INSERT OR IGNORE INTO ACCESO_USUARIO VALUES('020',"+id+")");
+    }
+
+    private void insertarAccesoDocente(int id) {
+        db.execSQL("INSERT OR IGNORE INTO ACCESO_USUARIO VALUES('013',"+id+")");
+        db.execSQL("INSERT OR IGNORE INTO ACCESO_USUARIO VALUES('014',"+id+")");
+        db.execSQL("INSERT OR IGNORE INTO ACCESO_USUARIO VALUES('015',"+id+")");
+        db.execSQL("INSERT OR IGNORE INTO ACCESO_USUARIO VALUES('016',"+id+")");
+    }
+
+    private void insertarAccesoAdmin(int id) {
+        db.execSQL("INSERT OR IGNORE INTO ACCESO_USUARIO VALUES('001',"+id+")");
+        db.execSQL("INSERT OR IGNORE INTO ACCESO_USUARIO VALUES('002',"+id+")");
+        db.execSQL("INSERT OR IGNORE INTO ACCESO_USUARIO VALUES('003',"+id+")");
+        db.execSQL("INSERT OR IGNORE INTO ACCESO_USUARIO VALUES('004',"+id+")");
+        db.execSQL("INSERT OR IGNORE INTO ACCESO_USUARIO VALUES('005',"+id+")");
+        db.execSQL("INSERT OR IGNORE INTO ACCESO_USUARIO VALUES('006',"+id+")");
+        db.execSQL("INSERT OR IGNORE INTO ACCESO_USUARIO VALUES('007',"+id+")");
+        db.execSQL("INSERT OR IGNORE INTO ACCESO_USUARIO VALUES('008',"+id+")");
+        db.execSQL("INSERT OR IGNORE INTO ACCESO_USUARIO VALUES('009',"+id+")");
+        db.execSQL("INSERT OR IGNORE INTO ACCESO_USUARIO VALUES('010',"+id+")");
+        db.execSQL("INSERT OR IGNORE INTO ACCESO_USUARIO VALUES('011',"+id+")");
+        db.execSQL("INSERT OR IGNORE INTO ACCESO_USUARIO VALUES('012',"+id+")");
+    }
+
+    //UPDATES
+    public void actualizarUsuario(String id_usuario, String nombre_usuario, int rol_actualizado) {
+        int id = Integer.parseInt(id_usuario);
+        db = DBHelper.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put("NOMBRE_USUARIO",nombre_usuario);
+
+        db.execSQL("DELETE FROM ACCESO_USUARIO WHERE ID_USUARIO="+id_usuario);
+
+        switch (rol_actualizado){
+            case 0:
+                insertarAccesoAdmin(id);
+                break;
+            case 1:
+                insertarAccesoDocente(id);
+                break;
+            case 2:
+                insertarAccesoAlumno(id);
+                break;
+        }
+
+        long result = db.update("USUARIO",cv,"ID_USUARIO=?",new String[] {id_usuario});
+
+        if(result == -1){
+            Toast.makeText(context,"Fallo al actualizar",Toast.LENGTH_SHORT).show();
+        }
+        else{
+            Toast.makeText(context,"Actualizado satisfactoriamente!",Toast.LENGTH_SHORT).show();
+        }
+
+    }
 
 
     //DELETES
+    public void eliminarUsuario(String id_usuario) {
 
+        db = DBHelper.getWritableDatabase();
+        long result = db.delete("USUARIO","ID_USUARIO=?",new String[]{id_usuario});
+        long result1 = db.delete("ACCESO_USUARIO","ID_USUARIO=?",new String[]{id_usuario});
+        if(result == -1 && result1 == -1){
+            Toast.makeText(context,"Fallo al eliminar",Toast.LENGTH_SHORT).show();
+        }
+        if (result != -1 && result1 != -1) {
+            Toast.makeText(context,"Eliminado Satisfactoriamente",Toast.LENGTH_SHORT).show();
+        }
+    }
 
 
     //SELECTS
     public boolean consultarUsuarioExiste(String nombre){
-        String[] nombreUsuario = {nombre};
-        Cursor cursor = db.query("USUARIO", camposUsuario, "NOMBRE_USUARIO = ?", nombreUsuario, null, null, null);
+        String[] nombreusuario = {nombre};
+        Cursor cursor = db.query("USUARIO", camposUsuario, "NOMBRE_USUARIO = ?", nombreusuario, null, null, null);
         if(cursor.moveToFirst()){
             return true;
         }else {
             return false;
         }
+    }
+
+    public boolean consultarUsuarioExiste(int id){
+        String[] idusuario = {Integer.toString(id)};
+        Cursor cursor = db.query("USUARIO", camposUsuario, "ID_USUARIO = ?", idusuario, null, null, null);
+        if(cursor.moveToFirst()){
+            return true;
+        }else {
+            return false;
+        }
+    }
+
+    public Cursor consultarUsuarios(){
+        String query = "SELECT * FROM USUARIO";
+        db = DBHelper.getWritableDatabase();
+        Cursor cursor = null;
+
+        if(db != null){
+            cursor = db.rawQuery(query,null);
+        }
+
+        return cursor;
     }
 
     public Usuario consultarUsuario(String nombre){
@@ -146,21 +263,41 @@ class ControlLogin {
         }
     }
 
+    public  String getRolusuario(int id) {
+        String rol ="";
+        //String[] id_usuario = {Integer.toString(id)};
+        Cursor cursor = db.rawQuery("SELECT * FROM ACCESO_USUARIO WHERE ID_USUARIO="+id+" AND ID_OPCION='001'", null);
+        if(cursor.moveToFirst()){
+            rol = "Administrador";
+        }
+
+        Cursor cursor1 = db.rawQuery("SELECT * FROM ACCESO_USUARIO WHERE ID_USUARIO="+id+" AND ID_OPCION='013'", null);
+        if(cursor1.moveToFirst()){
+            rol = "Docente";
+        }
+
+        Cursor cursor2 = db.rawQuery("SELECT * FROM ACCESO_USUARIO WHERE ID_USUARIO="+id+" AND ID_OPCION='017'", null);
+        if(cursor2.moveToFirst()){
+            rol = "Alumno";
+        }
+        return  rol;
+    }
+
     //LLENAR BASE USUARIOS
     public void llenarUsuarios(){
 
         //Llenando usuarios
-        Usuario Tutor = new Usuario("Tutor","Tutor123");
-        Usuario Alumno = new Usuario("Alumno","Alumno123");
-        Usuario Admin = new Usuario("Admin","Admin123");
+        Usuario Docente = new Usuario("Docente","Docente");
+        Usuario Alumno = new Usuario("Alumno","Alumno");
+        Usuario Admin = new Usuario("Admin","Admin");
 
-        if(!consultarUsuarioExiste(Admin.getNomUsuario())){
+        if(!consultarUsuarioExiste(1)){
             insertar(Admin);
         }
-        if(!consultarUsuarioExiste(Tutor.getNomUsuario())){
-            insertar(Tutor);
+        if(!consultarUsuarioExiste(2)){
+            insertar(Docente);
         }
-        if(!consultarUsuarioExiste(Alumno.getNomUsuario())){
+        if(!consultarUsuarioExiste(3)){
             insertar(Alumno);
         }
 
@@ -189,29 +326,9 @@ class ControlLogin {
         db.execSQL("INSERT OR IGNORE INTO OPCION_CRUD VALUES('020','Consultar proyectos en los que participa',20)");
 
         //Llenando ACCESO_USUARIO --> ID_OPCION ID_USUARIO
-        db.execSQL("INSERT OR IGNORE INTO ACCESO_USUARIO VALUES('001',1)");
-        db.execSQL("INSERT OR IGNORE INTO ACCESO_USUARIO VALUES('002',1)");
-        db.execSQL("INSERT OR IGNORE INTO ACCESO_USUARIO VALUES('003',1)");
-        db.execSQL("INSERT OR IGNORE INTO ACCESO_USUARIO VALUES('004',1)");
-        db.execSQL("INSERT OR IGNORE INTO ACCESO_USUARIO VALUES('005',1)");
-        db.execSQL("INSERT OR IGNORE INTO ACCESO_USUARIO VALUES('006',1)");
-        db.execSQL("INSERT OR IGNORE INTO ACCESO_USUARIO VALUES('007',1)");
-        db.execSQL("INSERT OR IGNORE INTO ACCESO_USUARIO VALUES('008',1)");
-        db.execSQL("INSERT OR IGNORE INTO ACCESO_USUARIO VALUES('009',1)");
-        db.execSQL("INSERT OR IGNORE INTO ACCESO_USUARIO VALUES('010',1)");
-        db.execSQL("INSERT OR IGNORE INTO ACCESO_USUARIO VALUES('011',1)");
-        db.execSQL("INSERT OR IGNORE INTO ACCESO_USUARIO VALUES('012',1)");
-
-        db.execSQL("INSERT OR IGNORE INTO ACCESO_USUARIO VALUES('013',2)");
-        db.execSQL("INSERT OR IGNORE INTO ACCESO_USUARIO VALUES('014',2)");
-        db.execSQL("INSERT OR IGNORE INTO ACCESO_USUARIO VALUES('015',2)");
-        db.execSQL("INSERT OR IGNORE INTO ACCESO_USUARIO VALUES('016',2)");
-
-        db.execSQL("INSERT OR IGNORE INTO ACCESO_USUARIO VALUES('017',3)");
-        db.execSQL("INSERT OR IGNORE INTO ACCESO_USUARIO VALUES('018',3)");
-        db.execSQL("INSERT OR IGNORE INTO ACCESO_USUARIO VALUES('019',3)");
-        db.execSQL("INSERT OR IGNORE INTO ACCESO_USUARIO VALUES('020',3)");
-
+        insertarAccesoAdmin(1);
+        insertarAccesoDocente(2);
+        insertarAccesoAlumno(3);
 
 
     }
