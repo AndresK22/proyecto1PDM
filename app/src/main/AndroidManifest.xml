@@ -10,7 +10,37 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ServicioSocial">
         <activity
-            android:name=".LoginActivity"
+            android:name=".MenuAdminActivity"
+            android:exported="false" />
+        <activity
+            android:name=".categoria.ActualizarCategoriaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".categoria.ConsultarCategoriaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".categoria.CrearCategoriaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".modalidad.ModificarModalidadActivity"
+            android:exported="false" />
+        <activity
+            android:name=".modalidad.ConsultarModalidadActivity"
+            android:exported="false" />
+        <activity
+            android:name=".modalidad.CrearModalidadActivity"
+            android:exported="false" />
+        <activity
+            android:name=".proyecto.ConsultarProyectoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".proyecto.CrearProyectoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".proyecto.ModificarProyectoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".login.LoginActivity"
             android:exported="true"
             android:theme="@style/Theme.ServicioSocial.NoActionBar">
             <intent-filter>
@@ -20,16 +50,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ConsultarEstadoActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ConsultarMateriaActivity"
-            android:exported="false" />
-        <activity
-            android:name=".CrearMateriaActivity"
-            android:exported="false" />
-        <activity
-            android:name=".CrearEstudianteActivity"
+            android:name=".login.CrearEstudianteActivity"
             android:exported="false"
             android:label="Crear Estudiante" />
         <activity

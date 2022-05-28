@@ -1,10 +1,12 @@
-package com.example.serviciosocial;
+package com.example.serviciosocial.login;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+
+import com.example.serviciosocial.R;
 
 import java.util.ArrayList;
 

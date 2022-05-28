@@ -1,4 +1,4 @@
-package com.example.serviciosocial;
+package com.example.serviciosocial.login;
 
 public class Usuario {
     int idUsuario;

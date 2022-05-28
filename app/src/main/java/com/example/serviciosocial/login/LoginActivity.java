@@ -1,4 +1,4 @@
-package com.example.serviciosocial;
+package com.example.serviciosocial.login;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,6 +11,9 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.example.serviciosocial.MainActivity;
+import com.example.serviciosocial.R;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -39,7 +42,7 @@ public class LoginActivity extends AppCompatActivity {
         checkBox = findViewById(R.id.checkBox);
 
         if(consultarSesion()){
-            startActivity(new Intent(LoginActivity.this,MainActivity.class));
+            startActivity(new Intent(LoginActivity.this, MainActivity.class));
         }
 
         botonLogin.setOnClickListener(new View.OnClickListener() {

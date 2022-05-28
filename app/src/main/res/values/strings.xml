@@ -1,22 +1,10 @@
 <resources>
     <string name="app_name">Servicio Social</string>
+
     <!-- STRINGS DEL LOGIN -->
     <string name="usuario">Usuario</string>
     <string name="contraseña">Contraseña</string>
     <string name="boton_ingresar">Ingresar</string>
-
-    <!-- STRINGS DE Materia -->
-    <string name="editTextArea">Area</string>
-    <string name="editTextMateria">Materia</string>
-    <string name="btnGuardarMateria">Guardar</string>
-
-    <!-- STRINGS DE Estado -->
-    <string name="tituloConsultarEstado">Estados de proyectos</string>
-    <string name="cabecera1">ID</string>
-    <string name="cabecera2">Estado</string>
-    <string name="btnCrear">Crear</string>
-    <string name="btnModificar">Modificar</string>
-    <string name="btnEliminar">Eliminar</string>
     <string name="title_activity_login">LoginActivity</string>
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
@@ -27,4 +15,32 @@
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
     <string name="textoCheckSesion">Guardar sesión</string>
+
+    <!-- STRINGS DE CATEGORIA -->
+    <string name="btnGuardar">Guardar</string>
+    <string name="editTextCategoria">Categoria</string>
+    <string name="tituloCrearCategoria">Categoria</string>
+    <string name="nom_cate">Categoría</string>
+    <string name="btnModificarCategoria">Modificar</string>
+    <string name="btnEliminarCategoria">Eliminar</string>
+
+    <!-- STRINGS DE MODALIDAD -->
+    <string name="editTextModalidad">Modalidad</string>
+    <string name="btnModificarModalidad">Modificar</string>
+    <string name="btnEliminarModalidad">Eliminar</string>
+    <string name="btnGuardarModalidad">Guardar</string>
+
+    <!-- STRINGS DE PROYECTO -->
+    <string name="editTextProyecto">Proyecto</string>
+    <string name="tituloProyecto">Proyectos</string>
+    <string name="btnModificarProyectp">Modificar</string>
+    <string name="btnEliminarProyecto">Eliminar</string>
+    <string name="btnGuardarProyecto">Guardar</string>
+    <string name="labelCategoria">Categoría:</string>
+    <string name="labelModalidad">Modalidad:</string>
+    <string name="labelDocente">Encargado:</string>
+    <string name="labelEstado">Estado:</string>
+
+
+
 </resources>
