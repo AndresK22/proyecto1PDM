@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".docente.ModificarDocenteActivity">
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Editar Docente"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txtDuiM"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginTop="32dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:textSize="18sp"
+        android:hint="@string/txtDui"
+        android:inputType="text"
+        android:maxLength="10"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView6"
+        tools:ignore="TextContrastCheck" />
+
+    <EditText
+        android:id="@+id/txtNDocenteM"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginTop="32dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="@string/txtNDocente"
+        android:inputType="text"
+        android:maxLength="100"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtDuiM"
+        tools:ignore="TextContrastCheck" />
+    <EditText
+        android:id="@+id/txtADocenteM"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginTop="32dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="@string/txtADocente"
+        android:inputType="text"
+        android:maxLength="100"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtNDocenteM"
+        tools:ignore="TextContrastCheck" />
+
+    <EditText
+        android:id="@+id/txtEmailDocenteM"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginTop="32dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="@string/txtEmailDocente"
+        android:inputType="textEmailAddress"
+        android:maxLength="50"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtADocenteM"
+        tools:ignore="TextContrastCheck" />
+
+    <EditText
+        android:id="@+id/txtTelefonoDocenteM"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginTop="32dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="@string/txtTelefonoDocente"
+        android:inputType="text"
+        android:maxLength="9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtEmailDocenteM"
+        tools:ignore="TextContrastCheck" />
+
+    <Button
+        android:id="@+id/btnModificarDocente"
+        android:layout_width="match_parent"
+        android:layout_height="51dp"
+        android:layout_marginTop="32dp"
+        android:onClick="modificarDocente"
+        android:text="@string/btnModificarDocente"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtTelefonoDocenteM" />
+
+    <Button
+        android:id="@+id/btnEliminarDocenteM"
+        android:layout_width="match_parent"
+        android:layout_height="51dp"
+        android:layout_marginTop="32dp"
+        android:onClick="eliminarDocente"
+        android:text="@string/btnEliminarDocente"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnModificarDocente" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -48,4 +48,58 @@
     <string name="action_logout">Cerrar Sesion</string>
 
 
+    <!-- STRINGS DE AREA CARRERA-->
+    <string name="tituloCrearAreaCarrera">Nueva Area</string>
+    <string name="txtIdArea">Ingresar id de area</string>
+    <string name="txtAreaCarrera">ID Area</string>
+    <string name="txtdescripArea">Descripción del area</string>
+    <string name="cabeceraArea1">ID</string>
+    <string name="cabeceraArea2">Descrip</string>
+    <string name="tituloConsultarArea">Areas</string>
+    <string name="btnGuardarArea">Guardar</string>
+    <string name="btnModificarArea">Modificar Area</string>
+    <string name="btnEliminarArea">Eliminar Area</string>
+
+    <!-- STRINGS DE DOCENTE-->
+    <string name="tituloCrearDocente">Crear Docente</string>
+    <string name="txtDui">Inserte DUI</string>
+    <string name="txtNDocente">Ingrese Nombres</string>
+    <string name="txtADocente">Ingrese Apellidos</string>
+    <string name="txtEmailDocente">Ingrese Email</string>
+    <string name="txtTelefonoDocente">Ingrese Telefono</string>
+    <string name="btnGuardarDocente">Guardar Docente</string>
+    <string name="btnModificarDocente">Modificar Docente</string>
+    <string name="btnEliminarDocente">Eliminar Docente</string>
+    <string name="cabeceraD1">DUI</string>
+    <string name="cabeceraD2">Nombres</string>
+    <string name="cabeceraD3">Apellidos</string>
+    <string name="cabeceraD4">Email</string>
+    <string name="cabeceraD5">Telefono</string>
+    <string name="tituloConsultarDocente">Docentes</string>
+
+
+    <!-- STRINGS DE BITACORA-->
+    <string name="tituloCrearBitacora">Crear Bitacora</string>
+    <string name="txt_id_bitacora">Inserte ID Bitacora</string>
+    <string name="txtMes">Ingrese Mes</string>
+    <string name="txt_total_horas">Ingrese horas</string>
+    <string name="btnGuardarBitacora">Guardar Bitacora</string>
+    <string name="btnModificarBitacora">Modificar Bitacora</string>
+    <string name="btnEliminarBitacora">Eliminar Bitacora</string>
+    <string name="btnDetalle">Ver detalle bitacora</string>
+    <string name="tituloConsultarBitacora">Bitacoras</string>
+    <string name="tituloModificarBitacora">Modificar Bitacora</string>
+
+
+    <!-- STRINGS DE DETALLE BITACORA-->
+    <string name="tituloCrearDetalleBitacora">Crear Detalle Bitacora</string>
+    <string name="txtDetalle">Inserte ID</string>
+    <string name="txtActividad">Ingrese Actividad</string>
+    <string name="txtFecha">0000-00-00</string>
+    <string name="tituloMDetalleBitacora">Modificar Detalle Bitacora</string>
+    <string name="btnModificarDetalleBitacora">Modificar Detalle</string>
+    <string name="btnEliminarDetalleBitacora">Eliminar Detalle</string>
+
+
+
 </resources>

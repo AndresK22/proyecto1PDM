@@ -69,10 +69,10 @@ public class MainActivity extends AppCompatActivity {
                     setMenuAdministrador(i);
                 }
                 if(rol.equals("Docente")){
-
+                    setMenuDocente(i);
                 }
                 if (rol.equals("Alumno")){
-
+                    setMenuAlumno(i);
                 }
 
 
@@ -91,7 +91,193 @@ public class MainActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
         }
+        if (i==1){
+            //Toast.makeText(MainActivity.this,"Posicion "+i,Toast.LENGTH_SHORT).show();
+            try{
+                Class<?> clase=Class.forName("com.example.serviciosocial.login.GestionUsuarioActivity");
+                Intent intent = new Intent(MainActivity.this,clase);
+                MainActivity.this.startActivity(intent);
+            }catch(ClassNotFoundException e){
+                e.printStackTrace();
+            }
+        }
+        if (i==2){
+            //Toast.makeText(MainActivity.this,"Posicion "+i,Toast.LENGTH_SHORT).show();
+            try{
+                Class<?> clase=Class.forName("com.example.serviciosocial.areaCarrera.ConsultarAreaActivity");
+                Intent intent = new Intent(MainActivity.this,clase);
+                MainActivity.this.startActivity(intent);
+            }catch(ClassNotFoundException e){
+                e.printStackTrace();
+            }
+        }
+        if (i==3){
+            //Toast.makeText(MainActivity.this,"Posicion "+i,Toast.LENGTH_SHORT).show();
+            try{
+                Class<?> clase=Class.forName("com.example.serviciosocial.login.GestionUsuarioActivity");
+                Intent intent = new Intent(MainActivity.this,clase);
+                MainActivity.this.startActivity(intent);
+            }catch(ClassNotFoundException e){
+                e.printStackTrace();
+            }
+        }        if (i==0){
+            //Toast.makeText(MainActivity.this,"Posicion "+i,Toast.LENGTH_SHORT).show();
+            try{
+                Class<?> clase=Class.forName("com.example.serviciosocial.login.GestionUsuarioActivity");
+                Intent intent = new Intent(MainActivity.this,clase);
+                MainActivity.this.startActivity(intent);
+            }catch(ClassNotFoundException e){
+                e.printStackTrace();
+            }
+        }
+        if (i==4){
+            //Toast.makeText(MainActivity.this,"Posicion "+i,Toast.LENGTH_SHORT).show();
+            try{
+                Class<?> clase=Class.forName("com.example.serviciosocial.login.GestionUsuarioActivity");
+                Intent intent = new Intent(MainActivity.this,clase);
+                MainActivity.this.startActivity(intent);
+            }catch(ClassNotFoundException e){
+                e.printStackTrace();
+            }
+        }
+        if (i==5){
+            //Toast.makeText(MainActivity.this,"Posicion "+i,Toast.LENGTH_SHORT).show();
+            try{
+                Class<?> clase=Class.forName("com.example.serviciosocial.login.GestionUsuarioActivity");
+                Intent intent = new Intent(MainActivity.this,clase);
+                MainActivity.this.startActivity(intent);
+            }catch(ClassNotFoundException e){
+                e.printStackTrace();
+            }
+        }
+        if (i==6){
+            //Toast.makeText(MainActivity.this,"Posicion "+i,Toast.LENGTH_SHORT).show();
+            try{
+                Class<?> clase=Class.forName("com.example.serviciosocial.login.GestionUsuarioActivity");
+                Intent intent = new Intent(MainActivity.this,clase);
+                MainActivity.this.startActivity(intent);
+            }catch(ClassNotFoundException e){
+                e.printStackTrace();
+            }
+        }
+        if (i==7){
+            //Toast.makeText(MainActivity.this,"Posicion "+i,Toast.LENGTH_SHORT).show();
+            try{
+                Class<?> clase=Class.forName("com.example.serviciosocial.docente.ConsultarDocenteActivity");
+                Intent intent = new Intent(MainActivity.this,clase);
+                MainActivity.this.startActivity(intent);
+            }catch(ClassNotFoundException e){
+                e.printStackTrace();
+            }
+        }
+        if (i==8){
+            //Toast.makeText(MainActivity.this,"Posicion "+i,Toast.LENGTH_SHORT).show();
+            try{
+                Class<?> clase=Class.forName("com.example.serviciosocial.login.GestionUsuarioActivity");
+                Intent intent = new Intent(MainActivity.this,clase);
+                MainActivity.this.startActivity(intent);
+            }catch(ClassNotFoundException e){
+                e.printStackTrace();
+            }
+        }
+        if (i==9){
+            //Toast.makeText(MainActivity.this,"Posicion "+i,Toast.LENGTH_SHORT).show();
+            try{
+                Class<?> clase=Class.forName("com.example.serviciosocial.login.GestionUsuarioActivity");
+                Intent intent = new Intent(MainActivity.this,clase);
+                MainActivity.this.startActivity(intent);
+            }catch(ClassNotFoundException e){
+                e.printStackTrace();
+            }
+        }
     }
+    private void setMenuDocente(int i) {
+        if (i==10){
+            //Toast.makeText(MainActivity.this,"Posicion "+i,Toast.LENGTH_SHORT).show();
+            try{
+                Class<?> clase=Class.forName("com.example.serviciosocial.login.GestionUsuarioActivity");
+                Intent intent = new Intent(MainActivity.this,clase);
+                MainActivity.this.startActivity(intent);
+            }catch(ClassNotFoundException e){
+                e.printStackTrace();
+            }
+        }
+        if (i==11){
+            //Toast.makeText(MainActivity.this,"Posicion "+i,Toast.LENGTH_SHORT).show();
+            try{
+                Class<?> clase=Class.forName("com.example.serviciosocial.login.GestionUsuarioActivity");
+                Intent intent = new Intent(MainActivity.this,clase);
+                MainActivity.this.startActivity(intent);
+            }catch(ClassNotFoundException e){
+                e.printStackTrace();
+            }
+        }
+        if (i==12){
+            //Toast.makeText(MainActivity.this,"Posicion "+i,Toast.LENGTH_SHORT).show();
+            try{
+                Class<?> clase=Class.forName("com.example.serviciosocial.login.GestionUsuarioActivity");
+                Intent intent = new Intent(MainActivity.this,clase);
+                MainActivity.this.startActivity(intent);
+            }catch(ClassNotFoundException e){
+                e.printStackTrace();
+            }
+        }
+        if (i==13){
+            //Toast.makeText(MainActivity.this,"Posicion "+i,Toast.LENGTH_SHORT).show();
+            try{
+                Class<?> clase=Class.forName("com.example.serviciosocial.login.GestionUsuarioActivity");
+                Intent intent = new Intent(MainActivity.this,clase);
+                MainActivity.this.startActivity(intent);
+            }catch(ClassNotFoundException e){
+                e.printStackTrace();
+            }
+        }
+
+    }
+    private void setMenuAlumno(int i) {
+        if (i==14){
+            //Toast.makeText(MainActivity.this,"Posicion "+i,Toast.LENGTH_SHORT).show();
+            try{
+                Class<?> clase=Class.forName("com.example.serviciosocial.bitacora.ConsultaBitacoraActivity");
+                Intent intent = new Intent(MainActivity.this,clase);
+                MainActivity.this.startActivity(intent);
+            }catch(ClassNotFoundException e){
+                e.printStackTrace();
+            }
+        }
+        if (i==15){
+            //Toast.makeText(MainActivity.this,"Posicion "+i,Toast.LENGTH_SHORT).show();
+            try{
+                Class<?> clase=Class.forName("com.example.serviciosocial.login.GestionUsuarioActivity");
+                Intent intent = new Intent(MainActivity.this,clase);
+                MainActivity.this.startActivity(intent);
+            }catch(ClassNotFoundException e){
+                e.printStackTrace();
+            }
+        }
+        if (i==16){
+            //Toast.makeText(MainActivity.this,"Posicion "+i,Toast.LENGTH_SHORT).show();
+            try{
+                Class<?> clase=Class.forName("com.example.serviciosocial.login.GestionUsuarioActivity");
+                Intent intent = new Intent(MainActivity.this,clase);
+                MainActivity.this.startActivity(intent);
+            }catch(ClassNotFoundException e){
+                e.printStackTrace();
+            }
+        }
+        if (i==17){
+            //Toast.makeText(MainActivity.this,"Posicion "+i,Toast.LENGTH_SHORT).show();
+            try{
+                Class<?> clase=Class.forName("com.example.serviciosocial.login.GestionUsuarioActivity");
+                Intent intent = new Intent(MainActivity.this,clase);
+                MainActivity.this.startActivity(intent);
+            }catch(ClassNotFoundException e){
+                e.printStackTrace();
+            }
+        }
+    }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

@@ -56,6 +56,44 @@
             android:name=".proyecto.ModificarProyectoActivity"
             android:exported="false" />
         <activity
+            android:name=".detalleBitacora.ModificarDetalleBitacoraActivity"
+            android:exported="false" />
+        <activity
+            android:name=".detalleBitacora.CrearDetalleBitacoraActivity"
+            android:exported="false" />
+        <activity
+            android:name=".detalleBitacora.ConsultaDetalleBitacoraActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".bitacora.ModificarBitacoraActivity"
+            android:exported="false" />
+        <activity
+            android:name=".bitacora.CrearBitacoraActivity"
+            android:exported="false" />
+        <activity
+            android:name=".bitacora.ConsultaBitacoraActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".docente.ModificarDocenteActivity"
+            android:exported="false" />
+        <activity
+            android:name=".docente.CrearDocenteActivity"
+            android:exported="false" />
+        <activity
+            android:name=".docente.ConsultarDocenteActivity"
+            android:exported="false" />
+        <activity
+            android:name=".areaCarrera.ModificarAreaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".areaCarrera.ConsultarAreaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".areaCarrera.CrearAreaActivity"
+            android:exported="false" />
+        <activity
             android:name=".login.LoginActivity"
             android:exported="true"
             android:theme="@style/Theme.ServicioSocial.NoActionBar">
