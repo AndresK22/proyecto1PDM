@@ -10,17 +10,21 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ServicioSocial">
         <activity
+            android:name=".login.ActualizarContraUsuario"
+            android:exported="false"
+            android:label="Cambiar Contraseña"/>
+        <activity
             android:name=".login.AgregarUsuarioActivity"
             android:exported="false"
-            android:label="Agregar Usuario"/>
+            android:label="Agregar Usuario" />
         <activity
             android:name=".login.ActualizarUsuarioActivity"
             android:exported="false"
-            android:label="Actualizar Usuario"/>
+            android:label="Actualizar Usuario" />
         <activity
             android:name=".login.GestionUsuarioActivity"
             android:exported="false"
-            android:label="Gestion de Usuarios"/>
+            android:label="Gestion de Usuarios" />
         <activity
             android:name=".MenuAdminActivity"
             android:exported="false" />

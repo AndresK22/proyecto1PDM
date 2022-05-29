@@ -47,12 +47,26 @@
         android:id="@+id/buttonEliminarUsuario"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="40dp"
         android:text="Eliminar"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@+id/buttonActualizarUsuario"
-        tools:layout_editor_absoluteX="16dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        android:backgroundTint="@color/primaryDarkColor"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonCambiarContra" />
+
+    <Button
+        android:id="@+id/buttonCambiarContra"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="16dp"
+        android:text="Cambiar Contraseña"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonActualizarUsuario" />
 
     <TextView
         android:id="@+id/textViewRol"

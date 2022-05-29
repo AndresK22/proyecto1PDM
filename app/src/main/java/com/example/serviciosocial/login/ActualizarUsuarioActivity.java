@@ -4,6 +4,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -19,7 +20,7 @@ public class ActualizarUsuarioActivity extends AppCompatActivity implements Adap
 
     Spinner spinnerRolUsuario;
     EditText editTextNombreUsuario;
-    Button buttonActualizar,buttonEliminar;
+    Button buttonActualizar,buttonEliminar,buttonCambiarContra;
     String id_usuario,nombre_usuario,clave,rol;
     int rol_actualizado;
     ControlLogin controlLogin = new ControlLogin(this);
@@ -33,6 +34,7 @@ public class ActualizarUsuarioActivity extends AppCompatActivity implements Adap
         editTextNombreUsuario = findViewById(R.id.editTextNombreUsuarioA);
         buttonActualizar = findViewById(R.id.buttonActualizarUsuario);
         buttonEliminar = findViewById(R.id.buttonEliminarUsuario);
+        buttonCambiarContra = findViewById(R.id.buttonCambiarContra);
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,R.array.roles, android.R.layout.simple_spinner_dropdown_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
@@ -58,6 +60,18 @@ public class ActualizarUsuarioActivity extends AppCompatActivity implements Adap
             @Override
             public void onClick(View view) {
                 confirmarDialog();
+            }
+        });
+
+        buttonCambiarContra.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(ActualizarUsuarioActivity.this,ActualizarContraUsuario.class);
+                intent.putExtra("contraActual",clave);
+                intent.putExtra("id_usuario",id_usuario);
+                System.out.println(intent.getStringExtra("contraActual"));
+                ActualizarUsuarioActivity.this.startActivityForResult(intent,1);
             }
         });
 

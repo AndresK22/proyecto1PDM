@@ -32,10 +32,14 @@ public class MainActivity extends AppCompatActivity {
     ControlLogin controlLogin = new ControlLogin(this);
     SharedPreferences preferences;
     SharedPreferences.Editor editor;
-    String[] menu={"Gestion Usuario","Gestion de Carreras","Area por carreras","Gestion de materias","Gestion de estudiantes",
+    String[] menu={
+            //Administrador
+            "Gestion Usuario","Gestion de Carreras","Area por carreras","Gestion de materias","Gestion de estudiantes",
             "Gestion de categorias","Gestion de modalidad","Gestion de docentes","Estado de proyectos","Gestion de notas",
-            "Gestion de proyectos","Grupos de proyectos","Record academico","Resumen Social","Gestion de Bitacoras","Resumen Social",
-            "Record academico","Mis Proyectos"};
+            //Docente
+            "Gestion de proyectos","Grupos de proyectos","Record academico","Resumen Social",
+            //Alumno
+            "Gestion de Bitacoras","Resumen Social", "Record academico","Mis Proyectos"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

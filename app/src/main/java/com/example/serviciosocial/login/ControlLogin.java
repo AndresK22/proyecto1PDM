@@ -137,6 +137,23 @@ public class ControlLogin {
 
     }
 
+    public void actualizarContraUsuario(String contra, String id_usuario) {
+        int id = Integer.parseInt(id_usuario);
+        db = DBHelper.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put("CLAVE",contra);
+
+        long result = db.update("USUARIO",cv,"ID_USUARIO=?",new String[] {id_usuario});
+
+        if(result == -1){
+            Toast.makeText(context,"Fallo al cambiar contraseña",Toast.LENGTH_SHORT).show();
+        }
+        else{
+            Toast.makeText(context,"Contraseña actualizada!",Toast.LENGTH_SHORT).show();
+        }
+
+    }
+
 
     //DELETES
     public void eliminarUsuario(String id_usuario) {
@@ -291,6 +308,5 @@ public class ControlLogin {
         Cursor cursor = db.query("ACCESO_USUARIO", camposAccesoUsuario, "ID_USUARIO = ?", idUsuario, null, null, null);
         return  cursor;
     }
-
 
 }
