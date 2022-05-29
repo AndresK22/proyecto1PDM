@@ -15,6 +15,11 @@
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
     <string name="textoCheckSesion">Guardar sesión</string>
+    <string-array name="roles">
+        <item>Administrador</item>
+        <item>Docente</item>
+        <item>Alumno</item>
+    </string-array>
 
     <!-- STRINGS DE CATEGORIA -->
     <string name="btnGuardar">Guardar</string>

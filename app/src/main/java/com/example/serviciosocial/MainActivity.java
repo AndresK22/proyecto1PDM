@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -14,6 +15,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 import android.widget.Toolbar;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +23,7 @@ import java.util.List;
 import com.example.serviciosocial.login.ControlLogin;
 
 
-public class MainActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
+public class MainActivity extends AppCompatActivity {
 
     private androidx.appcompat.widget.Toolbar toolbar;
     private ListView mListView;
@@ -43,14 +45,34 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         //inicializamos valores de sesion
         preferences = this.getSharedPreferences("sesion", Context.MODE_PRIVATE);
         editor = preferences.edit();
+
         //inicializamos toolbar
         toolbar = findViewById(R.id.toolbarMain);
         setSupportActionBar(toolbar);
+
         //inicializamos el menu
         mListView = findViewById(R.id.ListViewMenu);
         cargarAcceso();
         mAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,menuLista);
         mListView.setAdapter(mAdapter);
+
+        //cargamos los clicks del menu
+        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                if (i==0){
+                    //Toast.makeText(MainActivity.this,"Posicion "+i,Toast.LENGTH_SHORT).show();
+                    try{
+                        Class<?> clase=Class.forName("com.example.serviciosocial.login.GestionUsuarioActivity");
+                        Intent intent = new Intent(MainActivity.this,clase);
+                        MainActivity.this.startActivity(intent);
+                    }catch(ClassNotFoundException e){
+                        e.printStackTrace();
+                    }
+                }
+
+            }
+        });
     }
 
     @Override
@@ -93,10 +115,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         return super.onKeyDown(keyCode, event);
     }
 
-    @Override
-    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-
-    }
 
 
 }
