@@ -77,6 +77,7 @@ public class LoginActivity extends AppCompatActivity {
         Usuario usuario = controlLogin.consultarUsuario(editTextUsuario.getText().toString());
 
         editor.putInt("id",usuario.getIdUsuario());
+        editor.putString("rol",controlLogin.getRolusuario(usuario.getIdUsuario()));
         editor.putString("usuario",editTextUsuario.getText().toString());
         editor.putString("contra",editTextContra.getText().toString());
         editor.apply();

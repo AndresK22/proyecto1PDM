@@ -11,13 +11,14 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.example.serviciosocial.R;
 
 public class ActualizarUsuarioActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
 
     Spinner spinnerRolUsuario;
-    EditText editTextNombreUsuario,editTextRolUsuario;
+    EditText editTextNombreUsuario;
     Button buttonActualizar,buttonEliminar;
     String id_usuario,nombre_usuario,clave,rol;
     int rol_actualizado;
@@ -43,7 +44,13 @@ public class ActualizarUsuarioActivity extends AppCompatActivity implements Adap
         buttonActualizar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                controlLogin.actualizarUsuario(id_usuario,editTextNombreUsuario.getText().toString().trim(),rol_actualizado);
+                if(editTextNombreUsuario.getText().toString().length()<1){
+                    Toast.makeText(ActualizarUsuarioActivity.this,"Ingrese nombre de usuario",Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    controlLogin.actualizarUsuario(id_usuario,editTextNombreUsuario.getText().toString().trim(),rol_actualizado);
+                    finish();
+                }
             }
         });
 

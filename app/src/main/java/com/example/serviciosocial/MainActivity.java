@@ -60,19 +60,33 @@ public class MainActivity extends AppCompatActivity {
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                if (i==0){
-                    //Toast.makeText(MainActivity.this,"Posicion "+i,Toast.LENGTH_SHORT).show();
-                    try{
-                        Class<?> clase=Class.forName("com.example.serviciosocial.login.GestionUsuarioActivity");
-                        Intent intent = new Intent(MainActivity.this,clase);
-                        MainActivity.this.startActivity(intent);
-                    }catch(ClassNotFoundException e){
-                        e.printStackTrace();
-                    }
+                String rol =    MainActivity.this.preferences.getString("rol","");
+                if(rol.equals("Administrador")){
+                    setMenuAdministrador(i);
                 }
+                if(rol.equals("Docente")){
+
+                }
+                if (rol.equals("Alumno")){
+
+                }
+
 
             }
         });
+    }
+
+    private void setMenuAdministrador(int i) {
+        if (i==0){
+            //Toast.makeText(MainActivity.this,"Posicion "+i,Toast.LENGTH_SHORT).show();
+            try{
+                Class<?> clase=Class.forName("com.example.serviciosocial.login.GestionUsuarioActivity");
+                Intent intent = new Intent(MainActivity.this,clase);
+                MainActivity.this.startActivity(intent);
+            }catch(ClassNotFoundException e){
+                e.printStackTrace();
+            }
+        }
     }
 
     @Override

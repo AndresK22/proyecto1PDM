@@ -53,14 +53,24 @@ public class AgregarUsuarioActivity extends AppCompatActivity implements Adapter
 
     private void mandarAInsertarusuario() {
 
+        if(editTextNombreUsuario.length()<1){
+            Toast.makeText(AgregarUsuarioActivity.this,"Ingrese nombre de usuario",Toast.LENGTH_SHORT).show();
+        }
         if(contraEsIgual(editTextContra.getText().toString(),editTextContra2.getText().toString())){
-            Usuario usuario = new Usuario();
-            usuario.setNomUsuario(editTextNombreUsuario.getText().toString());
-            usuario.setClave(editTextContra.getText().toString());
+            if (editTextContra.getText().toString().length()<6){
+                Toast.makeText(this,"Ingrese una contraña segura (6 digitos o más)",Toast.LENGTH_SHORT).show();
+            }
+            else{
+                Usuario usuario = new Usuario();
+                usuario.setNomUsuario(editTextNombreUsuario.getText().toString());
+                usuario.setClave(editTextContra.getText().toString());
 
-            controlLogin.abrir();
-            controlLogin.insertar(usuario);
-            controlLogin.insertar(rolUsuario);
+                controlLogin.abrir();
+                controlLogin.insertar(usuario);
+                controlLogin.insertar(rolUsuario);
+
+                finish();
+            }
 
         }else{
             Toast.makeText(this,"La contraseñas no coinciden",Toast.LENGTH_SHORT).show();

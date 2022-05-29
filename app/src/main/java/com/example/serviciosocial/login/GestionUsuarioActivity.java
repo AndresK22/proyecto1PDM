@@ -1,5 +1,6 @@
 package com.example.serviciosocial.login;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -52,8 +53,16 @@ public class GestionUsuarioActivity extends AppCompatActivity {
         buttonAgregarUsuario.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(GestionUsuarioActivity.this,AgregarUsuarioActivity.class));
+                GestionUsuarioActivity.this.startActivityForResult(new Intent(GestionUsuarioActivity.this,AgregarUsuarioActivity.class),1);
             }
         });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode==1){
+            recreate();
+        }
     }
 }
