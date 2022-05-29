@@ -55,6 +55,7 @@
             android:label="Crear Estudiante" />
         <activity
             android:name=".MainActivity"
+            android:theme="@style/Theme.ServicioSocial.NoActionBar"
             android:exported="true">
 
         </activity>

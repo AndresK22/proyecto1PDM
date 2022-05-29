@@ -51,14 +51,20 @@ public class LoginActivity extends AppCompatActivity {
 
                 controlLogin.abrir();
                 boolean iniciar = controlLogin.iniciarSesion(editTextUsuario.getText().toString(),editTextContra.getText().toString());
-                controlLogin.cerrar();
+               // controlLogin.cerrar();
 
                 if(iniciar){
                     guardarSesion(checkBox.isChecked());
                     startActivity(new Intent(LoginActivity.this,MainActivity.class));
+                    editTextUsuario.setText("");
+                    editTextContra.setText("");
+                    checkBox.setChecked(false);
                 }
                 else{
                     Toast.makeText(LoginActivity.this,"Usuario o contra invalidos",Toast.LENGTH_SHORT).show();
+                    editTextUsuario.setText("");
+                    editTextContra.setText("");
+                    checkBox.setChecked(false);
                 }
             }
         });
@@ -66,6 +72,11 @@ public class LoginActivity extends AppCompatActivity {
 
     private void guardarSesion(boolean checked){
         editor.putBoolean(llave,checked);
+
+        controlLogin.abrir();
+        Usuario usuario = controlLogin.consultarUsuario(editTextUsuario.getText().toString());
+
+        editor.putInt("id",usuario.getIdUsuario());
         editor.putString("usuario",editTextUsuario.getText().toString());
         editor.putString("contra",editTextContra.getText().toString());
         editor.apply();
@@ -77,7 +88,7 @@ public class LoginActivity extends AppCompatActivity {
 
         controlLogin.abrir();
         boolean sesionvalida = controlLogin.iniciarSesion(usuario,contra);
-        controlLogin.cerrar();
+        //controlLogin.cerrar();
 
         if(sesionvalida && this.preferences.getBoolean(llave,false)){
             flag = true;

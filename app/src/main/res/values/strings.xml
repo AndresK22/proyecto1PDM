@@ -40,7 +40,7 @@
     <string name="labelModalidad">Modalidad:</string>
     <string name="labelDocente">Encargado:</string>
     <string name="labelEstado">Estado:</string>
-
+    <string name="action_logout">Cerrar Sesion</string>
 
 
 </resources>
