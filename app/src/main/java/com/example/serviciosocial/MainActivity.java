@@ -192,7 +192,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
     private void setMenuDocente(int i) {
-        if (i==10){
+        if (i==0){
             //Toast.makeText(MainActivity.this,"Posicion "+i,Toast.LENGTH_SHORT).show();
             try{
                 Class<?> clase=Class.forName("com.example.serviciosocial.login.GestionUsuarioActivity");
@@ -202,7 +202,7 @@ public class MainActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
         }
-        if (i==11){
+        if (i==1){
             //Toast.makeText(MainActivity.this,"Posicion "+i,Toast.LENGTH_SHORT).show();
             try{
                 Class<?> clase=Class.forName("com.example.serviciosocial.login.GestionUsuarioActivity");
@@ -212,7 +212,7 @@ public class MainActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
         }
-        if (i==12){
+        if (i==2){
             //Toast.makeText(MainActivity.this,"Posicion "+i,Toast.LENGTH_SHORT).show();
             try{
                 Class<?> clase=Class.forName("com.example.serviciosocial.login.GestionUsuarioActivity");
@@ -222,7 +222,7 @@ public class MainActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
         }
-        if (i==13){
+        if (i==3){
             //Toast.makeText(MainActivity.this,"Posicion "+i,Toast.LENGTH_SHORT).show();
             try{
                 Class<?> clase=Class.forName("com.example.serviciosocial.login.GestionUsuarioActivity");
@@ -235,7 +235,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
     private void setMenuAlumno(int i) {
-        if (i==14){
+        if (i==0){
             //Toast.makeText(MainActivity.this,"Posicion "+i,Toast.LENGTH_SHORT).show();
             try{
                 Class<?> clase=Class.forName("com.example.serviciosocial.bitacora.ConsultaBitacoraActivity");
@@ -245,7 +245,7 @@ public class MainActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
         }
-        if (i==15){
+        if (i==1){
             //Toast.makeText(MainActivity.this,"Posicion "+i,Toast.LENGTH_SHORT).show();
             try{
                 Class<?> clase=Class.forName("com.example.serviciosocial.login.GestionUsuarioActivity");
@@ -255,7 +255,7 @@ public class MainActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
         }
-        if (i==16){
+        if (i==2){
             //Toast.makeText(MainActivity.this,"Posicion "+i,Toast.LENGTH_SHORT).show();
             try{
                 Class<?> clase=Class.forName("com.example.serviciosocial.login.GestionUsuarioActivity");
@@ -265,7 +265,7 @@ public class MainActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
         }
-        if (i==17){
+        if (i==3){
             //Toast.makeText(MainActivity.this,"Posicion "+i,Toast.LENGTH_SHORT).show();
             try{
                 Class<?> clase=Class.forName("com.example.serviciosocial.login.GestionUsuarioActivity");
