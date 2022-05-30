@@ -14,6 +14,8 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.serviciosocial.R;
+import com.example.serviciosocial.carrera.Carrera;
+import com.example.serviciosocial.carrera.ControlCarrera;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -22,6 +24,7 @@ import java.util.Iterator;
 public class CrearAreaActivity extends AppCompatActivity {
 
     ControlAreaCarrera helper;
+    ControlCarrera helper1;
     Spinner spinerCarrera;
     ArrayList<String> id_carrera, nombre_carrera; //para el spinner de Carrera
     String id_are;
@@ -38,6 +41,8 @@ public class CrearAreaActivity extends AppCompatActivity {
         setContentView(R.layout.activity_crear_area);
 
         helper = new ControlAreaCarrera(this);
+        helper1 = new ControlCarrera(this);
+
         spinerCarrera = (Spinner) findViewById(R.id.spinnerCarrera);
         txtIDArea = (EditText) findViewById(R.id.txtAreaCarrera);
         txtDescrip = (EditText) findViewById(R.id.txtdescripArea);
@@ -49,20 +54,20 @@ public class CrearAreaActivity extends AppCompatActivity {
 
 
         //Aqui se va a pedir el area
-        helper.abrir();
-        ArrayList<AreaCarrera> itemsSpinner = helper.consultarArea();
-        helper.cerrar();
+        helper1.abrir();
+        ArrayList<Carrera> itemsSpinner = helper1.consultarCarrera();
+        helper1.cerrar();
 
-        Cursor cursor = helper.leerTodoAreaCarrera();
+        Cursor cursor = helper1.leerTodoCarrera();
         if (cursor.getCount()==0){
 
         }else{
-        AreaCarrera a;
-        Iterator<AreaCarrera> it = itemsSpinner.iterator();
+        Carrera a;
+        Iterator<Carrera> it = itemsSpinner.iterator();
         while(it.hasNext()) {
             a = it.next();
-            id_carrera.add(String.valueOf(a.getId_area()));
-            nombre_carrera.add(a.getDescrip_area());
+            id_carrera.add(String.valueOf(a.getId_carrera()));
+            nombre_carrera.add(a.getNombre_carrera());
         }}
         //fin de lo del area
 

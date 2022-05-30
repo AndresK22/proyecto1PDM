@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.serviciosocial">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -152,6 +155,19 @@
             android:name=".estudiante.ModificarEstudianteActivity"
             android:exported="false" />
         <activity
+            android:name=".estudianteWS.IngresarEstudianteActivityWS"
+            android:exported="false" />
+        <activity
+            android:name=".estudianteWS.ConsultarEstudianteActivityWS"
+            android:exported="false" />
+        <activity
+            android:name=".docenteWS.ConsultarDocenteActivityWS"
+            android:exported="false" />
+        <activity
+            android:name=".docenteWS.IngresarDocenteActivityWS"
+            android:exported="false" />
+
+        <activity
             android:name=".login.LoginActivity"
             android:exported="true"
             android:theme="@style/Theme.ServicioSocial.NoActionBar">
@@ -169,6 +185,9 @@
             android:name=".MainActivity"
             android:exported="true"
             android:theme="@style/Theme.ServicioSocial.NoActionBar" />
+        <uses-library
+            android:name="org.apache.http.legacy"
+            android:required="false" />
     </application>
 
 </manifest>

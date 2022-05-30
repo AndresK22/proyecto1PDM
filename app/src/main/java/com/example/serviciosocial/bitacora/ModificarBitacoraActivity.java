@@ -15,6 +15,8 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.serviciosocial.R;
+import com.example.serviciosocial.estudiante.ControlEstudiante;
+import com.example.serviciosocial.estudiante.Estudiante;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -23,6 +25,7 @@ public class ModificarBitacoraActivity extends AppCompatActivity {
 
 
     ControlBitacora helper;
+    ControlEstudiante helper1;
     Spinner spinerProyecto,spinerCarnet;
     ArrayList<String> id_proyecto, carnet; //para el spinner
     String id_p,id_c;
@@ -46,6 +49,7 @@ public class ModificarBitacoraActivity extends AppCompatActivity {
         setContentView(R.layout.activity_modificar_bitacora);
 
         helper = new ControlBitacora(this);
+        helper1 = new ControlEstudiante(this);
         spinerProyecto = (Spinner) findViewById(R.id.spinnerProyectoM);
         spinerCarnet= (Spinner) findViewById(R.id.spinnerCarnetM);
 
@@ -82,11 +86,15 @@ public class ModificarBitacoraActivity extends AppCompatActivity {
         *
         * */
         helper.abrir();
-        ArrayList<Bitacora> itemsSpinner = helper.consultarBitacora();
+        ArrayList<Bitacora> itemsSpinner1 = helper.consultarBitacora();
         helper.cerrar();
+        helper1.abrir();
+        ArrayList<Estudiante> itemsSpinner2 = helper1.consultarEstudiante();
+        helper1.cerrar();
+
 
         Bitacora a;
-        Iterator<Bitacora> it = itemsSpinner.iterator();
+        Iterator<Bitacora> it = itemsSpinner1.iterator();
         while(it.hasNext()) {
             a = it.next();
 
@@ -94,8 +102,8 @@ public class ModificarBitacoraActivity extends AppCompatActivity {
             //nombre_carrera.add(a.getDescrip_area());
         }
 
-        Bitacora b;
-        Iterator<Bitacora> i = itemsSpinner.iterator();
+        Estudiante b;
+        Iterator<Estudiante> i = itemsSpinner2.iterator();
         while(i.hasNext()) {
             b = i.next();
 

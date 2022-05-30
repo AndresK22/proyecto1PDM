@@ -14,6 +14,8 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.serviciosocial.R;
+import com.example.serviciosocial.estudiante.ControlEstudiante;
+import com.example.serviciosocial.estudiante.Estudiante;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -21,6 +23,7 @@ import java.util.Iterator;
 public class CrearBitacoraActivity extends AppCompatActivity {
 
     ControlBitacora helper;
+    ControlEstudiante helper1;
     Spinner spinerProyecto,spinerCarnet;
     ArrayList<String> id_proyecto, carnet; //para el spinner
     String id_p,id_c;
@@ -38,6 +41,7 @@ public class CrearBitacoraActivity extends AppCompatActivity {
         setContentView(R.layout.activity_crear_bitacora);
 
         helper = new ControlBitacora(this);
+        helper1 = new ControlEstudiante(this);
         spinerProyecto = (Spinner) findViewById(R.id.spinnerProyecto);
         spinerCarnet= (Spinner) findViewById(R.id.spinnerCarnet);
 
@@ -52,6 +56,8 @@ public class CrearBitacoraActivity extends AppCompatActivity {
         //nombre_carrera.add("Seleccione la carrera");
 
         carnet= new ArrayList<>();
+        carnet.add("Seleccione el carnet del estudiante");
+
         //nombre_carrera = new ArrayList<>();
         //nombre_carrera.add("Seleccione la carrera");
 
@@ -65,6 +71,9 @@ public class CrearBitacoraActivity extends AppCompatActivity {
         helper.abrir();
         ArrayList<Bitacora> itemsSpinner = helper.consultarBitacora();
         helper.cerrar();
+        helper1.abrir();
+        ArrayList<Estudiante> itemsSpinner2 = helper1.consultarEstudiante();
+        helper1.cerrar();
         Cursor cursor = helper.leerTodoBitacora();
         if (cursor.getCount()==0){
 
@@ -79,12 +88,12 @@ public class CrearBitacoraActivity extends AppCompatActivity {
             }
         }
 
-        Cursor cursor1 = helper.leerTodoBitacora();
+        Cursor cursor1 = helper1.leerTodoEstudiante();
         if (cursor1.getCount()==0){
 
         }else{
-        Bitacora b;
-        Iterator<Bitacora> i = itemsSpinner.iterator();
+        Estudiante b;
+        Iterator<Estudiante> i = itemsSpinner2.iterator();
         while(i.hasNext()) {
             b = i.next();
 
