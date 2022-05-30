@@ -14,6 +14,39 @@
             android:exported="false"
             android:label="Cambiar Contraseña"/>
         <activity
+            android:name=".nota.CrearNotaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".nota.ModificarNotaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".nota.ConsultarNotaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".recordAcademico.ModificarRecordActivity"
+            android:exported="false" />
+        <activity
+            android:name=".recordAcademico.ConsultarRecordActivity"
+            android:exported="false" />
+        <activity
+            android:name=".materia.ModificarMateriaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".estado.CrearEstadoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".estado.ModificarEstadoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".estado.ConsultarEstadoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".materia.ConsultarMateriaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".materia.CrearMateriaActivity"
+            android:exported="false" />
+        <activity
             android:name=".login.AgregarUsuarioActivity"
             android:exported="false"
             android:label="Agregar Usuario" />
