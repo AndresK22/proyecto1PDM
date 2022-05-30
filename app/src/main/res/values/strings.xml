@@ -101,5 +101,53 @@
     <string name="btnEliminarDetalleBitacora">Eliminar Detalle</string>
 
 
+    <!-- STRINGS DE Materia -->
+    <string name="tituloConsultarMateria">Materias</string>
+    <string name="tituloCrearMateria">Crear materia</string>
+    <string name="cabeceraMateria1">Codigo</string>
+    <string name="cabeceraMateria2">Materia</string>
+    <string name="txtCodMateria">Codigo de materia</string>
+    <string name="txtArea">Area</string>
+    <string name="txtMateria">Materia</string>
+    <string name="btnCrearMateria">Crear</string>
+    <string name="btnModificarMateria">Modificar</string>
+    <string name="btnEliminarMateria">Eliminar</string>
 
+    <string name="btnGuardarMateria">Guardar</string>
+
+    <!-- STRINGS DE Estado -->
+    <string name="tituloConsultarEstado">Estados de proyectos</string>
+    <string name="tituloCrearEstado">Crear estados de proyectos</string>
+    <string name="cabeceraEstado1">ID</string>
+    <string name="cabeceraEstado2">Estado</string>
+    <string name="btnCrearEstado">Crear</string>
+    <string name="btnModificarEstado">Modificar</string>
+    <string name="btnEliminarEstado">Eliminar</string>
+    <string name="editTextEstado">Estado</string>
+    <string name="btnGuardarEstado">Guardar</string>
+
+    <!-- STRINGS DE Record academico -->
+    <string name="tituloConsultarRecord">Records academicos</string>
+    <string name="tituloCrearRecord">Crear record</string>
+    <string name="cabeceraRecord1">ID</string>
+    <string name="cabeceraRecord2">Carnet</string>
+    <string name="txtIdRecord">ID</string>
+    <string name="txtCarnet_Record">Carnet</string>
+    <string name="txtId_area_Record">Area</string>
+    <string name="txtMaterias_aprobadas">Materias aprobadas</string>
+    <string name="txtProgreso">Progreso</string>
+    <string name="txtPromedio">Promedio</string>
+    <string name="txtCarrera">Seleccionar carrera</string>
+
+    <!-- STRINGS DE Nota -->
+    <string name="tituloConsultarNota">Notas</string>
+    <string name="tituloCrearNota">Crear nota</string>
+    <string name="cabeceraNota1">Materia</string>
+    <string name="cabeceraNota2">Carnet</string>
+    <string name="txtCodMateria_Nota">Codigo de materia</string>
+    <string name="txtCarnet_Nota">Carnet</string>
+    <string name="txtCalificacion">Calificacion</string>
+    <string name="btnModificarNota">Modificar</string>
+    <string name="btnEliminarNota">Eliminar</string>
+    <string name="btnGuardarNota">Guardar</string>
 </resources>
