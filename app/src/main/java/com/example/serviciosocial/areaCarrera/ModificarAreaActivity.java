@@ -2,6 +2,7 @@ package com.example.serviciosocial.areaCarrera;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -15,6 +16,8 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.serviciosocial.R;
+import com.example.serviciosocial.carrera.Carrera;
+import com.example.serviciosocial.carrera.ControlCarrera;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -22,6 +25,7 @@ import java.util.Iterator;
 public class ModificarAreaActivity extends AppCompatActivity {
 
     ControlAreaCarrera helper;
+    ControlCarrera helper1;
     Spinner spinerCarrera;
     ArrayList<String> id_carrera, nombre_carrera; //para el spinner de Carrera
     String id_are;
@@ -41,6 +45,7 @@ public class ModificarAreaActivity extends AppCompatActivity {
         setContentView(R.layout.activity_modificar_area);
 
         helper = new ControlAreaCarrera(this);
+        helper1 = new ControlCarrera(this);
         spinerCarrera = (Spinner) findViewById(R.id.spinnerCarrera);
         txtIDArea = (TextView) findViewById(R.id.txtAreaCarrera);
         txtDescrip = (EditText) findViewById(R.id.txtdescripArea);
@@ -58,21 +63,24 @@ public class ModificarAreaActivity extends AppCompatActivity {
 
 
         //Aqui se va a pedir la carrera
-        helper.abrir();
-        ArrayList<AreaCarrera> itemsSpinner = helper.consultarArea();
-        helper.cerrar();
+        helper1.abrir();
+        ArrayList<Carrera> Text = helper1.consultarCarrera();
+        helper1.cerrar();
 
         //Crear el objeto de Carrera
-        AreaCarrera a;
-        Iterator<AreaCarrera> it = itemsSpinner.iterator();
-        while(it.hasNext()) {
-            a = it.next();
+        Cursor cursor = helper1.leerTodoCarrera();
+        if (cursor.getCount()==0){
 
-            //id de la carrera de la tabla Carrera
-            id_carrera.add(String.valueOf(a.getId_area()));
-            //nombre de la carrera, aqui iria a.getNombreCarrera
-            nombre_carrera.add(a.getDescrip_area());
-        }
+        }else{
+            Carrera a;
+            Iterator<Carrera> it = Text.iterator();
+            while(it.hasNext()) {
+                a = it.next();
+                id_carrera.add(String.valueOf(a.getId_carrera()));
+                nombre_carrera.add(a.getNombre_carrera());
+            }}
+        //fin de lo del area
+
         //fin de lo de carrera
 
 
