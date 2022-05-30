@@ -13,9 +13,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ServicioSocial">
         <activity
+            android:name=".resumensocial.CrearResumenActivity"
+            android:exported="false" />
+        <activity
+            android:name=".resumensocial.ConsultarResumenActivity"
+            android:exported="false" />
+        <activity
+            android:name=".resumensocial.ModificarResumenActivity"
+            android:exported="false" />
+        <activity
             android:name=".login.ActualizarContraUsuario"
             android:exported="false"
-            android:label="Cambiar Contraseña"/>
+            android:label="Cambiar Contraseña" />
         <activity
             android:name=".nota.CrearNotaActivity"
             android:exported="false" />
@@ -100,7 +109,6 @@
         <activity
             android:name=".detalleBitacora.ConsultaDetalleBitacoraActivity"
             android:exported="false" />
-
         <activity
             android:name=".bitacora.ModificarBitacoraActivity"
             android:exported="false" />
@@ -110,7 +118,6 @@
         <activity
             android:name=".bitacora.ConsultaBitacoraActivity"
             android:exported="false" />
-
         <activity
             android:name=".docente.ModificarDocenteActivity"
             android:exported="false" />

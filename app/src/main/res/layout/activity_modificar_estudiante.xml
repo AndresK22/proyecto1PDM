@@ -69,47 +69,44 @@
 
     <EditText
         android:id="@+id/editTextTelefonoE"
-        android:layout_width="match_parent"
+        android:layout_width="150dp"
         android:layout_height="48dp"
-        android:layout_marginTop="8dp"
         android:autofillHints=""
         android:ems="10"
         android:hint="@string/labelTelefonoEstudiante"
         android:inputType="text"
         android:maxLength="8"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextEmailE"
+        app:layout_constraintTop_toBottomOf="@+id/editTextDomicilioE"
         tools:ignore="TextContrastCheck" />
 
     <EditText
         android:id="@+id/editTextDomicilioE"
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:layout_marginTop="8dp"
         android:autofillHints=""
         android:ems="10"
         android:hint="@string/labelDomicilioEstudiante"
         android:inputType="text"
         android:maxLength="60"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.458"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTelefonoE"
+        app:layout_constraintTop_toBottomOf="@+id/editTextEmailE"
         tools:ignore="TextContrastCheck" />
 
     <EditText
         android:id="@+id/editTextDuiE"
-        android:layout_width="match_parent"
+        android:layout_width="150dp"
         android:layout_height="48dp"
-        android:layout_marginTop="8dp"
         android:autofillHints=""
         android:ems="10"
         android:hint="@string/labelDuiEstudiante"
         android:inputType="text"
         android:maxLength="9"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.666"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.988"
+        app:layout_constraintStart_toEndOf="@+id/editTextTelefonoE"
         app:layout_constraintTop_toBottomOf="@+id/editTextDomicilioE"
         tools:ignore="TextContrastCheck" />
 
@@ -117,18 +114,17 @@
         android:id="@+id/btnModificarEstudiante"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:layout_marginTop="8dp"
         android:onClick="modificarEstudiante"
         android:text="@string/btnModificarE"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextDuiE" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextTelefonoE" />
 
     <Button
         android:id="@+id/btnEliminarEstudiante"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="4dp"
         android:onClick="eliminarEstudiante"
         android:text="@string/btnEliminarE"
         app:layout_constraintEnd_toEndOf="parent"
