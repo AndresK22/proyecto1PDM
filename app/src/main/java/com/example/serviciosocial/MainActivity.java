@@ -3,6 +3,7 @@ package com.example.serviciosocial;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -41,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
             //Alumno
             "Gestion de Bitacoras","Resumen Social", "Record academico","Mis Proyectos"};
 
+    @SuppressLint("ResourceAsColor")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -190,6 +192,16 @@ public class MainActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
         }
+        if (i==10){
+            //Toast.makeText(MainActivity.this,"Posicion "+i,Toast.LENGTH_SHORT).show();
+            try{
+                Class<?> clase=Class.forName("com.example.serviciosocial.login.GestionUsuarioActivity");
+                Intent intent = new Intent(MainActivity.this,clase);
+                MainActivity.this.startActivity(intent);
+            }catch(ClassNotFoundException e){
+                e.printStackTrace();
+            }
+        }
     }
     private void setMenuDocente(int i) {
         if (i==0){
@@ -232,7 +244,6 @@ public class MainActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
         }
-
     }
     private void setMenuAlumno(int i) {
         if (i==0){
@@ -288,12 +299,15 @@ public class MainActivity extends AppCompatActivity {
     private void cargarAcceso() {
         controlLogin.abrir();
         Cursor cursor = controlLogin.getAccesoUsuario(this.preferences.getInt("id",0));
-
         while (cursor.moveToNext()) {
             String idopcionstr = cursor.getString(0);
             int idopcion = Integer.parseInt(idopcionstr);
             idopcion = idopcion-1;
             menuLista.add(menu[idopcion]);
+        }
+        if(this.preferences.getString("rol","").equals("Administrador")){
+            menuLista.add("WS Docente");
+            menuLista.add("WS Estudiante");
         }
     }
 
