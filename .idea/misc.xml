@@ -3,11 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Alexis/.gradle/caches/transforms-3/02e0bd612fca2a22099e175f45d3c7d6/transformed/appcompat-1.4.1/res/layout/support_simple_spinner_dropdown_item.xml" value="0.1" />
+        <entry key="..\:/Users/Alexis/Desktop/PDMProyecto/app/src/main/res/layout/activity_consulta_bitacora.xml" value="0.1" />
         <entry key="..\:/Users/Alexis/Desktop/PDMProyecto/app/src/main/res/layout/activity_consultar_area.xml" value="0.1" />
         <entry key="..\:/Users/Alexis/Desktop/PDMProyecto/app/src/main/res/layout/activity_consultar_carrera.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Alexis/Desktop/PDMProyecto/app/src/main/res/layout/activity_consultar_estudiante.xml" value="0.33" />
-        <entry key="..\:/Users/Alexis/Desktop/PDMProyecto/app/src/main/res/layout/activity_consultar_resumen.xml" value="0.15639165911151406" />
+        <entry key="..\:/Users/Alexis/Desktop/PDMProyecto/app/src/main/res/layout/activity_consultar_resumen.xml" value="0.1" />
         <entry key="..\:/Users/Alexis/Desktop/PDMProyecto/app/src/main/res/layout/activity_crear_area.xml" value="0.1" />
+        <entry key="..\:/Users/Alexis/Desktop/PDMProyecto/app/src/main/res/layout/activity_crear_bitacora.xml" value="0.1" />
         <entry key="..\:/Users/Alexis/Desktop/PDMProyecto/app/src/main/res/layout/activity_crear_estudiante.xml" value="0.1" />
         <entry key="..\:/Users/Alexis/Desktop/PDMProyecto/app/src/main/res/layout/activity_crear_modalidad.xml" value="0.1" />
         <entry key="..\:/Users/Alexis/Desktop/PDMProyecto/app/src/main/res/layout/activity_crear_resumen.xml" value="0.25" />

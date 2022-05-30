@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="24sp"
+    android:layout_margin="10dp"
     tools:context=".resumensocial.CrearResumenActivity">
 
     <TextView
@@ -40,8 +40,9 @@
         android:id="@+id/spinnerDui_docente"
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtIdResumen"
         tools:ignore="SpeakableTextPresentCheck" />
@@ -50,8 +51,9 @@
         android:id="@+id/spinnerCarnetE"
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="4dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinnerDui_docente"
         tools:ignore="SpeakableTextPresentCheck" />
@@ -60,14 +62,14 @@
         android:id="@+id/txtFechaAperturaRS"
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="4dp"
         android:autofillHints=""
         android:ems="10"
         android:hint="@string/txtFecha_apertura_expediente"
         android:inputType="text"
         android:maxLength="25"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.666"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinnerCarnetE"
         tools:ignore="TextContrastCheck" />
@@ -76,13 +78,14 @@
         android:id="@+id/txtFechaEmisionRS"
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="8dp"
         android:autofillHints=""
         android:ems="10"
         android:hint="@string/txtFecha_emision_certificado"
         android:inputType="text"
         android:maxLength="25"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtFechaAperturaRS"
         tools:ignore="TextContrastCheck" />
@@ -91,25 +94,27 @@
         android:id="@+id/txtObservaciones"
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="8dp"
         android:autofillHints=""
         android:ems="10"
         android:hint="@string/txtObservaciones"
         android:inputType="text"
         android:maxLength="40"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtFechaEmisionRS"
         tools:ignore="TextContrastCheck" />
 
     <Button
-        android:id="@+id/btnGuardarArea"
+        android:id="@+id/btnGuardarResumen"
         android:layout_width="match_parent"
-        android:layout_height="51dp"
+        android:layout_height="40dp"
         android:layout_marginTop="12dp"
         android:onClick="guardarResumen"
         android:text="@string/btnGuardarArea"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtObservaciones" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
