@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="24sp"
+    tools:context=".estudiante.ModificarEstudianteActivity">
+
+    <EditText
+        android:id="@+id/editTextCarnetE"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="@string/labelCarnetEstudiante"
+        android:inputType="text"
+        android:maxLength="7"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.666"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="TextContrastCheck" />
+
+    <EditText
+        android:id="@+id/editTextNombresE"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginTop="8dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="@string/labelNombresEstudiante"
+        android:inputType="text"
+        android:maxLength="40"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextCarnetE"
+        tools:ignore="TextContrastCheck" />
+
+    <EditText
+        android:id="@+id/editTextApellidosE"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginTop="8dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="@string/labelApellidosEstudiante"
+        android:inputType="text"
+        android:maxLength="40"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextNombresE"
+        tools:ignore="TextContrastCheck" />
+
+    <EditText
+        android:id="@+id/editTextEmailE"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginTop="8dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="@string/labelEmailEstudiante"
+        android:inputType="text"
+        android:maxLength="50"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.666"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextApellidosE"
+        tools:ignore="TextContrastCheck" />
+
+    <EditText
+        android:id="@+id/editTextTelefonoE"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginTop="8dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="@string/labelTelefonoEstudiante"
+        android:inputType="text"
+        android:maxLength="8"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextEmailE"
+        tools:ignore="TextContrastCheck" />
+
+    <EditText
+        android:id="@+id/editTextDomicilioE"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginTop="8dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="@string/labelDomicilioEstudiante"
+        android:inputType="text"
+        android:maxLength="60"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTelefonoE"
+        tools:ignore="TextContrastCheck" />
+
+    <EditText
+        android:id="@+id/editTextDuiE"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginTop="8dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="@string/labelDuiEstudiante"
+        android:inputType="text"
+        android:maxLength="10"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.666"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextDomicilioE"
+        tools:ignore="TextContrastCheck" />
+
+    <Button
+        android:id="@+id/btnModificarEstudiante"
+        android:layout_width="match_parent"
+        android:layout_height="51dp"
+        android:layout_marginTop="8dp"
+        android:onClick="modificarEstudiante"
+        android:text="@string/btnModificarE"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextDuiE" />
+
+    <Button
+        android:id="@+id/btnEliminarEstudiante"
+        android:layout_width="match_parent"
+        android:layout_height="51dp"
+        android:layout_marginTop="8dp"
+        android:onClick="eliminarEstudiante"
+        android:text="@string/btnEliminarE"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnModificarEstudiante" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
