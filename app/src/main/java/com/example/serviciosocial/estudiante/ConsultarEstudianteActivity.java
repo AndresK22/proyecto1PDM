@@ -1,10 +1,5 @@
 package com.example.serviciosocial.estudiante;
 
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -12,12 +7,12 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.serviciosocial.R;
-import com.example.serviciosocial.carrera.Carrera;
-import com.example.serviciosocial.carrera.CarreraAdaptador;
-import com.example.serviciosocial.carrera.ConsultarCarreraActivity;
-import com.example.serviciosocial.carrera.ControlCarrera;
-import com.example.serviciosocial.carrera.CrearCarreraActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
@@ -28,10 +23,11 @@ public class ConsultarEstudianteActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     FloatingActionButton add_button;
     ControlEstudiante myDB;
-    ArrayList<String> nombres, apellidos, carnet, email, telefono, domicilio, dui;
-    EstudianteAdaptador estudianteAdaptador;
     ImageView empty_imageview;
     TextView no_data;
+
+    ArrayList<String> nombres, apellidos, carnet, email, telefono, domicilio, dui;
+    EstudianteAdaptador estudianteAdaptador;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +47,7 @@ public class ConsultarEstudianteActivity extends AppCompatActivity {
         add_button = findViewById(R.id.add_button_estudiante);
         empty_imageview = findViewById(R.id.empty_imageView);
         no_data = findViewById(R.id.no_dataTextView);
+
         add_button.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
@@ -58,9 +55,8 @@ public class ConsultarEstudianteActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        //consultarEstudiante();
-        storeDataInArrays();
-        estudianteAdaptador = new EstudianteAdaptador(this, ConsultarEstudianteActivity.this, carnet, nombres, apellidos, email, telefono, domicilio, dui);
+        consultarEstudiante();
+        estudianteAdaptador = new EstudianteAdaptador(ConsultarEstudianteActivity.this, this, carnet, nombres, apellidos, email, telefono, domicilio, dui);
         recyclerView.setAdapter(estudianteAdaptador);
         recyclerView.setLayoutManager(new LinearLayoutManager(ConsultarEstudianteActivity.this));
     }
@@ -71,23 +67,27 @@ public class ConsultarEstudianteActivity extends AppCompatActivity {
             recreate();
         }
     }
-    void storeDataInArrays(){
+    void consultarEstudiante(){
         Cursor cursor = myDB.leerTodoEstudiante();
         if (cursor.getCount()==0){
             empty_imageview.setVisibility(View.VISIBLE);
             no_data.setVisibility(View.VISIBLE);
         }else{
-            while (cursor.moveToNext()){
-                carnet.add(cursor.getString(0));
-                nombres.add(cursor.getString(1));
-                apellidos.add(cursor.getString(2));
-                email.add(cursor.getString(3));
-                telefono.add(cursor.getString(4));
-                domicilio.add(cursor.getString(5));
-                dui.add(cursor.getString(6));
-                //id_carrera.add(cursor.getString(0));
-                //nombre_carrera.add(cursor.getString(1));
-                //total_materias.add(cursor.getInt(2));
+            myDB.abrir();
+            ArrayList<Estudiante> registros = myDB.consultarEstudiante();
+            myDB.cerrar();
+
+            Estudiante e;
+            Iterator<Estudiante> it = registros.iterator();
+            while (it.hasNext()){
+                e = it.next();
+                carnet.add(String.valueOf(e.getCarnet()));
+                nombres.add(e.getNombres_estudiante());
+                apellidos.add(e.getApellidos_estudiante());
+                email.add(e.getEmail_estudiante());
+                telefono.add(e.getTelefono_estudiante());
+                domicilio.add(e.getDomicilio());
+                dui.add(e.getDui());
             }
             empty_imageview.setVisibility(View.GONE);
             no_data.setVisibility(View.GONE);

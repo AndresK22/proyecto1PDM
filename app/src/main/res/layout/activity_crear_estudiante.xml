@@ -7,120 +7,134 @@
     android:padding="24sp"
     tools:context=".login.CrearEstudianteActivity">
 
-    <EditText
-        android:id="@+id/editTextCarnet"
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/textViewCrearE"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="@string/labelCrearEstudiante"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editTextCarnetE"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginTop="4dp"
+        android:autofillHints=""
+        android:ems="7"
+        android:hint="@string/labelCarnetEstudiante"
+        android:inputType="text"
+        android:maxLength="7"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewCrearE"
+        tools:ignore="TextContrastCheck" />
+
+    <EditText
+        android:id="@+id/editTextNombresE"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
         android:layout_marginTop="4dp"
         android:autofillHints=""
         android:ems="10"
-        android:hint="Carnet"
-        android:inputType="textPersonName"
-        android:minHeight="48dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.666"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="DuplicateSpeakableTextCheck" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:minHeight="30dp"
-        android:text="Carrera"
-        android:textSize="18dp"
+        android:hint="@string/labelNombresEstudiante"
+        android:inputType="text"
+        android:maxLength="20"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextCarnet" />
-
-    <Spinner
-        android:id="@+id/spinnerCarrera"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:minHeight="48dp"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        tools:layout_editor_absoluteX="24dp"
-        style="@style/Widget.AppCompat.DropDownItem.Spinner"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/editTextCarnetE"
+        tools:ignore="TextContrastCheck" />
 
     <EditText
-        android:id="@+id/editTextNombres"
+        android:id="@+id/editTextApellidosE"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="4dp"
+        android:autofillHints=""
         android:ems="10"
-        android:hint="Nombres"
-        android:inputType="textPersonName"
-        android:minHeight="48dp"
+        android:hint="@string/labelApellidosEstudiante"
+        android:inputType="text"
+        android:maxLength="20"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinnerCarrera" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextNombresE"
+        tools:ignore="TextContrastCheck" />
 
     <EditText
-        android:id="@+id/editTextApellidos"
+        android:id="@+id/editTextEmailE"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="4dp"
+        android:autofillHints=""
         android:ems="10"
-        android:hint="Apellidos"
-        android:inputType="textPersonName"
-        android:minHeight="48dp"
+        android:hint="@string/labelEmailEstudiante"
+        android:inputType="text"
+        android:maxLength="50"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextNombres" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextApellidosE"
+        tools:ignore="TextContrastCheck" />
 
     <EditText
-        android:id="@+id/editTextCorreo"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:id="@+id/editTextTelefonoE"
+        android:layout_width="150dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="4dp"
+        android:autofillHints=""
         android:ems="10"
-        android:hint="Correo Institucional"
-        android:inputType="textEmailAddress"
-        android:minHeight="48dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:hint="@string/labelTelefonoEstudiante"
+        android:inputType="text"
+        android:maxLength="8"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextApellidos" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextEmailE"
+        tools:ignore="TextContrastCheck" />
 
     <EditText
-        android:id="@+id/editTextTelefono"
+        android:id="@+id/editTextDomicilioE"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="8dp"
+        android:autofillHints=""
         android:ems="10"
-        android:hint="Telefono"
-        android:inputType="phone"
-        android:minHeight="48dp"
+        android:hint="@string/labelDomicilioEstudiante"
+        android:inputType="text"
+        android:maxLength="60"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextCorreo" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextTelefonoE"
+        tools:ignore="TextContrastCheck" />
 
     <EditText
-        android:id="@+id/editTextDireccion"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:id="@+id/editTextDuiE"
+        android:layout_width="150dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="4dp"
+        android:autofillHints=""
         android:ems="10"
-        android:hint="Direccion"
-        android:inputType="textPostalAddress"
-        android:minHeight="48dp"
+        android:hint="@string/labelDuiEstudiante"
+        android:inputType="text"
+        android:maxLength="9"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTelefono" />
+        app:layout_constraintHorizontal_bias="0.988"
+        app:layout_constraintStart_toEndOf="@+id/editTextTelefonoE"
+        app:layout_constraintTop_toBottomOf="@+id/editTextEmailE"
+        tools:ignore="TextContrastCheck" />
 
     <Button
-        android:id="@+id/save_button"
+        android:id="@+id/btnGuardarEstudiante"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_marginTop="30dp"
-        android:text="Agregar"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@+id/editTextDireccion"
-        tools:layout_editor_absoluteX="24dp" />
+        android:layout_height="40dp"
+        android:onClick="guardarEstudiante"
+        android:text="@string/btnGuardar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextDomicilioE" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

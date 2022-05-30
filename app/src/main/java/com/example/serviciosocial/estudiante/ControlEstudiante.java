@@ -43,7 +43,7 @@ public class ControlEstudiante {
         est.put("telefono_estudiante", estudiante.getTelefono_estudiante());
         est.put("domicilio", estudiante.getDomicilio());
         est.put("dui", estudiante.getDui());
-        contador = db.insert("carrera", null, est);
+        contador = db.insert("estudiante", null, est);
         if(contador == -1 || contador == 0){
             regInsertados = "Error al insertar el registro";
         }else{

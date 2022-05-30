@@ -94,6 +94,24 @@
             android:name=".areaCarrera.CrearAreaActivity"
             android:exported="false" />
         <activity
+            android:name=".carrera.ConsultarCarreraActivity"
+            android:exported="false" />
+        <activity
+            android:name=".carrera.ModificarCarreraActivity"
+            android:exported="false" />
+        <activity
+            android:name=".carrera.CrearCarreraActivity"
+            android:exported="false" />
+        <activity
+            android:name=".estudiante.ConsultarEstudianteActivity"
+            android:exported="false" />
+        <activity
+            android:name=".estudiante.CrearEstudianteActivity"
+            android:exported="false" />
+        <activity
+            android:name=".estudiante.ModificarEstudianteActivity"
+            android:exported="false" />
+        <activity
             android:name=".login.LoginActivity"
             android:exported="true"
             android:theme="@style/Theme.ServicioSocial.NoActionBar">

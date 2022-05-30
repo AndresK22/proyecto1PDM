@@ -14,7 +14,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.serviciosocial.R;
-import com.example.serviciosocial.modalidad.ModalidadAdaptador;
 
 import java.util.ArrayList;
 
@@ -22,14 +21,14 @@ public class CarreraAdaptador extends RecyclerView.Adapter<CarreraAdaptador.MyVi
 
     Context context;
     Activity activity;
-    ArrayList id_carrera, nombre_carrera, total_materias;
+    ArrayList listaIdCarrera, listaNombre_carrera, listaTotal_materias;
 
-    public CarreraAdaptador(Context context, Activity activity, ArrayList id_carrera, ArrayList nombre_carrera, ArrayList total_materias) {
+    CarreraAdaptador(Activity activity, Context context, ArrayList id_carrera, ArrayList nombre_carrera, ArrayList total_materias) {
         this.context = context;
         this.activity = activity;
-        this.id_carrera = id_carrera;
-        this.nombre_carrera = nombre_carrera;
-        this.total_materias = total_materias;
+        this.listaIdCarrera = id_carrera;
+        this.listaNombre_carrera = nombre_carrera;
+        this.listaTotal_materias = total_materias;
     }
 
     @NonNull
@@ -42,16 +41,16 @@ public class CarreraAdaptador extends RecyclerView.Adapter<CarreraAdaptador.MyVi
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, @SuppressLint("recyclerView") int position){
-        holder.id_carrera.setText(String.valueOf(id_carrera.get(position)));
-        holder.nombre_carrera.setText(String.valueOf(nombre_carrera.get(position)));
-        holder.total_materias.setText(String.valueOf(total_materias.get(position)));
+        holder.id_carrera.setText(String.valueOf(listaIdCarrera.get(position)));
+        holder.nombre_carrera.setText(String.valueOf(listaNombre_carrera.get(position)));
+        holder.total_materias.setText(String.valueOf(listaTotal_materias.get(position)));
         holder.CarreraLayout.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
                 Intent intent = new Intent(context, ModificarCarreraActivity.class);
-                intent.putExtra("id_carrera", String.valueOf(id_carrera.get(position)));
-                intent.putExtra("nombre_carrera", String.valueOf(nombre_carrera.get(position)));
-                intent.putExtra("total_materias", String.valueOf(total_materias.get(position)));
+                intent.putExtra("id_carrera", String.valueOf(listaIdCarrera.get(position)));
+                intent.putExtra("nombre_carrera", String.valueOf(listaNombre_carrera.get(position)));
+                intent.putExtra("total_materias", String.valueOf(listaTotal_materias.get(position)));
                 activity.startActivityForResult(intent, 1);
             }
         });
@@ -59,7 +58,7 @@ public class CarreraAdaptador extends RecyclerView.Adapter<CarreraAdaptador.MyVi
 
     @Override
     public int getItemCount() {
-        return id_carrera.size();
+        return listaIdCarrera.size();
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder{

@@ -12,10 +12,12 @@
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         tools:ignore="MissingConstraints">
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="12sp">
+
             <TextView
                 android:id="@+id/txtCarnetEstudiante"
                 android:layout_width="wrap_content"
@@ -38,22 +40,21 @@
                 android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintHorizontal_bias="0.028"
                 app:layout_constraintStart_toEndOf="@+id/txtCarnetEstudiante"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:ignore="MissingConstraints" />
 
             <TextView
-                android:id="@+id/txtApellidosCarrera"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:id="@+id/txtApellidosEstudiante"
+                android:layout_width="74dp"
+                android:layout_height="16dp"
                 android:layout_marginTop="4dp"
                 android:text="@string/labelApellidosEstudiante"
                 android:textColor="@color/black"
-                android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.372"
+                app:layout_constraintHorizontal_bias="0.262"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txtNombresEstudiante"
                 tools:ignore="MissingConstraints" />

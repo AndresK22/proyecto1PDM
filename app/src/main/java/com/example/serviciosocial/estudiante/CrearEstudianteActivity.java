@@ -1,16 +1,17 @@
 package com.example.serviciosocial.estudiante;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.serviciosocial.R;
-import com.example.serviciosocial.carrera.ConsultarCarreraActivity;
 
 public class CrearEstudianteActivity extends AppCompatActivity {
 
@@ -18,6 +19,7 @@ public class CrearEstudianteActivity extends AppCompatActivity {
     EditText txtCarnet, txtNombres, txtApellidos, txtEmail, txtTelefono, txtDomicilio, txtDui;
     Button guardar;
 
+    boolean campCar0, campCar, campCar1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,10 +34,30 @@ public class CrearEstudianteActivity extends AppCompatActivity {
         txtDomicilio = (EditText) findViewById(R.id.editTextDomicilioE);
         txtDui = (EditText) findViewById(R.id.editTextDuiE);
         guardar = (Button) findViewById(R.id.btnGuardarEstudiante);
+
+        txtCarnet.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if(i2>0){
+                    campCar = true;
+                }else {
+                    campCar = false;
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
     }
     public void guardarEstudiante(View v){
         if(verificarCamposLlenos()){
-
             String carnet = txtCarnet.getText().toString();
             String nombres = txtNombres.getText().toString();
             String apellidos = txtApellidos.getText().toString();

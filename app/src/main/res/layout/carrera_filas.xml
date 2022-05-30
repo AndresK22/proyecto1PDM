@@ -54,7 +54,7 @@
                 android:visibility="invisible"
                 tools:ignore="MissingConstraints" />
 
-            <TextView
+            <!--TextView
                 android:id="@+id/textViewTotalMaterias"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -63,7 +63,7 @@
                 android:textSize="18sp"
                 android:textStyle="bold"
                 android:visibility="invisible"
-                tools:ignore="MissingConstraints" />
+                tools:ignore="MissingConstraints" /-->
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

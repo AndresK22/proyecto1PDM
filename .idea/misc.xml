@@ -3,6 +3,17 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Alexis/Desktop/PDMProyecto/app/src/main/res/layout/activity_consultar_area.xml" value="0.1" />
+        <entry key="..\:/Users/Alexis/Desktop/PDMProyecto/app/src/main/res/layout/activity_consultar_carrera.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Alexis/Desktop/PDMProyecto/app/src/main/res/layout/activity_consultar_estudiante.xml" value="0.33" />
+        <entry key="..\:/Users/Alexis/Desktop/PDMProyecto/app/src/main/res/layout/activity_crear_estudiante.xml" value="0.1" />
+        <entry key="..\:/Users/Alexis/Desktop/PDMProyecto/app/src/main/res/layout/activity_crear_modalidad.xml" value="0.1" />
+        <entry key="..\:/Users/Alexis/Desktop/PDMProyecto/app/src/main/res/layout/activity_gestion_usuario.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Alexis/Desktop/PDMProyecto/app/src/main/res/layout/activity_modificar_estudiante.xml" value="0.33" />
+        <entry key="..\:/Users/Alexis/Desktop/PDMProyecto/app/src/main/res/layout/carrera_filas.xml" value="0.1" />
+        <entry key="..\:/Users/Alexis/Desktop/PDMProyecto/app/src/main/res/layout/estudiante_filas.xml" value="0.33" />
+        <entry key="..\:/Users/Alexis/Desktop/PDMProyecto/app/src/main/res/layout/filas_usuario.xml" value="0.33" />
+        <entry key="..\:/Users/Alexis/Desktop/PDMProyecto/app/src/main/res/layout/item_list_layout_area.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/andre/AndroidStudioProjects/proyecto1PDM/app/src/main/res/layout/activity_consultar_estado.xml" value="0.38697916666666665" />
         <entry key="..\:/Users/andre/AndroidStudioProjects/proyecto1PDM/app/src/main/res/layout/item_table_layout_estado.xml" value="0.38697916666666665" />
         <entry key="..\:/Users/andre/proyecto1PDM/app/src/main/res/layout/activity_consultar_estado.xml" value="0.1" />

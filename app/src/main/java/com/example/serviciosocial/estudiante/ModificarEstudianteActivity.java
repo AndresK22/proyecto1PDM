@@ -1,8 +1,5 @@
 package com.example.serviciosocial.estudiante;
 
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,11 +8,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.serviciosocial.R;
-import com.example.serviciosocial.carrera.Carrera;
-import com.example.serviciosocial.carrera.ConsultarCarreraActivity;
-import com.example.serviciosocial.carrera.ControlCarrera;
-import com.example.serviciosocial.carrera.ModificarCarreraActivity;
 
 public class ModificarEstudianteActivity extends AppCompatActivity {
 

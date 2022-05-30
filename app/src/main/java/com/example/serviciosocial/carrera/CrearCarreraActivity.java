@@ -1,7 +1,5 @@
 package com.example.serviciosocial.carrera;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
@@ -11,9 +9,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.serviciosocial.R;
-import com.example.serviciosocial.modalidad.ConsultarModalidadActivity;
-import com.example.serviciosocial.modalidad.ControlModalidad;
 
 public class CrearCarreraActivity extends AppCompatActivity {
 

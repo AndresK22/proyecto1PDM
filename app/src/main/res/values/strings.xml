@@ -100,6 +100,28 @@
     <string name="btnModificarDetalleBitacora">Modificar Detalle</string>
     <string name="btnEliminarDetalleBitacora">Eliminar Detalle</string>
 
+    <!-- STRINGS DE CARRERA -->
+    <string name="btnGuardarCarrera">Guardar</string>
+    <string name="btnModificarCarrera">Modificar</string>
+    <string name="btnEliminarCarrera">Eliminar</string>
+    <string name="labelCarrera">Carreras</string>
+    <string name="labelCrearCarrera">Crear Carrera</string>
+    <string name="labelNomCarrera">Nombre de la Carrera</string>
+    <string name="labelTotalMaterias">Total de materias</string>
+    <string name="labelIdCarrera">ID</string>
 
+    <!-- STRINGS DE ESTUDIANTE -->
+    <string name="labelCarnetEstudiante">Carnet</string>
+    <string name="labelNombresEstudiante">Nombres</string>
+    <string name="labelApellidosEstudiante">Apellidos</string>
+    <string name="labelEmailEstudiante">Email</string>
+    <string name="labelTelefonoEstudiante">Telefono</string>
+    <string name="labelDomicilioEstudiante">Domicilio</string>
+    <string name="labelDuiEstudiante">Dui</string>
+    <string name="btnGuardarE">Guardar</string>
+    <string name="btnModificarE">Modificar</string>
+    <string name="btnEliminarE">Eliminar</string>
+    <string name="labelCrearEstudiante">Crear estudiante</string>
+    <string name="labelEstudiante">Estudiantes</string>
 
 </resources>

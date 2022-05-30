@@ -94,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
         if (i==1){
             //Toast.makeText(MainActivity.this,"Posicion "+i,Toast.LENGTH_SHORT).show();
             try{
-                Class<?> clase=Class.forName("com.example.serviciosocial.login.GestionUsuarioActivity");
+                Class<?> clase=Class.forName("com.example.serviciosocial.carrera.ConsultarCarreraActivity");
                 Intent intent = new Intent(MainActivity.this,clase);
                 MainActivity.this.startActivity(intent);
             }catch(ClassNotFoundException e){
@@ -133,7 +133,7 @@ public class MainActivity extends AppCompatActivity {
         if (i==4){
             //Toast.makeText(MainActivity.this,"Posicion "+i,Toast.LENGTH_SHORT).show();
             try{
-                Class<?> clase=Class.forName("com.example.serviciosocial.login.GestionUsuarioActivity");
+                Class<?> clase=Class.forName("com.example.serviciosocial.estudiante.ConsultarEstudianteActivity");
                 Intent intent = new Intent(MainActivity.this,clase);
                 MainActivity.this.startActivity(intent);
             }catch(ClassNotFoundException e){

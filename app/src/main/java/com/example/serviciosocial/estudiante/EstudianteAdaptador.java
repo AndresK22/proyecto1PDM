@@ -14,28 +14,25 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.serviciosocial.R;
-import com.example.serviciosocial.carrera.CarreraAdaptador;
-import com.example.serviciosocial.carrera.ModificarCarreraActivity;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class EstudianteAdaptador extends RecyclerView.Adapter<EstudianteAdaptador.MyViewHolder>{
 
     Context context;
     Activity activity;
-    ArrayList carnet, nombres, apellidos, email, telefono, domicilio, dui;
+    ArrayList listCarnet, listNombres, listApellidos, listEmail, listTelefono, listDomicilio, listDui;
 
-    public EstudianteAdaptador(Context context, Activity activity, ArrayList carnet, ArrayList nombres, ArrayList apellidos, ArrayList email, ArrayList telefono, ArrayList domicilio, ArrayList dui) {
+    public EstudianteAdaptador(Activity activity, Context context,  ArrayList carnet, ArrayList nombres, ArrayList apellidos, ArrayList email, ArrayList telefono, ArrayList domicilio, ArrayList dui) {
         this.context = context;
         this.activity = activity;
-        this.carnet = carnet;
-        this.nombres = nombres;
-        this.apellidos = apellidos;
-        this.email = email;
-        this.telefono = telefono;
-        this.domicilio = domicilio;
-        this.dui = dui;
+        this.listCarnet = carnet;
+        this.listNombres = nombres;
+        this.listApellidos = apellidos;
+        this.listEmail = email;
+        this.listTelefono = telefono;
+        this.listDomicilio = domicilio;
+        this.listDui = dui;
     }
 
     @NonNull
@@ -48,24 +45,24 @@ public class EstudianteAdaptador extends RecyclerView.Adapter<EstudianteAdaptado
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, @SuppressLint("recyclerView") int position) {
-        holder.carnet.setText(String.valueOf(carnet.get(position)));
-        holder.nombres.setText(String.valueOf(nombres.get(position)));
-        holder.apellidos.setText(String.valueOf(apellidos.get(position)));
-        holder.email.setText(String.valueOf(email.get(position)));
-        holder.telefono.setText(String.valueOf(telefono.get(position)));
-        holder.domicilio.setText(String.valueOf(domicilio.get(position)));
-        holder.dui.setText(String.valueOf(dui.get(position)));
+        holder.carnet.setText(String.valueOf(listCarnet.get(position)));
+        holder.nombres.setText(String.valueOf(listNombres.get(position)));
+        holder.apellidos.setText(String.valueOf(listApellidos.get(position)));
+        holder.email.setText(String.valueOf(listEmail.get(position)));
+        holder.telefono.setText(String.valueOf(listTelefono.get(position)));
+        holder.domicilio.setText(String.valueOf(listDomicilio.get(position)));
+        holder.dui.setText(String.valueOf(listDui.get(position)));
         holder.EstudianteLayout.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
                 Intent intent = new Intent(context, ModificarEstudianteActivity.class);
-                intent.putExtra("carnet", String.valueOf(carnet.get(position)));
-                intent.putExtra("nombres_estudiante", String.valueOf(nombres.get(position)));
-                intent.putExtra("apellidos_estudiante", String.valueOf(apellidos.get(position)));
-                intent.putExtra("email_estudiante", String.valueOf(email.get(position)));
-                intent.putExtra("telefono_estudiante", String.valueOf(telefono.get(position)));
-                intent.putExtra("domicilio", String.valueOf(domicilio.get(position)));
-                intent.putExtra("dui", String.valueOf(dui.get(position)));
+                intent.putExtra("carnet", String.valueOf(listCarnet.get(position)));
+                intent.putExtra("nombres_estudiante", String.valueOf(listNombres.get(position)));
+                intent.putExtra("apellidos_estudiante", String.valueOf(listApellidos.get(position)));
+                intent.putExtra("email_estudiante", String.valueOf(listEmail.get(position)));
+                intent.putExtra("telefono_estudiante", String.valueOf(listTelefono.get(position)));
+                intent.putExtra("domicilio", String.valueOf(listDomicilio.get(position)));
+                intent.putExtra("dui", String.valueOf(listDui.get(position)));
                 activity.startActivityForResult(intent, 1);
             }
         });
@@ -74,7 +71,7 @@ public class EstudianteAdaptador extends RecyclerView.Adapter<EstudianteAdaptado
 
     @Override
     public int getItemCount() {
-        return carnet.size();
+        return listCarnet.size();
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder{
@@ -87,7 +84,7 @@ public class EstudianteAdaptador extends RecyclerView.Adapter<EstudianteAdaptado
             super(itemView);
             carnet = itemView.findViewById(R.id.txtCarnetEstudiante);
             nombres = itemView.findViewById(R.id.txtNombresEstudiante);
-            apellidos = itemView.findViewById(R.id.txtApellidosCarrera);
+            apellidos = itemView.findViewById(R.id.txtApellidosEstudiante);
             email = itemView.findViewById(R.id.txtEmailEstudiante);
             telefono = itemView.findViewById(R.id.txtTelefonoE);
             domicilio = itemView.findViewById(R.id.txtDomicilio);

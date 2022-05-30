@@ -7,6 +7,7 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.example.serviciosocial.DataBaseHelper;
+import com.example.serviciosocial.areaCarrera.AreaCarrera;
 
 import java.util.ArrayList;
 
@@ -56,18 +57,18 @@ public class ControlCarrera {
     //UPDATES
     public String actualizar(Carrera carrera){
         try{
-            //String[] id = {carrera.getId_carrera()};
-            //ContentValues cv = new ContentValues();
-            //cv.put("id_carrera", carrera.getId_carrera());
-            //cv.put("nombre_carrera", carrera.getNombre_carrera());
-            //cv.put("total_materias", (Integer) carrera.getTotal_materias());
-            //db.update("carrera", cv, "id_carrera = ?", id);
-            String id = carrera.getId_carrera();
-            String nombre = carrera.getNombre_carrera();
-            int total = carrera.getTotal_materias();
-            String sql = "update carrera set id_carrera = '"+id+"', nombre_carrera = '"+nombre+"', total_materias = "+total+" where id_carrera = '"+id+"'";
-            db.execSQL(sql);
-            return "Registro Actualizado Correctamente ";
+            String[] id = {carrera.getId_carrera()};
+            ContentValues cv = new ContentValues();
+            cv.put("id_carrera", carrera.getId_carrera());
+            cv.put("nombre_carrera", carrera.getNombre_carrera());
+            cv.put("total_materias", carrera.getTotal_materias());
+            db.update("carrera", cv, "id_carrera = ?", id);
+//            String id = carrera.getId_carrera();
+//            String nombre = carrera.getNombre_carrera();
+//            int total = carrera.getTotal_materias();
+//            String sql = "update carrera set id_carrera = '"+id+"', nombre_carrera = '"+nombre+"', total_materias = "+total+" where id_carrera = '"+id+"'";
+//            db.execSQL(sql);
+            return "Carrera Actualizada Correctamente ";
         }catch (SQLException e)
         {
             e.printStackTrace();
@@ -124,6 +125,23 @@ public class ControlCarrera {
                 return null;
             }
         }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+    public Carrera consultarCarrera(String[] id){
+        try{
+            Cursor cursor = db.query("carrera", camposCarrera, "id_carrera = ? ", id, null, null, null);
+            if (cursor.moveToFirst()) {
+                Carrera c = new Carrera();
+                c.setId_carrera(cursor.getString(0));
+                c.setNombre_carrera(cursor.getString(1));
+                c.setTotal_materias(cursor.getInt(2));
+                return c;
+            } else {
+                return null;
+            }
+        }catch(SQLException e){
             e.printStackTrace();
         }
         return null;
