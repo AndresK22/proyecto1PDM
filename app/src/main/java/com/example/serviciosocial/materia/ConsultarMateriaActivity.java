@@ -20,7 +20,7 @@ public class ConsultarMateriaActivity extends AppCompatActivity {
 
     RecyclerView recyclerViewMateria;
     FloatingActionButton add_button;
-    ControlBD helper;
+    ControlMateria helper;
     ArrayList<String> cod_materia, id_area, nombre_materia;
     com.example.serviciosocial.materia.MateriaAdaptador materiaAdaptador;
 
@@ -29,7 +29,7 @@ public class ConsultarMateriaActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_consultar_materia);
 
-        helper = new ControlBD(this);
+        helper = new ControlMateria(this);
         cod_materia = new ArrayList<>();
         id_area = new ArrayList<>();
         nombre_materia = new ArrayList<>();

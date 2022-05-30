@@ -26,7 +26,8 @@ public class ConsultarNotaActivity extends AppCompatActivity {
 
     RecyclerView recyclerViewRecord;
     FloatingActionButton add_button;
-    ControlBD helper;
+    ControlNota helper;
+    ControlBD helper2;
     ArrayList<String> cod_materia, carnet, calificacion;
     ArrayList<String> id_carrera, descrip_carrera;
     Spinner spinerCarrera;
@@ -41,7 +42,8 @@ public class ConsultarNotaActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_consultar_nota);
 
-        helper = new ControlBD(this);
+        helper = new ControlNota(this);
+        helper2 = new ControlBD(this);
         cod_materia = new ArrayList<>();
         carnet = new ArrayList<>();
         calificacion = new ArrayList<>();
@@ -66,7 +68,7 @@ public class ConsultarNotaActivity extends AppCompatActivity {
 
         //Aqui se va a pedir las carreras
         helper.abrir();
-        ArrayList<Materia> itemsSpinner = helper.consultarMateria(); //Metodo que consulta las carreras
+        ArrayList<Materia> itemsSpinner = helper2.consultarMateria(); //Metodo que consulta las carreras
         helper.cerrar();
 
         Materia carr;

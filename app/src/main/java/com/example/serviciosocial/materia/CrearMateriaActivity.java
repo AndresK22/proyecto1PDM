@@ -20,7 +20,7 @@ import java.util.Iterator;
 
 public class CrearMateriaActivity extends AppCompatActivity {
 
-    ControlBD helper;
+    ControlMateria helper;
     Spinner spinerArea;
     ArrayList<String> id_area, descrip_area; //para el spinner
     String id_are;
@@ -36,7 +36,7 @@ public class CrearMateriaActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_crear_materia);
 
-        helper = new ControlBD(this);
+        helper = new ControlMateria(this);
         spinerArea = (Spinner) findViewById(R.id.spinnerArea);
         txtCodMateria = (EditText) findViewById(R.id.txtCodMateria);
         txtMateria = (EditText) findViewById(R.id.txtMateria);

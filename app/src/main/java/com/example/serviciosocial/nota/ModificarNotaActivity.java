@@ -15,7 +15,7 @@ import com.example.serviciosocial.R;
 
 public class ModificarNotaActivity extends AppCompatActivity {
 
-    ControlBD helper;
+    ControlNota helper;
     String extraCod_materia;
     String extraCarnet;
     String extraCalificacion;
@@ -29,7 +29,7 @@ public class ModificarNotaActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_modificar_nota);
 
-        helper = new ControlBD(this);
+        helper = new ControlNota(this);
         txtCodMateria = (EditText) findViewById(R.id.editTextCod_Materia);
         txtCarnet = (EditText) findViewById(R.id.editTextCarnet_Nota);
         txtCalificacion = (EditText) findViewById(R.id.editTextCalificacion);

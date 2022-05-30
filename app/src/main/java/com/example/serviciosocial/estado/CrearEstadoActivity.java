@@ -14,7 +14,7 @@ import com.example.serviciosocial.R;
 
 public class CrearEstadoActivity extends AppCompatActivity {
 
-    ControlBD helper;
+    ControlEstado helper;
     EditText txtEstado;
     Button btnGuardar;
 
@@ -23,7 +23,7 @@ public class CrearEstadoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_crear_estado);
 
-        helper = new ControlBD(this);
+        helper = new ControlEstado(this);
         txtEstado = (EditText) findViewById(R.id.editTextEstado);
         btnGuardar = (Button) findViewById(R.id.btnGuardarEstado);
     }

@@ -3,6 +3,8 @@ package com.example.serviciosocial.estado;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,7 +22,7 @@ public class ConsultarEstadoActivity extends AppCompatActivity {
 
     RecyclerView recyclerViewEstado;
     FloatingActionButton add_button;
-    ControlBD helper;
+    ControlEstado helper;
     ArrayList<String> id_estado, estado;
     com.example.serviciosocial.estado.EstadoAdaptador estadoAdaptador;
 
@@ -29,7 +31,7 @@ public class ConsultarEstadoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_consultar_estado);
 
-        helper = new ControlBD(this);
+        helper = new ControlEstado(this);
         id_estado = new ArrayList<>();
         estado = new ArrayList<>();
         recyclerViewEstado = findViewById(R.id.recyclerViewEstado);

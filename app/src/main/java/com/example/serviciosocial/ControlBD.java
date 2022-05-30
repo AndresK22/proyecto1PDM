@@ -320,6 +320,7 @@ public class ControlBD {
         return null;
     }
 
+
     public ArrayList<RecordAcademico> consultarRecords(){
         try {
             ArrayList<RecordAcademico> lisRecords = new ArrayList<RecordAcademico>();
@@ -442,7 +443,7 @@ public class ControlBD {
     }
     public Nota consultarNotas(String[] id){
         try {
-            Cursor cursor = db.query("nota", camposRecord, "cod_materia = ? AND carnet = ?", id, null, null, null);
+            Cursor cursor = db.query("nota", camposNota, "cod_materia = ? AND carnet = ?", id, null, null, null);
 
             if (cursor.moveToFirst()) {
                 Nota not = new Nota();

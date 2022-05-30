@@ -21,7 +21,8 @@ import java.util.Iterator;
 public class ConsultarRecordActivity extends AppCompatActivity {
 
     RecyclerView recyclerViewRecord;
-    ControlBD helper;
+    ControlRecord helper;
+    ControlBD helper2;
     ArrayList<String> id_record, carnet, id_area, materias_aprobadas, progreso, promedio;
     ArrayList<String> id_carrera, descrip_carrera;
     Spinner spinerCarrera;
@@ -35,7 +36,8 @@ public class ConsultarRecordActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_consultar_record);
 
-        helper = new ControlBD(this);
+        helper = new ControlRecord(this);
+        helper2 = new ControlBD(this);
         id_record = new ArrayList<>();
         carnet = new ArrayList<>();
         id_area = new ArrayList<>();
@@ -54,7 +56,7 @@ public class ConsultarRecordActivity extends AppCompatActivity {
 
         //Aqui se va a pedir las carreras
         helper.abrir();
-        ArrayList<Materia> itemsSpinner = helper.consultarMateria(); //Metodo que consulta las carreras
+        ArrayList<Materia> itemsSpinner = helper2.consultarMateria(); //Metodo que consulta las carreras
         helper.cerrar();
 
         Materia carr;

@@ -18,7 +18,7 @@ import com.example.serviciosocial.R;
 
 public class ModificarEstadoActivity extends AppCompatActivity {
 
-    ControlBD helper;
+    ControlEstado helper;
     EditText txtEstado;
     Button modificar;
     Button eliminar;
@@ -30,7 +30,7 @@ public class ModificarEstadoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_modificar_estado);
 
-        helper = new ControlBD(this);
+        helper = new ControlEstado(this);
         id_estado = getIntent().getExtras().getString("id_estado");
         estado = getIntent().getExtras().getString("estado");
         txtEstado = (EditText) findViewById(R.id.editTextEstado);

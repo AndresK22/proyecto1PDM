@@ -16,7 +16,8 @@ import java.util.Iterator;
 
 public class ModificarRecordActivity extends AppCompatActivity {
 
-    ControlBD helper;
+    ControlRecord helper;
+    ControlBD helper2;
     String descArea;
     String extraCarnet;
     String extraIdArea;
@@ -35,7 +36,8 @@ public class ModificarRecordActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_modificar_record);
 
-        helper = new ControlBD(this);
+        helper = new ControlRecord(this);
+        helper2 = new ControlBD(this);
         txtCarnet = (EditText) findViewById(R.id.editTextCarnet_Record);
         txtArea = (EditText) findViewById(R.id.editTextArea);
         txtMateriasAprobadas = (EditText) findViewById(R.id.editTextMat_aprob);
@@ -56,7 +58,7 @@ public class ModificarRecordActivity extends AppCompatActivity {
         String[] idArea = {"mat115"}; //Dentro de corchetes iria extraIdArea
         //Aqui se va a pedir el area
         helper.abrir();
-        Materia area = helper.consultarMateria(idArea); //Metodo que busque el area por id
+        Materia area = helper2.consultarMateria(idArea); //Metodo que busque el area por id
         helper.cerrar();
 
         descArea = area.getNombre_materia();
