@@ -172,4 +172,18 @@
     <string name="btnModificarNota">Modificar</string>
     <string name="btnEliminarNota">Eliminar</string>
     <string name="btnGuardarNota">Guardar</string>
+
+    <!-- STRINGS DE RESUMEN SOCIAL -->
+    <string name="tituloCrearResumen">Crear resumen social</string>
+    <string name="tituloConsultarResumen">Resumen</string>
+    <string name="cabeceraResumen1">Resumen</string>
+    <string name="cabeceraResumen2">Dui docente</string>
+    <string name="txtIdResumen">Id</string>
+    <string name="txtDui_docente">Dui docente</string>
+    <string name="txtFecha_apertura_expediente">Fecha de apertura expediente</string>
+    <string name="txtFecha_emision_certificado">Fecha de emision certificado</string>
+    <string name="txtObservaciones">Observaciones</string>
+    <string name="btnModificarResumen">Modificar</string>
+    <string name="btnEliminarResumen">Eliminar</string>
+    <string name="btnGuardarResumen">Guardar</string>
 </resources>

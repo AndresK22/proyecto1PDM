@@ -55,19 +55,14 @@ public class ControlCarrera {
     }
 
     //UPDATES
-    public String actualizar(Carrera carrera){
+    public String actualizar(Carrera carrera, String[] id_p){
         try{
             String[] id = {carrera.getId_carrera()};
             ContentValues cv = new ContentValues();
             cv.put("id_carrera", carrera.getId_carrera());
             cv.put("nombre_carrera", carrera.getNombre_carrera());
             cv.put("total_materias", carrera.getTotal_materias());
-            db.update("carrera", cv, "id_carrera = ?", id);
-//            String id = carrera.getId_carrera();
-//            String nombre = carrera.getNombre_carrera();
-//            int total = carrera.getTotal_materias();
-//            String sql = "update carrera set id_carrera = '"+id+"', nombre_carrera = '"+nombre+"', total_materias = "+total+" where id_carrera = '"+id+"'";
-//            db.execSQL(sql);
+            db.update("carrera",  cv, "id_carrera = ?", id_p);
             return "Carrera Actualizada Correctamente ";
         }catch (SQLException e)
         {

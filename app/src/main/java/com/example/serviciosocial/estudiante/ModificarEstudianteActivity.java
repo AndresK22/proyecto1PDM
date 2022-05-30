@@ -55,17 +55,19 @@ public class ModificarEstudianteActivity extends AppCompatActivity {
     }
     public void modificarEstudiante(View v){
         if(verificarCamposLlenos()){
+            String i=carnet;
+            String[] ie = {i};
             Estudiante e = new Estudiante();
-            e.setCarnet(String.valueOf(carnet));
-            e.setNombres_estudiante(String.valueOf(nombres));
-            e.setApellidos_estudiante(String.valueOf(apellidos));
-            e.setEmail_estudiante(String.valueOf(email));
-            e.setTelefono_estudiante(String.valueOf(telefono));
-            e.setDomicilio(String.valueOf(domicilio));
-            e.setDui(String.valueOf(dui));
+            e.setCarnet(String.valueOf(txtCarnet.getText().toString()));
+            e.setNombres_estudiante(txtNombres.getText().toString());
+            e.setApellidos_estudiante(txtApellidos.getText().toString());
+            e.setEmail_estudiante(txtEmail.getText().toString());
+            e.setTelefono_estudiante(txtTelefono.getText().toString());
+            e.setDomicilio(txtDomicilio.getText().toString());
+            e.setDui(txtDui.getText().toString());
 
             myDB.abrir();
-            String est = myDB.actualizar(e);
+            String est = myDB.actualizar(e,ie);
             myDB.cerrar();
 
             Toast.makeText(this, est, Toast.LENGTH_SHORT).show();

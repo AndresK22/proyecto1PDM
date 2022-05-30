@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".resumensocial.ModificarResumenActivity">
+
+  <TextView
+      android:id="@+id/textViewCrearR"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="16dp"
+      android:text="@string/tituloCrearResumen"
+      android:textColor="@color/black"
+      android:textSize="30sp"
+      android:textStyle="bold"
+      android:textAlignment="center"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent" />
+
+  <EditText
+      android:id="@+id/txtIdResumen"
+      android:layout_width="match_parent"
+      android:layout_height="48dp"
+      android:layout_marginTop="12dp"
+      android:autofillHints=""
+      android:ems="10"
+      android:hint="@string/txtIdResumen"
+      android:inputType="text"
+      android:maxLength="6"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.0"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/textViewCrearR"
+      tools:ignore="TextContrastCheck" />
+
+  <Spinner
+      android:id="@+id/spinnerDui_docente"
+      android:layout_width="match_parent"
+      android:layout_height="48dp"
+      android:layout_marginTop="36dp"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/txtIdResumen"
+      tools:ignore="SpeakableTextPresentCheck" />
+  <Spinner
+      android:id="@+id/spinnerCarnet"
+      android:layout_width="match_parent"
+      android:layout_height="48dp"
+      android:layout_marginTop="36dp"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/spinnerDui_docente"
+      tools:ignore="SpeakableTextPresentCheck" />
+
+  <EditText
+      android:id="@+id/txtFechaAperturaRS"
+      android:layout_width="match_parent"
+      android:layout_height="48dp"
+      android:layout_marginTop="8dp"
+      android:autofillHints=""
+      android:ems="10"
+      android:hint="@string/txtFecha_apertura_expediente"
+      android:inputType="text"
+      android:maxLength="10"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.0"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/spinnerCarnet"
+      tools:ignore="TextContrastCheck" />
+
+  <EditText
+      android:id="@+id/txtFechaEmisionRS"
+      android:layout_width="match_parent"
+      android:layout_height="48dp"
+      android:layout_marginTop="8dp"
+      android:autofillHints=""
+      android:ems="10"
+      android:hint="@string/txtdescripArea"
+      android:inputType="text"
+      android:maxLength="10"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.0"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/txtFechaAperturaRS"
+      tools:ignore="TextContrastCheck" />
+
+  <EditText
+      android:id="@+id/txtObservaciones"
+      android:layout_width="match_parent"
+      android:layout_height="48dp"
+      android:layout_marginTop="8dp"
+      android:autofillHints=""
+      android:ems="10"
+      android:hint="@string/txtdescripArea"
+      android:inputType="text"
+      android:maxLength="50"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.0"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/txtFechaEmisionRS"
+      tools:ignore="TextContrastCheck" />
+
+  <Button
+      android:id="@+id/btnModificarResumen"
+      android:layout_width="match_parent"
+      android:layout_height="51dp"
+      android:layout_marginTop="8dp"
+      android:onClick="modificarResumen"
+      android:text="@string/btnModificarResumen"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.0"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/txtObservaciones" />
+
+  <Button
+      android:id="@+id/btnEliminarResumen"
+      android:layout_width="match_parent"
+      android:layout_height="51dp"
+      android:layout_marginTop="4dp"
+      android:onClick="eliminarResumen"
+      android:text="@string/btnEliminarResumen"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.0"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/btnModificarResumen" />
+</androidx.constraintlayout.widget.ConstraintLayout>

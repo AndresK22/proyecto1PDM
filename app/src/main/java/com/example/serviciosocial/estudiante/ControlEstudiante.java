@@ -52,24 +52,25 @@ public class ControlEstudiante {
         return regInsertados;
     }
     //UPDATES
-    public String actualizar(Estudiante e){
-         try{
-             String[] id = {String.valueOf(e.getCarnet())};
-             ContentValues cv = new ContentValues();
-             cv.put("carnet", e.getCarnet());
-             cv.put("nombres_estudiante", e.getNombres_estudiante());
-             cv.put("apellidos_estudiante", e.getApellidos_estudiante());
-             cv.put("email_estudiante", e.getEmail_estudiante());
-             cv.put("telefono_estudiante", e.getTelefono_estudiante());
-             cv.put("domicilio", e.getDomicilio());
-             cv.put("dui", e.getDui());
-             db.update("estudiante", cv, "carnet = ?", id);
-             return "Registro Actualizado Correctamente ";
-         }catch(SQLException ex){
-             ex.printStackTrace();
-         }
-         return null;
+    public String actualizar(Estudiante e,String[] id_p){
+        try{
+            String[] id = {String.valueOf(e.getCarnet())};
+            ContentValues cv = new ContentValues();
+            cv.put("carnet", e.getCarnet());
+            cv.put("nombres_estudiante", e.getNombres_estudiante());
+            cv.put("apellidos_estudiante", e.getApellidos_estudiante());
+            cv.put("email_estudiante", e.getEmail_estudiante());
+            cv.put("telefono_estudiante", e.getTelefono_estudiante());
+            cv.put("domicilio", e.getDomicilio());
+            cv.put("dui", e.getDui());
+            db.update("estudiante", cv, "carnet = ?", id_p);
+            return "Registro Actualizado Correctamente ";
+        }catch(SQLException ex){
+            ex.printStackTrace();
+        }
+        return null;
     }
+
     //DELETES
     public String eliminar(Estudiante estudiante){
          String regAfectados = "filas afectadas = ";

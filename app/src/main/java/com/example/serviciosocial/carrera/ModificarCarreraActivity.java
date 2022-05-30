@@ -36,13 +36,15 @@ public class ModificarCarreraActivity extends AppCompatActivity {
     }
     public void modificarCarrera(View v){
         if(verificarCamposLLenos()){
+            String i = id_carrera;
+            String[] ie = {i};
             Carrera carre = new Carrera();
-            carre.setId_carrera(id_carrera);
-            carre.setNombre_carrera(nombre_carrera);
+            carre.setId_carrera(txtIdCarrera.getText().toString());
+            carre.setNombre_carrera(txtNombreCarrera.getText().toString());
             carre.setTotal_materias(Integer.valueOf(txtTotalMaterias.getText().toString()));
 
             myBD.abrir();
-            String car = myBD.actualizar(carre);
+            String car = myBD.actualizar(carre, ie);
             myBD.cerrar();
 
             Toast.makeText(this, car, Toast.LENGTH_SHORT).show();
