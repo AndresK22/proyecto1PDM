@@ -186,4 +186,23 @@
     <string name="btnModificarResumen">Modificar</string>
     <string name="btnEliminarResumen">Eliminar</string>
     <string name="btnGuardarResumen">Guardar</string>
+
+    <!-- STRINGS DE DETALLE RESUMEN SERVICIO SOCIAL -->
+    <string name="tituloCrearDetalleResumen">Crear detalle resumen servicio social</string>
+    <string name="tituloConsultarDetalleResumen">Resumen</string>
+    <string name="cabeceraDetalle_Resumen">Resumen</string>
+    <string name="cabeceraDetalle_id_det_res">ID detalle</string>
+
+    <string name="txtId_det">Id detalle</string>
+    <string name="txtId_resumen">Id resumen</string>
+    <string name="txtFechaInicio">Fecha de inicio</string>
+    <string name="txtFechaFinal">Fecha final</string>
+    <string name="txtHorasAsignadas">Horas asignadas</string>
+    <string name="txtMontoDetalle">Monto</string>
+    <string name="txtBenefIndir">Beneficiarios indirectos</string>
+    <string name="txtBenefDir">Beneficiarios directos</string>
+    <string name="txtEstadoDet">Estado de tarea</string>
+    <string name="btnModificarDetalleRe">Modificar</string>
+    <string name="btnEliminarDetalleRe">Eliminar</string>
+    <string name="btnGuardarDetalleRe">Guardar</string>
 </resources>

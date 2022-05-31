@@ -54,10 +54,10 @@ public class CrearResumenActivity extends AppCompatActivity {
         spinerCarnet = (Spinner) findViewById(R.id.spinnerCarnetE);
         spinerDocente = (Spinner) findViewById(R.id.spinnerDui_docente);
 
-        txtId = (EditText) findViewById(R.id.txtIdResumen);
+        txtId = (EditText) findViewById(R.id.txtId_det_res);
         txtFechaApertura = (EditText) findViewById(R.id.txtFechaAperturaRS);
-        txtFechaEmision = (EditText) findViewById(R.id.txtFechaEmisionRS);
-        txtObservaciones = (EditText) findViewById(R.id.txtObservaciones);
+        txtFechaEmision = (EditText) findViewById(R.id.txtId_proyecto);
+        txtObservaciones = (EditText) findViewById(R.id.txtMonto);
         btnGuardar = (Button) findViewById(R.id.btnGuardarResumen);
 
         dui_docente = new ArrayList<>();

@@ -7,22 +7,26 @@
         <entry key="..\:/Users/Alexis/Desktop/PDMProyecto/app/src/main/res/layout/activity_consulta_bitacora.xml" value="0.1" />
         <entry key="..\:/Users/Alexis/Desktop/PDMProyecto/app/src/main/res/layout/activity_consultar_area.xml" value="0.1" />
         <entry key="..\:/Users/Alexis/Desktop/PDMProyecto/app/src/main/res/layout/activity_consultar_carrera.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Alexis/Desktop/PDMProyecto/app/src/main/res/layout/activity_consultar_detalle_resumen.xml" value="0.1675929884566054" />
         <entry key="..\:/Users/Alexis/Desktop/PDMProyecto/app/src/main/res/layout/activity_consultar_estudiante.xml" value="0.33" />
         <entry key="..\:/Users/Alexis/Desktop/PDMProyecto/app/src/main/res/layout/activity_consultar_resumen.xml" value="0.1" />
         <entry key="..\:/Users/Alexis/Desktop/PDMProyecto/app/src/main/res/layout/activity_crear_area.xml" value="0.1" />
         <entry key="..\:/Users/Alexis/Desktop/PDMProyecto/app/src/main/res/layout/activity_crear_bitacora.xml" value="0.1" />
+        <entry key="..\:/Users/Alexis/Desktop/PDMProyecto/app/src/main/res/layout/activity_crear_detalle_resumen.xml" value="0.22" />
         <entry key="..\:/Users/Alexis/Desktop/PDMProyecto/app/src/main/res/layout/activity_crear_estudiante.xml" value="0.1" />
         <entry key="..\:/Users/Alexis/Desktop/PDMProyecto/app/src/main/res/layout/activity_crear_modalidad.xml" value="0.1" />
-        <entry key="..\:/Users/Alexis/Desktop/PDMProyecto/app/src/main/res/layout/activity_crear_resumen.xml" value="0.25" />
+        <entry key="..\:/Users/Alexis/Desktop/PDMProyecto/app/src/main/res/layout/activity_crear_resumen.xml" value="0.1" />
         <entry key="..\:/Users/Alexis/Desktop/PDMProyecto/app/src/main/res/layout/activity_gestion_usuario.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Alexis/Desktop/PDMProyecto/app/src/main/res/layout/activity_modificar_area.xml" value="0.1" />
+        <entry key="..\:/Users/Alexis/Desktop/PDMProyecto/app/src/main/res/layout/activity_modificar_detalle_resumen.xml" value="0.5" />
         <entry key="..\:/Users/Alexis/Desktop/PDMProyecto/app/src/main/res/layout/activity_modificar_estudiante.xml" value="0.33" />
         <entry key="..\:/Users/Alexis/Desktop/PDMProyecto/app/src/main/res/layout/activity_modificar_resumen.xml" value="0.1" />
         <entry key="..\:/Users/Alexis/Desktop/PDMProyecto/app/src/main/res/layout/carrera_filas.xml" value="0.1" />
+        <entry key="..\:/Users/Alexis/Desktop/PDMProyecto/app/src/main/res/layout/detalleresumensocial_filas.xml" value="0.33" />
         <entry key="..\:/Users/Alexis/Desktop/PDMProyecto/app/src/main/res/layout/estudiante_filas.xml" value="0.1" />
         <entry key="..\:/Users/Alexis/Desktop/PDMProyecto/app/src/main/res/layout/filas_usuario.xml" value="0.33" />
         <entry key="..\:/Users/Alexis/Desktop/PDMProyecto/app/src/main/res/layout/item_list_layout_area.xml" value="0.20416666666666666" />
-        <entry key="..\:/Users/Alexis/Desktop/PDMProyecto/app/src/main/res/layout/resumensocial_filas.xml" value="0.33" />
+        <entry key="..\:/Users/Alexis/Desktop/PDMProyecto/app/src/main/res/layout/resumensocial_filas.xml" value="0.5" />
         <entry key="..\:/Users/andre/AndroidStudioProjects/proyecto1PDM/app/src/main/res/layout/activity_consultar_estado.xml" value="0.38697916666666665" />
         <entry key="..\:/Users/andre/AndroidStudioProjects/proyecto1PDM/app/src/main/res/layout/item_table_layout_estado.xml" value="0.38697916666666665" />
         <entry key="..\:/Users/andre/proyecto1PDM/app/src/main/res/layout/activity_consultar_estado.xml" value="0.1" />
