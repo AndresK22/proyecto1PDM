@@ -5,16 +5,14 @@
     <string name="usuario">Usuario</string>
     <string name="contraseña">Contraseña</string>
     <string name="boton_ingresar">Ingresar</string>
-    <string name="title_activity_login">LoginActivity</string>
-    <string name="prompt_email">Email</string>
-    <string name="prompt_password">Password</string>
-    <string name="action_sign_in">Sign in or register</string>
-    <string name="action_sign_in_short">Sign in</string>
-    <string name="welcome">"Welcome !"</string>
-    <string name="invalid_username">Not a valid username</string>
-    <string name="invalid_password">Password must be >5 characters</string>
-    <string name="login_failed">"Login failed"</string>
+    <string name="nombre_de_usuario">Nombre de Usuario</string>
+    <string name="rol_del_usuario">Rol del usuario:</string>
+    <string name="contrasena">Contraseña</string>
+    <string name="confirmar_contrasena">Confirmar Contraseña</string>
+    <string name="agregar_usuario">Agregar</string>
     <string name="textoCheckSesion">Guardar sesión</string>
+    <string name="actualizar_usuario_button">Actualizar</string>
+    <string name="cambiar_contrasena_button">Cambiar Contraseña</string>
     <string-array name="roles">
         <item>Administrador</item>
         <item>Docente</item>
@@ -186,6 +184,7 @@
     <string name="btnModificarResumen">Modificar</string>
     <string name="btnEliminarResumen">Eliminar</string>
     <string name="btnGuardarResumen">Guardar</string>
+    <string name="eliminar_usuari_button">Eliminar</string>
 
     <!-- STRINGS DE DETALLE RESUMEN SERVICIO SOCIAL -->
     <string name="tituloCrearDetalleResumen">Crear detalle resumen servicio social</string>
