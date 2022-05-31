@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.Menu;
@@ -26,6 +27,7 @@ import com.example.serviciosocial.login.ControlLogin;
 
 public class MainActivity extends AppCompatActivity {
 
+    SQLiteDatabase db;
     private androidx.appcompat.widget.Toolbar toolbar;
     private ListView mListView;
      private List<String> menuLista = new ArrayList<>();
@@ -213,6 +215,31 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         if (i==12){
+            db.execSQL("INSERT INTO estado (id_estado,estado) VALUES (1,'Asignado');");
+            db.execSQL("INSERT INTO estado (id_estado,estado) VALUES (2,'No asignado');");
+
+            db.execSQL("INSERT INTO carrera (id_carrera, nombre_carrera, total_materias) VALUES ('I10515', 'Sistemas informaticos', 48);");
+            db.execSQL("INSERT INTO carrera (id_carrera, nombre_carrera, total_materias) VALUES ('I10501', 'Ingenieria Civil', 47);");
+            db.execSQL("INSERT INTO carrera (id_carrera, nombre_carrera, total_materias) VALUES ('I10503', 'Ingenieria Mecanica', 48);");
+
+            db.execSQL("INSERT INTO modalidad (id_modalidad,nombre_modalidad) VALUES (1,'Presencial');");
+            db.execSQL("INSERT INTO modalidad (id_modalidad,nombre_modalidad) VALUES (2,'En linea');");
+
+            db.execSQL("INSERT INTO categoria(id_categoria,nombre_categoria) VALUES (1,'Pasantia');");
+            db.execSQL("INSERT INTO categoria(id_categoria,nombre_categoria) VALUES (2,'Desarrollo de proyecto');");
+            db.execSQL("INSERT INTO categoria(id_categoria,nombre_categoria) VALUES (3,'Soporte tecnico');");
+            db.execSQL("INSERT INTO categoria(id_categoria,nombre_categoria) VALUES (4,'Ayudantia');");
+
+            db.execSQL("INSERT INTO docente(dui_docente,nombres_docente, apellidos_docente, email_docente,telefono_docente) VALUES ('123456789-0','Jose Gustavo', 'Perez Martinez','joseperez@ues.edu.sv','2202-2425');");
+            db.execSQL("INSERT INTO docente(dui_docente,nombres_docente, apellidos_docente, email_docente,telefono_docente) VALUES ('987654321-0','Juan Francisco', 'Hernandez Martinez','juanhernandez@ues.edu.sv','2222-2425');");
+            db.execSQL("INSERT INTO docente(dui_docente,nombres_docente, apellidos_docente, email_docente,telefono_docente) VALUES ('123456789-1','Bryan Vladimir', 'Araniva Gomez','bryanaraniva@ues.edu.sv','2223-2423');");
+            db.execSQL("INSERT INTO docente(dui_docente,nombres_docente, apellidos_docente, email_docente,telefono_docente) VALUES ('123456789-2','Kevin Alexis', 'Hernandez Guevara','kevinhernandez@ues.edu.sv','2245-5425');");
+
+            db.execSQL("INSERT INTO estudiante(carnet,nombres_estudiante, apellidos_estudiante, email_estudiante,telefono_estudiante, domicilio, dui) VALUES ('aa19012','Fatima Mercedes', 'Aguilar Aguirre','aa19012@ues.edu.sv','2245-5425','casa','123789456-7');");
+            db.execSQL("INSERT INTO estudiante(carnet,nombres_estudiante, apellidos_estudiante, email_estudiante,telefono_estudiante, domicilio, dui) VALUES ('cc19114','Josue Ernesto', 'Cruz Cuellar','cc19114@ues.edu.sv','2245-4425','casa Josue','522789456-7');");
+            db.execSQL("INSERT INTO estudiante(carnet,nombres_estudiante, apellidos_estudiante, email_estudiante,telefono_estudiante, domicilio, dui) VALUES ('hg19010','Andres Oswaldo', 'Henriquez Gomez','hg19010@ues.edu.sv','2245-5325','casa Andres','743789456-7');");
+            db.execSQL("INSERT INTO estudiante(carnet,nombres_estudiante, apellidos_estudiante, email_estudiante,telefono_estudiante, domicilio, dui) VALUES ('rg19041','Jorge Eduardo', 'Romero Garcia','rg19041@ues.edu.sv','2245-5725','casa Jorge','753789456-7');");
+            
             Toast.makeText(MainActivity.this,"Llenar base",Toast.LENGTH_SHORT).show();
 
         }
