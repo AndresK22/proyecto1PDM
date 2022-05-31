@@ -57,9 +57,8 @@ public class ControlDocente {
         return regInsertados;
     }
 
-    public String actualizar(Docente docente){
+    public String actualizar(Docente docente, String[] id_p){
         try{
-            String[] id1 = {docente.getDui_docente()};
             ContentValues doc = new ContentValues();
             doc.put("dui_docente", docente.getDui_docente());
             doc.put("nombres_docente", docente.getNombres_docente());
@@ -67,7 +66,7 @@ public class ControlDocente {
             doc.put("email_docente", docente.getEmail_docente());
             doc.put("telefono_docente", docente.getTelefono_docente());
 
-            db.update("docente", doc, "dui_docente = ?", id1);
+            db.update("docente", doc, "dui_docente = ?", id_p);
 
             return "Docente actualizado correctamente";
         }catch (SQLException e){

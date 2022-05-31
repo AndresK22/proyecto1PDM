@@ -42,11 +42,15 @@ public class ConsultarEstadoActivity extends AppCompatActivity {
             }
         });
 
-        consultarEstado();
+        if(consultarEstado()){
+            estadoAdaptador = new com.example.serviciosocial.estado.EstadoAdaptador(ConsultarEstadoActivity.this,this,id_estado,estado);
+            recyclerViewEstado.setAdapter(estadoAdaptador);
+            recyclerViewEstado.setLayoutManager(new LinearLayoutManager(ConsultarEstadoActivity.this));
+        }
 
-        estadoAdaptador = new com.example.serviciosocial.estado.EstadoAdaptador(ConsultarEstadoActivity.this,this,id_estado,estado);
+        /*estadoAdaptador = new com.example.serviciosocial.estado.EstadoAdaptador(ConsultarEstadoActivity.this,this,id_estado,estado);
         recyclerViewEstado.setAdapter(estadoAdaptador);
-        recyclerViewEstado.setLayoutManager(new LinearLayoutManager(ConsultarEstadoActivity.this));
+        recyclerViewEstado.setLayoutManager(new LinearLayoutManager(ConsultarEstadoActivity.this));*/
 
     }
 
@@ -59,18 +63,24 @@ public class ConsultarEstadoActivity extends AppCompatActivity {
     }
 
 
-    public void consultarEstado(){
+    public boolean consultarEstado(){
         helper.abrir();
         ArrayList<Estado> registros = helper.consultarEstados();
         helper.cerrar();
 
         Estado estad;
-        Iterator<Estado> it = registros.iterator();
-        while(it.hasNext()) {
-            estad = it.next();
+        if (registros == null){
+            return false;
+        }else {
+            Iterator<Estado> it = registros.iterator();
+            while(it.hasNext()) {
+                estad = it.next();
 
-            id_estado.add(String.valueOf(estad.getId_estado()));
-            estado.add(estad.getEstado());
+                id_estado.add(String.valueOf(estad.getId_estado()));
+                estado.add(estad.getEstado());
+            }
+            return true;
         }
+
     }
 }

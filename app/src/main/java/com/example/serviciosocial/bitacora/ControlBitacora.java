@@ -59,18 +59,17 @@ public class ControlBitacora {
     }
 
 
-    public String actualizar(Bitacora bitacora){
+    public String actualizar(Bitacora bitacora,String[] id_p){
         try{
-            String[] id = {String.valueOf(bitacora.getId_bitacora())};
-
             ContentValues bi = new ContentValues();
+            bi.put("id_bitacora",bitacora.getId_bitacora());
             bi.put("id_proyecto", bitacora.getId_proyecto());
             bi.put("carnet", bitacora.getCarnet());
             bi.put("mes", bitacora.getMes());
             bi.put("total_horas_realizadas", bitacora.getTotal_horas_realizadas());
 
 
-            db.update("bitacora", bi, "id_bitacora = ?", id);
+            db.update("bitacora", bi, "id_bitacora = ?", id_p);
 
             return "Bitacora Actualizada correctamente";
         }catch (SQLException e){

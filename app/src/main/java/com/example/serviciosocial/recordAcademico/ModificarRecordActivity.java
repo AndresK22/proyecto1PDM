@@ -55,7 +55,7 @@ public class ModificarRecordActivity extends AppCompatActivity {
         txtProgreso.setText(extraProgreso);
         txtPromedio.setText(extraPromedio);
 
-        String[] idArea = {"mat115"}; //Dentro de corchetes iria extraIdArea
+        String[] idArea = {extraIdArea}; //Dentro de corchetes iria extraIdArea
         //Aqui se va a pedir el area
         helper2.abrir();
         AreaCarrera area = helper2.consultarArea(idArea); //Metodo que busque el area por id

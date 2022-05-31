@@ -123,4 +123,45 @@ public class ControladorServicioEstudiante {
         return gv;
     }
 
+    public static int eliminarEstudiante(String peticion, Context ctx) {
+        String json = obtenerRespuestaPeticion(peticion, ctx);
+        int gv=0;
+        try {
+            JSONObject resultado = new JSONObject(json);
+            int respuesta = resultado.getInt("resultado");
+            if (respuesta == 1){
+                Toast.makeText(ctx, "Registro eliminado de la web", Toast.LENGTH_LONG).show();
+                gv=respuesta;
+            }
+            else{
+                Toast.makeText(ctx, "Error el registro no existe, no puede ser eliminado", Toast.LENGTH_LONG).show();
+            }
+        } catch (JSONException e) {
+            Toast.makeText(ctx, "Error el registro no existe, no puede ser eliminado", Toast.LENGTH_LONG).show();
+            e.printStackTrace();
+        }
+        return gv;
+    }
+
+    public static int eliminarEstudianteAll(String peticion, Context ctx) {
+        String json = obtenerRespuestaPeticion(peticion, ctx);
+        int gv=0;
+        try {
+            JSONObject resultado = new JSONObject(json);
+            int respuesta = resultado.getInt("resultado");
+            if (respuesta == 1){
+                Toast.makeText(ctx, "Registro eliminado de la web", Toast.LENGTH_LONG).show();
+                gv=respuesta;
+            }
+            else{
+                Toast.makeText(ctx, "Error registro duplicado", Toast.LENGTH_LONG).show();
+            }
+        } catch (JSONException e) {
+            Toast.makeText(ctx, "Error registro duplicado", Toast.LENGTH_LONG).show();
+            e.printStackTrace();
+        }
+        return gv;
+    }
+
+
 }

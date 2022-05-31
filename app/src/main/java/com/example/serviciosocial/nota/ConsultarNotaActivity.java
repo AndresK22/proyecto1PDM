@@ -13,8 +13,9 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.serviciosocial.R;
-import com.example.serviciosocial.areaCarrera.AreaCarrera;
-import com.example.serviciosocial.areaCarrera.ControlAreaCarrera;
+import com.example.serviciosocial.carrera.Carrera;
+import com.example.serviciosocial.carrera.ControlCarrera;
+import com.example.serviciosocial.materia.Materia;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
@@ -25,8 +26,9 @@ public class ConsultarNotaActivity extends AppCompatActivity {
     RecyclerView recyclerViewRecord;
     FloatingActionButton add_button;
     ControlNota helper;
-    ControlAreaCarrera helper2;
+    ControlCarrera helper2;
     ArrayList<String> cod_materia, carnet, calificacion;
+    ArrayList<String> vacio;
     ArrayList<String> id_carrera, descrip_carrera;
     Spinner spinerCarrera;
 
@@ -41,10 +43,11 @@ public class ConsultarNotaActivity extends AppCompatActivity {
         setContentView(R.layout.activity_consultar_nota);
 
         helper = new ControlNota(this);
-        helper2 = new ControlAreaCarrera(this);
+        helper2 = new ControlCarrera(this);
         cod_materia = new ArrayList<>();
         carnet = new ArrayList<>();
         calificacion = new ArrayList<>();
+        vacio = new ArrayList<>();
 
         recyclerViewRecord = findViewById(R.id.recyclerViewNota);
         add_button = findViewById(R.id.add_button);
@@ -63,35 +66,23 @@ public class ConsultarNotaActivity extends AppCompatActivity {
         descrip_carrera = new ArrayList<>();
         descrip_carrera.add("Seleccione una carrera");
 
-
         //Aqui se va a pedir las carreras
-        /*helper.abrir();
-        ArrayList<Materia> itemsSpinner = helper2.consultarMateria(); //Metodo que consulta las carreras
-        helper.cerrar();
-
-        Materia carr;
-        Iterator<Materia> it = itemsSpinner.iterator();
-        while(it.hasNext()) {
-            carr = it.next();
-
-            id_carrera.add(String.valueOf(carr.getId_area())); //getId_carrera
-            descrip_carrera.add(carr.getNombre_materia()); //getNombre_carrera
-        }*/
-        //fin de lo de las carreras
-
-        //Aqui se va a pedir el area
         helper2.abrir();
-        ArrayList<AreaCarrera> itemsSpinner = helper2.consultarArea();
+        ArrayList<Carrera> itemsSpinner = helper2.consultarCarrera();
         helper2.cerrar();
 
-        AreaCarrera are;
-        Iterator<AreaCarrera> it = itemsSpinner.iterator();
-        while(it.hasNext()) {
-            are = it.next();
-            id_carrera.add(String.valueOf(are.getId_area()));
-            descrip_carrera.add(are.getDescrip_area());
+        Carrera carr;
+        if (itemsSpinner == null){
+
+        } else{
+            Iterator<Carrera> it = itemsSpinner.iterator();
+            while(it.hasNext()) {
+                carr = it.next();
+                id_carrera.add(String.valueOf(carr.getId_carrera()));
+                descrip_carrera.add(carr.getNombre_carrera());
+            }
         }
-        //fin de lo del area
+        //fin de lo de las carreras
 
 
         ArrayAdapter<CharSequence> adaptador = new ArrayAdapter(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, descrip_carrera);
@@ -105,7 +96,15 @@ public class ConsultarNotaActivity extends AppCompatActivity {
                     idCarr = id_carrera.get(i - 1); //Guarda el id del area seleccionada en la variable global, para usarla en el SELECT
 
                     //Consultariamos los records en base a la carrera
+                    cod_materia.clear();
+                    carnet.clear();
+                    calificacion.clear();
 
+                    if(consultarNota()){
+                        notaAdaptador = new com.example.serviciosocial.nota.NotaAdaptador(ConsultarNotaActivity.this,ConsultarNotaActivity.this, cod_materia, carnet, calificacion);
+                        recyclerViewRecord.setAdapter(notaAdaptador);
+                        recyclerViewRecord.setLayoutManager(new LinearLayoutManager(ConsultarNotaActivity.this));
+                    }
                 } else {
                     Toast.makeText(ConsultarNotaActivity.this, "Debe seleccionar una carrera", Toast.LENGTH_LONG).show();
                 }
@@ -116,28 +115,33 @@ public class ConsultarNotaActivity extends AppCompatActivity {
             }
         });
 
-
-
-        consultarRecord();
+        /*consultarNota();
 
         notaAdaptador = new com.example.serviciosocial.nota.NotaAdaptador(ConsultarNotaActivity.this,this, cod_materia, carnet, calificacion);
         recyclerViewRecord.setAdapter(notaAdaptador);
-        recyclerViewRecord.setLayoutManager(new LinearLayoutManager(ConsultarNotaActivity.this));
+        recyclerViewRecord.setLayoutManager(new LinearLayoutManager(ConsultarNotaActivity.this));*/
     }
 
-    public void consultarRecord(){
+    public boolean consultarNota(){
+        String[] id =  {idCarr};
         helper.abrir();
-        ArrayList<Nota> registros = helper.consultarNotas(); //consultarRecordsPorCarrera(idCarrera)
+        ArrayList<Nota> registros = helper.consultarNotasPorCarrera(id); //consultarNotasPorCarrera(id)
         helper.cerrar();
 
         Nota not;
-        Iterator<Nota> it = registros.iterator();
-        while(it.hasNext()) {
-            not = it.next();
+        if (registros == null){
+            return false;
+        }else {
+            Iterator<Nota> it = registros.iterator();
+            while(it.hasNext()) {
+                not = it.next();
 
-            cod_materia.add(String.valueOf(not.getCod_materia()));
-            carnet.add(not.getCarnet());
-            calificacion.add(String.valueOf(not.getCalificacion()));
+                cod_materia.add(String.valueOf(not.getCod_materia()));
+                carnet.add(not.getCarnet());
+                calificacion.add(String.valueOf(not.getCalificacion()));
+            }
+            return true;
         }
+
     }
 }

@@ -20,6 +20,10 @@
             android:exported="false" />
         <activity
             android:name=".detalleResumenSocial.CrearDetalleResumenActivity"
+            android:name=".estudianteWS.EliminarEstudianteActivityWS"
+            android:exported="false" />
+        <activity
+            android:name=".docenteWS.EliminarDocenteActivityWS"
             android:exported="false" />
         <activity
             android:name=".resumensocial.CrearResumenActivity"

@@ -161,14 +161,16 @@ public class ModificarBitacoraActivity extends AppCompatActivity {
     public void modificarBitacora(View v) {
         if (verificarCamposLlenos(camp)) {
             Bitacora bitacora = new Bitacora();
-            bitacora.setId_bitacora(Long.parseLong(extraID));
+            String x = extraID;
+            String[] ex={x};
+            bitacora.setId_bitacora(Long.parseLong(txtID.getText().toString()));
             bitacora.setId_proyecto(Long.parseLong(id_p));
             bitacora.setCarnet(id_c);
             bitacora.setMes(txtMes.getText().toString());
             bitacora.setTotal_horas_realizadas(Float.parseFloat(txtTotal.getText().toString()));
 
             helper.abrir();
-            String mater = helper.actualizar(bitacora);
+            String mater = helper.actualizar(bitacora,ex);
             helper.cerrar();
 
             Toast.makeText(this, mater, Toast.LENGTH_SHORT).show();
