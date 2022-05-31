@@ -212,6 +212,10 @@ public class MainActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
         }
+        if (i==12){
+            Toast.makeText(MainActivity.this,"Llenar base",Toast.LENGTH_SHORT).show();
+
+        }
     }
     private void setMenuDocente(int i) {
         if (i==0){
@@ -318,6 +322,7 @@ public class MainActivity extends AppCompatActivity {
         if(this.preferences.getString("rol","").equals("Administrador")){
             menuLista.add("WS Docente");
             menuLista.add("WS Estudiante");
+            menuLista.add("Llenar base");
         }
     }
 
