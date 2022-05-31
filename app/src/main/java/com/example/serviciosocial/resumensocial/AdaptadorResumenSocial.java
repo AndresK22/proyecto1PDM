@@ -14,9 +14,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.serviciosocial.R;
-import com.example.serviciosocial.areaCarrera.AreaAdaptadorActivity;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -76,12 +73,12 @@ public class AdaptadorResumenSocial extends RecyclerView.Adapter<AdaptadorResume
 
         public MyViewHolder(@NonNull View itemView){
             super(itemView);
-            id_resumen = itemView.findViewById(R.id.txtIdResumen);
-            dui_docente = itemView.findViewById(R.id.txtDui_docenteRS);
-            carnet = itemView.findViewById(R.id.txtCarnet_resumen);
+            id_resumen = itemView.findViewById(R.id.txtId_det_res);
+            dui_docente = itemView.findViewById(R.id.txtId_resumen);
+            carnet = itemView.findViewById(R.id.txtHoras_asignadas);
             fecha_apertura = itemView.findViewById(R.id.txtFechaApertura);
-            fecha_emision = itemView.findViewById(R.id.txtFechaEmisionRS);
-            observaciones = itemView.findViewById(R.id.txtObservaciones);
+            fecha_emision = itemView.findViewById(R.id.txtId_proyecto);
+            observaciones = itemView.findViewById(R.id.txtMonto);
             itemsResumen = itemView.findViewById(R.id.LayoutResumenSocial);
         }
     }

@@ -22,7 +22,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/txtIdResumen"
+        android:id="@+id/txtId_det_res"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_marginTop="8dp"
@@ -44,7 +44,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtIdResumen"
+        app:layout_constraintTop_toBottomOf="@+id/txtId_det_res"
         tools:ignore="SpeakableTextPresentCheck" />
 
     <Spinner
@@ -75,7 +75,7 @@
         tools:ignore="TextContrastCheck" />
 
     <EditText
-        android:id="@+id/txtFechaEmisionRS"
+        android:id="@+id/txtId_proyecto"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_marginTop="8dp"
@@ -91,7 +91,7 @@
         tools:ignore="TextContrastCheck" />
 
     <EditText
-        android:id="@+id/txtObservaciones"
+        android:id="@+id/txtMonto"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_marginTop="8dp"
@@ -103,7 +103,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtFechaEmisionRS"
+        app:layout_constraintTop_toBottomOf="@+id/txtId_proyecto"
         tools:ignore="TextContrastCheck" />
 
     <Button
@@ -115,6 +115,6 @@
         android:text="@string/btnGuardarArea"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtObservaciones" />
+        app:layout_constraintTop_toBottomOf="@+id/txtMonto" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

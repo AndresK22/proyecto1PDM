@@ -14,15 +14,11 @@ import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.serviciosocial.R;
-import com.example.serviciosocial.areaCarrera.AreaCarrera;
-import com.example.serviciosocial.areaCarrera.ConsultarAreaActivity;
-import com.example.serviciosocial.areaCarrera.ModificarAreaActivity;
 import com.example.serviciosocial.docente.ControlDocente;
 import com.example.serviciosocial.docente.Docente;
 import com.example.serviciosocial.estudiante.ControlEstudiante;
 import com.example.serviciosocial.estudiante.Estudiante;
 
-import java.sql.Array;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -54,10 +50,10 @@ public class ModificarResumenActivity extends AppCompatActivity {
         spinnerCarnet = (Spinner) findViewById(R.id.spinnerCarnetE);
         spinnerDuiDocente = (Spinner) findViewById(R.id.spinnerDui_docente);
 
-        txtId = (EditText) findViewById(R.id.txtIdResumen);
+        txtId = (EditText) findViewById(R.id.txtId_det_res);
         txtFechaAE = (EditText) findViewById(R.id.txtFechaAperturaRS);
-        txtFechaEC = (EditText) findViewById(R.id.txtFechaEmisionRS);
-        txtObservaciones = (EditText) findViewById(R.id.txtObservaciones);
+        txtFechaEC = (EditText) findViewById(R.id.txtId_proyecto);
+        txtObservaciones = (EditText) findViewById(R.id.txtMonto);
 
         extraID = getIntent().getExtras().getString("id_resumen");
         extraD = getIntent().getExtras().getString("dui_docente");
