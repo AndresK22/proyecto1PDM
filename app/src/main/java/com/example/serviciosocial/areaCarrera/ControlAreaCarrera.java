@@ -68,13 +68,13 @@ public class ControlAreaCarrera {
         return cursor;
     }
 
-    public String actualizar(AreaCarrera areaCarrera){
+    public String actualizar(AreaCarrera areaCarrera,String[] id_p){
         try{
-            String[] id = {areaCarrera.getId_area()};
             ContentValues a = new ContentValues();
+            a.put("id_area",areaCarrera.getId_area());
             a.put("id_carrera", areaCarrera.getId_carrera());
             a.put("descrip_area", areaCarrera.getDescrip_area());
-            db.update("area_carrera", a, "id_area = ?", id);
+            db.update("area_carrera", a, "id_area = ?", id_p);
 
             return "Area Actualizada correctamente";
         }catch (SQLException e){
