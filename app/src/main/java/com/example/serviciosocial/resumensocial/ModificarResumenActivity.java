@@ -47,7 +47,7 @@ public class ModificarResumenActivity extends AppCompatActivity {
         helper = new ControlResumenSocial(this);
         helperD = new ControlDocente(this);
         helperE = new ControlEstudiante(this);
-        spinnerCarnet = (Spinner) findViewById(R.id.spinnerCarnetE);
+        spinnerCarnet = (Spinner) findViewById(R.id.spinnerCarnet);
         spinnerDuiDocente = (Spinner) findViewById(R.id.spinnerDui_docente);
 
         txtId = (EditText) findViewById(R.id.txtId_det_res);
