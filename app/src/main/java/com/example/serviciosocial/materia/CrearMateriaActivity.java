@@ -56,11 +56,15 @@ public class CrearMateriaActivity extends AppCompatActivity {
         helper2.cerrar();
 
         AreaCarrera are;
-        Iterator<AreaCarrera> it = itemsSpinner.iterator();
-        while(it.hasNext()) {
-            are = it.next();
-            id_area.add(String.valueOf(are.getId_area()));
-            descrip_area.add(are.getDescrip_area());
+        if (itemsSpinner == null){
+
+        }else {
+            Iterator<AreaCarrera> it = itemsSpinner.iterator();
+            while(it.hasNext()) {
+                are = it.next();
+                id_area.add(String.valueOf(are.getId_area()));
+                descrip_area.add(are.getDescrip_area());
+            }
         }
         //fin de lo del area
 

@@ -10,6 +10,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.serviciosocial.R;
 
+import com.example.serviciosocial.estado.ConsultarEstadoActivity;
+import com.example.serviciosocial.estado.Estado;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
@@ -44,28 +46,37 @@ public class ConsultarMateriaActivity extends AppCompatActivity {
             }
         });
 
-        consultarMateria();
+        if(consultarMateria()){
+            materiaAdaptador = new com.example.serviciosocial.materia.MateriaAdaptador(ConsultarMateriaActivity.this,this, cod_materia, id_area, nombre_materia);
+            recyclerViewMateria.setAdapter(materiaAdaptador);
+            recyclerViewMateria.setLayoutManager(new LinearLayoutManager(ConsultarMateriaActivity.this));
+        }
 
-        materiaAdaptador = new com.example.serviciosocial.materia.MateriaAdaptador(ConsultarMateriaActivity.this,this, cod_materia, id_area, nombre_materia);
+        /*materiaAdaptador = new com.example.serviciosocial.materia.MateriaAdaptador(ConsultarMateriaActivity.this,this, cod_materia, id_area, nombre_materia);
         recyclerViewMateria.setAdapter(materiaAdaptador);
-        recyclerViewMateria.setLayoutManager(new LinearLayoutManager(ConsultarMateriaActivity.this));
+        recyclerViewMateria.setLayoutManager(new LinearLayoutManager(ConsultarMateriaActivity.this));*/
 
     }
 
-
-    public void consultarMateria(){
+    public boolean consultarMateria(){
         helper.abrir();
         ArrayList<Materia> registros = helper.consultarMateria();
         helper.cerrar();
 
         Materia mater;
-        Iterator<Materia> it = registros.iterator();
-        while(it.hasNext()) {
-            mater = it.next();
+        if (registros == null){
+            return false;
+        }else {
+            Iterator<Materia> it = registros.iterator();
+            while(it.hasNext()) {
+                mater = it.next();
 
-            cod_materia.add(String.valueOf(mater.getCod_materia()));
-            id_area.add(mater.getId_area());
-            nombre_materia.add(mater.getNombre_materia());
+                cod_materia.add(String.valueOf(mater.getCod_materia()));
+                id_area.add(mater.getId_area());
+                nombre_materia.add(mater.getNombre_materia());
+            }
+            return true;
         }
+
     }
 }

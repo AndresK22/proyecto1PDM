@@ -116,7 +116,7 @@ public class MainActivity extends AppCompatActivity {
         if (i==3){
             //Toast.makeText(MainActivity.this,"Posicion "+i,Toast.LENGTH_SHORT).show();
             try{
-                Class<?> clase=Class.forName("com.example.serviciosocial.login.GestionUsuarioActivity");
+                Class<?> clase=Class.forName("com.example.serviciosocial.materia.ConsultarMateriaActivity");
                 Intent intent = new Intent(MainActivity.this,clase);
                 MainActivity.this.startActivity(intent);
             }catch(ClassNotFoundException e){
@@ -175,7 +175,7 @@ public class MainActivity extends AppCompatActivity {
         if (i==8){
             //Toast.makeText(MainActivity.this,"Posicion "+i,Toast.LENGTH_SHORT).show();
             try{
-                Class<?> clase=Class.forName("com.example.serviciosocial.login.GestionUsuarioActivity");
+                Class<?> clase=Class.forName("com.example.serviciosocial.estado.ConsultarEstadoActivity");
                 Intent intent = new Intent(MainActivity.this,clase);
                 MainActivity.this.startActivity(intent);
             }catch(ClassNotFoundException e){
@@ -185,7 +185,7 @@ public class MainActivity extends AppCompatActivity {
         if (i==9){
             //Toast.makeText(MainActivity.this,"Posicion "+i,Toast.LENGTH_SHORT).show();
             try{
-                Class<?> clase=Class.forName("com.example.serviciosocial.login.GestionUsuarioActivity");
+                Class<?> clase=Class.forName("com.example.serviciosocial.nota.ConsultarNotaActivity");
                 Intent intent = new Intent(MainActivity.this,clase);
                 MainActivity.this.startActivity(intent);
             }catch(ClassNotFoundException e){
@@ -227,7 +227,7 @@ public class MainActivity extends AppCompatActivity {
         if (i==2){
             //Toast.makeText(MainActivity.this,"Posicion "+i,Toast.LENGTH_SHORT).show();
             try{
-                Class<?> clase=Class.forName("com.example.serviciosocial.login.GestionUsuarioActivity");
+                Class<?> clase=Class.forName("com.example.serviciosocial.recordAcademico.ConsultarRecordActivity");
                 Intent intent = new Intent(MainActivity.this,clase);
                 MainActivity.this.startActivity(intent);
             }catch(ClassNotFoundException e){
