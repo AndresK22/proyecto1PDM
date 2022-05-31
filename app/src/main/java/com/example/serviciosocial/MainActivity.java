@@ -238,19 +238,69 @@ public class MainActivity extends AppCompatActivity {
                 db.execSQL("INSERT INTO categoria(id_categoria,nombre_categoria) VALUES (3,'Soporte tecnico');");
                 db.execSQL("INSERT INTO categoria(id_categoria,nombre_categoria) VALUES (4,'Ayudantia');");
 
-                db.execSQL("INSERT INTO docente(dui_docente,nombres_docente, apellidos_docente, email_docente,telefono_docente) VALUES ('123456789-0','Jose Gustavo', 'Perez Martinez','joseperez@ues.edu.sv','2202-2425');");
-                db.execSQL("INSERT INTO docente(dui_docente,nombres_docente, apellidos_docente, email_docente,telefono_docente) VALUES ('987654321-0','Juan Francisco', 'Hernandez Martinez','juanhernandez@ues.edu.sv','2222-2425');");
-                db.execSQL("INSERT INTO docente(dui_docente,nombres_docente, apellidos_docente, email_docente,telefono_docente) VALUES ('123456789-1','Bryan Vladimir', 'Araniva Gomez','bryanaraniva@ues.edu.sv','2223-2423');");
-                db.execSQL("INSERT INTO docente(dui_docente,nombres_docente, apellidos_docente, email_docente,telefono_docente) VALUES ('123456789-2','Kevin Alexis', 'Hernandez Guevara','kevinhernandez@ues.edu.sv','2245-5425');");
+                db.execSQL("INSERT INTO docente(dui_docente,nombres_docente, apellidos_docente, email_docente,telefono_docente) VALUES ('1234567890','Jose Gustavo', 'Perez Martinez','joseperez@ues.edu.sv','2202-2425');");
+                db.execSQL("INSERT INTO docente(dui_docente,nombres_docente, apellidos_docente, email_docente,telefono_docente) VALUES ('9876543210','Juan Francisco', 'Hernandez Martinez','juanhernandez@ues.edu.sv','2222-2425');");
+                db.execSQL("INSERT INTO docente(dui_docente,nombres_docente, apellidos_docente, email_docente,telefono_docente) VALUES ('1234567891','Bryan Vladimir', 'Araniva Gomez','bryanaraniva@ues.edu.sv','2223-2423');");
+                db.execSQL("INSERT INTO docente(dui_docente,nombres_docente, apellidos_docente, email_docente,telefono_docente) VALUES ('1234567892','Kevin Alexis', 'Hernandez Guevara','kevinhernandez@ues.edu.sv','2245-5425');");
 
-                db.execSQL("INSERT INTO estudiante(carnet,nombres_estudiante, apellidos_estudiante, email_estudiante,telefono_estudiante, domicilio, dui) VALUES ('aa19012','Fatima Mercedes', 'Aguilar Aguirre','aa19012@ues.edu.sv','2245-5425','casa','123789456-7');");
-                db.execSQL("INSERT INTO estudiante(carnet,nombres_estudiante, apellidos_estudiante, email_estudiante,telefono_estudiante, domicilio, dui) VALUES ('cc19114','Josue Ernesto', 'Cruz Cuellar','cc19114@ues.edu.sv','2245-4425','casa Josue','522789456-7');");
-                db.execSQL("INSERT INTO estudiante(carnet,nombres_estudiante, apellidos_estudiante, email_estudiante,telefono_estudiante, domicilio, dui) VALUES ('hg19010','Andres Oswaldo', 'Henriquez Gomez','hg19010@ues.edu.sv','2245-5325','casa Andres','743789456-7');");
-                db.execSQL("INSERT INTO estudiante(carnet,nombres_estudiante, apellidos_estudiante, email_estudiante,telefono_estudiante, domicilio, dui) VALUES ('rg19041','Jorge Eduardo', 'Romero Garcia','rg19041@ues.edu.sv','2245-5725','casa Jorge','753789456-7');");
+                db.execSQL("INSERT INTO estudiante(carnet,nombres_estudiante, apellidos_estudiante, email_estudiante,telefono_estudiante, domicilio, dui) VALUES ('aa19012','Fatima Mercedes', 'Aguilar Aguirre','aa19012@ues.edu.sv','2245-5425','casa','1237894567');");
+                db.execSQL("INSERT INTO estudiante(carnet,nombres_estudiante, apellidos_estudiante, email_estudiante,telefono_estudiante, domicilio, dui) VALUES ('cc19114','Josue Ernesto', 'Cruz Cuellar','cc19114@ues.edu.sv','2245-4425','casa Josue','5227894567');");
+                db.execSQL("INSERT INTO estudiante(carnet,nombres_estudiante, apellidos_estudiante, email_estudiante,telefono_estudiante, domicilio, dui) VALUES ('hg19010','Andres Oswaldo', 'Henriquez Gomez','hg19010@ues.edu.sv','2245-5325','casa Andres','7437894567');");
+                db.execSQL("INSERT INTO estudiante(carnet,nombres_estudiante, apellidos_estudiante, email_estudiante,telefono_estudiante, domicilio, dui) VALUES ('rg19041','Jorge Eduardo', 'Romero Garcia','rg19041@ues.edu.sv','2245-5725','casa Jorge','7537894567');");
+
+
+                //LLenado de tablas hijas
+                db.execSQL("INSERT INTO area_carrera (id_area, id_carrera, descrip_area) VALUES ('01', 'I10515', 'Programación');");
+                db.execSQL("INSERT INTO area_carrera (id_area, id_carrera, descrip_area) VALUES ('02', 'I10515', 'Datos');");
+                db.execSQL("INSERT INTO area_carrera (id_area, id_carrera, descrip_area) VALUES ('03', 'I10515', 'Administración');");
+                db.execSQL("INSERT INTO area_carrera (id_area, id_carrera, descrip_area) VALUES ('04', 'I10501', 'Construccion');");
+                db.execSQL("INSERT INTO area_carrera (id_area, id_carrera, descrip_area) VALUES ('05', 'I10501', 'Diseno');");
+                db.execSQL("INSERT INTO area_carrera (id_area, id_carrera, descrip_area) VALUES ('06', 'I10501', 'Mapas');");
+                db.execSQL("INSERT INTO area_carrera (id_area, id_carrera, descrip_area) VALUES ('07', 'I10503', 'Torno');");
+                db.execSQL("INSERT INTO area_carrera (id_area, id_carrera, descrip_area) VALUES ('08', 'I10503', 'Fresadora');");
+                db.execSQL("INSERT INTO area_carrera (id_area, id_carrera, descrip_area) VALUES ('09', 'I10503', 'Herramientas');");
+
+
+                db.execSQL("INSERT INTO materia (cod_materia, id_area, nombre_materia) VALUES ('iai115', '01', 'Introduccion');");
+                db.execSQL("INSERT INTO materia (cod_materia, id_area, nombre_materia) VALUES ('prn115', '01', 'Programacion i');");
+                db.execSQL("INSERT INTO materia (cod_materia, id_area, nombre_materia) VALUES ('prn215', '01', 'Programacion ii');");
+
+                db.execSQL("INSERT INTO materia (cod_materia, id_area, nombre_materia) VALUES ('esd115', '02', 'Estructuras');");
+                db.execSQL("INSERT INTO materia (cod_materia, id_area, nombre_materia) VALUES ('hdp115', '02', 'Herramientas');");
+                db.execSQL("INSERT INTO materia (cod_materia, id_area, nombre_materia) VALUES ('arc115', '02', 'Arquitectura');");
+
+                db.execSQL("INSERT INTO materia (cod_materia, id_area, nombre_materia) VALUES ('msm115', '03', 'Manejo');");
+                db.execSQL("INSERT INTO materia (cod_materia, id_area, nombre_materia) VALUES ('fde115', '03', 'Fundamentos');");
+                db.execSQL("INSERT INTO materia (cod_materia, id_area, nombre_materia) VALUES ('mop115', '03', 'Metodos');");
+
+                db.execSQL("INSERT INTO materia (cod_materia, id_area, nombre_materia) VALUES ('cgr115', '04', 'Comunicacion i');");
+                db.execSQL("INSERT INTO materia (cod_materia, id_area, nombre_materia) VALUES ('cgr215', '04', 'Comunicacion ii');");
+                db.execSQL("INSERT INTO materia (cod_materia, id_area, nombre_materia) VALUES ('mso115', '04', 'Solidos i');");
+
+                db.execSQL("INSERT INTO materia (cod_materia, id_area, nombre_materia) VALUES ('mso215', '05', 'Solidos ii');");
+                db.execSQL("INSERT INTO materia (cod_materia, id_area, nombre_materia) VALUES ('gea115', '05', 'Geologia i');");
+                db.execSQL("INSERT INTO materia (cod_materia, id_area, nombre_materia) VALUES ('mso315', '05', 'Solidos iii');");
+
+                db.execSQL("INSERT INTO materia (cod_materia, id_area, nombre_materia) VALUES ('top115', '06', 'Topografia');");
+                db.execSQL("INSERT INTO materia (cod_materia, id_area, nombre_materia) VALUES ('inm115', '06', 'Materiales');");
+                db.execSQL("INSERT INTO materia (cod_materia, id_area, nombre_materia) VALUES ('mce115', '06', 'Estructural');");
+
+                db.execSQL("INSERT INTO materia (cod_materia, id_area, nombre_materia) VALUES ('dit115', '07', 'Dibujo tecnico');");
+                db.execSQL("INSERT INTO materia (cod_materia, id_area, nombre_materia) VALUES ('ter115', '07', 'Termodinamica i');");
+                db.execSQL("INSERT INTO materia (cod_materia, id_area, nombre_materia) VALUES ('ace115', '07', 'Circuitos');");
+
+                db.execSQL("INSERT INTO materia (cod_materia, id_area, nombre_materia) VALUES ('ter215', '08', 'Termodinamica ii');");
+                db.execSQL("INSERT INTO materia (cod_materia, id_area, nombre_materia) VALUES ('dem115', '08', 'Maquinas i');");
+                db.execSQL("INSERT INTO materia (cod_materia, id_area, nombre_materia) VALUES ('pdf115', '08', 'Fabricacion');");
+
+                db.execSQL("INSERT INTO materia (cod_materia, id_area, nombre_materia) VALUES ('tfc115', '09', 'Transferencia');");
+                db.execSQL("INSERT INTO materia (cod_materia, id_area, nombre_materia) VALUES ('mid115', '09', 'Hidraulicas');");
+                db.execSQL("INSERT INTO materia (cod_materia, id_area, nombre_materia) VALUES ('dem215', '09', 'Maquinas ii');");
+
 
                 db.close();
 
-                Toast.makeText(MainActivity.this,"Llenar base",Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this,"Base llenada",Toast.LENGTH_SHORT).show();
             } catch (SQLException e){
                 e.printStackTrace();
             }
