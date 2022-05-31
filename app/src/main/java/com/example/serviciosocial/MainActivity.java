@@ -195,7 +195,17 @@ public class MainActivity extends AppCompatActivity {
         if (i==10){
             //Toast.makeText(MainActivity.this,"Posicion "+i,Toast.LENGTH_SHORT).show();
             try{
-                Class<?> clase=Class.forName("com.example.serviciosocial.login.GestionUsuarioActivity");
+                Class<?> clase=Class.forName("com.example.serviciosocial.docenteWS.ConsultarDocenteActivityWS");
+                Intent intent = new Intent(MainActivity.this,clase);
+                MainActivity.this.startActivity(intent);
+            }catch(ClassNotFoundException e){
+                e.printStackTrace();
+            }
+        }
+        if (i==11){
+            //Toast.makeText(MainActivity.this,"Posicion "+i,Toast.LENGTH_SHORT).show();
+            try{
+                Class<?> clase=Class.forName("com.example.serviciosocial.estudianteWS.ConsultarEstudianteActivityWS");
                 Intent intent = new Intent(MainActivity.this,clase);
                 MainActivity.this.startActivity(intent);
             }catch(ClassNotFoundException e){

@@ -24,7 +24,7 @@ public class ConsultarEstudianteActivityWS extends AppCompatActivity {
     static List<String> nombreEstudiante;
     EditText txtCarnet;
     ListView listViewEsudiante;
-    FloatingActionButton add_button;
+    FloatingActionButton add_button, add_de;
 
     private final String urlHostingGratuito = "https://cc19114pdm115.000webhostapp.com//consultar_estudiante.php";
     private final String urlHostingGratuito2 = "https://cc19114pdm115.000webhostapp.com//consultar_estudiante_all.php";
@@ -41,7 +41,7 @@ public class ConsultarEstudianteActivityWS extends AppCompatActivity {
         txtCarnet = (EditText) findViewById(R.id.buscarCarnet);
         listViewEsudiante = (ListView) findViewById(R.id.listView2);
         add_button = findViewById(R.id.agregarEstudiante);
-
+        add_de=findViewById(R.id.btn_trash);
         add_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -49,8 +49,14 @@ public class ConsultarEstudianteActivityWS extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-
+        add_de.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ConsultarEstudianteActivityWS.this, EliminarEstudianteActivityWS.class);
+                startActivity(intent);
+            }
+        });
+        
     }
 
     public void consultarPorCarnet(View v) {
