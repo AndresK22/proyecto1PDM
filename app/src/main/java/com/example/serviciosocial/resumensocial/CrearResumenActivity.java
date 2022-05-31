@@ -78,12 +78,12 @@ public class CrearResumenActivity extends AppCompatActivity {
         ArrayList<Docente> itemsSpinnerD = helperD.consultarDocente();
         helperD.cerrar();
 
-        Cursor cursor = helper.leerTodoResumen();
+        Cursor cursor = helperD.leerTodoDocente();
         if(cursor.getCount()==0){
 
         }else{
-            Resumensocial a;
-            Iterator<Resumensocial> it = itemsSpinner.iterator();
+            Docente a;
+            Iterator<Docente> it = itemsSpinnerD.iterator();
             while(it.hasNext()){
                 a = it.next();
                 dui_docente.add(String.valueOf(a.getDui_docente()));
@@ -113,7 +113,7 @@ public class CrearResumenActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 if (i != 0) {
-                    id_c = carnet.get(i - 1);
+                    id_c = carnet.get(i);
                     //Guarda el carnet seleccionado en la variable global, para usarla en el create
                     camp = false;
                 } else {
@@ -130,7 +130,7 @@ public class CrearResumenActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 if (i != 0) {
-                    id_d = dui_docente.get(i - 1);
+                    id_d = dui_docente.get(i);
                     //Guarda el dui del docente seleccionada en la variable global, para usarla en el create
                     camp = false;
                 } else {

@@ -42,17 +42,20 @@
       android:id="@+id/spinnerDui_docente"
       android:layout_width="match_parent"
       android:layout_height="48dp"
-      android:layout_marginTop="36dp"
+      android:layout_marginTop="12dp"
       app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.0"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toBottomOf="@+id/txtId_det_res"
       tools:ignore="SpeakableTextPresentCheck" />
+
   <Spinner
       android:id="@+id/spinnerCarnet"
       android:layout_width="match_parent"
       android:layout_height="48dp"
-      android:layout_marginTop="36dp"
+      android:layout_marginTop="8dp"
       app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.0"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toBottomOf="@+id/spinnerDui_docente"
       tools:ignore="SpeakableTextPresentCheck" />
@@ -108,7 +111,7 @@
   <Button
       android:id="@+id/btnModificarResumen"
       android:layout_width="match_parent"
-      android:layout_height="51dp"
+      android:layout_height="40dp"
       android:layout_marginTop="8dp"
       android:onClick="modificarResumen"
       android:text="@string/btnModificarResumen"
@@ -120,7 +123,7 @@
   <Button
       android:id="@+id/btnEliminarResumen"
       android:layout_width="match_parent"
-      android:layout_height="51dp"
+      android:layout_height="40dp"
       android:layout_marginTop="4dp"
       android:onClick="eliminarResumen"
       android:text="@string/btnEliminarResumen"

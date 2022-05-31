@@ -84,8 +84,8 @@ public class ModificarResumenActivity extends AppCompatActivity {
         ArrayList<Docente> itemsSpinnerD = helperD.consultarDocente();
         helperD.cerrar();
 
-        Resumensocial a;
-        Iterator<Resumensocial> it = itemsSpinnerR.iterator();
+        Docente a;
+        Iterator<Docente> it = itemsSpinnerD.iterator();
         while(it.hasNext()){
             a = it.next();
             dui_docente.add(String.valueOf(a.getDui_docente()));
@@ -113,7 +113,7 @@ public class ModificarResumenActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 if (i != 0 ){
-                    id_d = dui_docente.get(i-1);
+                    id_d = dui_docente.get(i);
                     camp = false;
                 }else{
                     camp = true;
@@ -130,7 +130,7 @@ public class ModificarResumenActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 if (i != 0 ){
-                    id_c = dui_docente.get(i -1);
+                    id_c = dui_docente.get(i);
                     camp = false;
                 }else{
                     camp = true;
