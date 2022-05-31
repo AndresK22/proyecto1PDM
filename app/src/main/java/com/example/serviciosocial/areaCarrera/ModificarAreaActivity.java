@@ -34,7 +34,7 @@ public class ModificarAreaActivity extends AppCompatActivity {
     String extraIdArea;
     String extraDe;
 
-    TextView txtIDArea;
+    EditText txtIDArea;
     EditText txtDescrip;
 
     boolean campAre = false; //True si no se ha seleccionado nada
@@ -47,7 +47,7 @@ public class ModificarAreaActivity extends AppCompatActivity {
         helper = new ControlAreaCarrera(this);
         helper1 = new ControlCarrera(this);
         spinerCarrera = (Spinner) findViewById(R.id.spinnerCarrera);
-        txtIDArea = (TextView) findViewById(R.id.txtAreaCarrera);
+        txtIDArea = (EditText) findViewById(R.id.txtAreaCarrera);
         txtDescrip = (EditText) findViewById(R.id.txtdescripArea);
 
 
@@ -112,12 +112,14 @@ public class ModificarAreaActivity extends AppCompatActivity {
     public void modificarArea(View v) {
         if (verificarCamposLlenos(campAre)) {
             AreaCarrera areaCarrera = new AreaCarrera();
-            areaCarrera.setId_area(extraIdArea);
+            String x = extraIdArea;
+            String[] ex={x};
+            areaCarrera.setId_area(txtIDArea.getText().toString());
             areaCarrera.setId_carrera(id_are);
             areaCarrera.setDescrip_area(txtDescrip.getText().toString());
 
             helper.abrir();
-            String mater = helper.actualizar(areaCarrera);
+            String mater = helper.actualizar(areaCarrera,ex);
             helper.cerrar();
 
             Toast.makeText(this, mater, Toast.LENGTH_SHORT).show();

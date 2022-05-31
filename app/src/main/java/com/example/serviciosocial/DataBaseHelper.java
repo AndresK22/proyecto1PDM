@@ -59,6 +59,10 @@ public class DataBaseHelper extends SQLiteOpenHelper {
             db.execSQL("create  index ACCESO_USUARIO_FK on ACCESO_USUARIO (" +
                     "ID_OPCION ASC);"
             );
+
+            db.execSQL("CREATE TRIGGER fk_acceso_usuario BEFORE UPDATE ON ACCESO_USUARIO FOR EACH ROW BEGIN SELECT CASE WHEN ((SELECT ID_USUARIO FROM USUARIO WHERE ID_USUARIO = NEW.ID_USUARIO) IS NULL) THEN RAISE(ABORT, 'No existe el usuario') END; END;");
+            db.execSQL("CREATE TRIGGER fk_acceso_opcion BEFORE UPDATE ON ACCESO_USUARIO FOR EACH ROW BEGIN SELECT CASE WHEN ((SELECT ID_OPCION FROM OPCION_CRUD WHERE ID_OPCION = NEW.ID_OPCION) IS NULL) THEN RAISE(ABORT, 'No existe la opcion') END; END;");
+
             db.execSQL("CREATE TABLE area_carrera(id_area CHAR(2) NOT NULL,id_carrera CHAR(6) NOT NULL,descrip_area VARCHAR(255) NOT NULL, PRIMARY KEY (id_area,id_carrera));");
             db.execSQL("CREATE TABLE docente(dui_docente CHAR(10) NOT NULL PRIMARY KEY,nombres_docente VARCHAR(100) NOT NULL,apellidos_docente VARCHAR(100) NOT NULL, email_docente VARCHAR(50), telefono_docente VARCHAR(9));");
             db.execSQL("CREATE TABLE bitacora(id_bitacora INTEGER NOT NULL,id_proyecto INTEGER NOT NULL,carnet CHAR(8) NOT NULL, mes VARCHAR(12),total_horas_realizadas REAL(4,1) ,PRIMARY KEY (id_bitacora,id_proyecto,carnet));");

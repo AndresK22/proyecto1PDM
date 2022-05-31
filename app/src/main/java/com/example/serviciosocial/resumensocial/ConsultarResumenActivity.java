@@ -2,6 +2,7 @@ package com.example.serviciosocial.resumensocial;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.serviciosocial.R;
@@ -26,8 +27,7 @@ public class ConsultarResumenActivity extends AppCompatActivity {
     ImageView empty_imageview;
     TextView no_data;
 
-    ArrayList<String>  dui_docente, carnet, fecha_apertura_expediente, fecha_emision_certificado, observaciones;
-    ArrayList<Integer> id_resumen;
+    ArrayList<String>  id_resumen, dui_docente, carnet, fecha_apertura_expediente, fecha_emision_certificado, observaciones;
     AdaptadorResumenSocial adaptadorResumenSocial;
 
     @Override
@@ -55,6 +55,10 @@ public class ConsultarResumenActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        consultarResumen();
+        adaptadorResumenSocial = new AdaptadorResumenSocial(ConsultarResumenActivity.this, this, id_resumen, dui_docente, carnet, fecha_apertura_expediente, fecha_emision_certificado, observaciones);
+        recyclerViewResumen.setAdapter(adaptadorResumenSocial);
+        recyclerViewResumen.setLayoutManager(new LinearLayoutManager(ConsultarResumenActivity.this));
 
     }
     @Override
@@ -64,7 +68,6 @@ public class ConsultarResumenActivity extends AppCompatActivity {
             recreate();
         }
     }
-
     public void consultarResumen(){
         Cursor cursor = helper.leerTodoResumen();
         if(cursor.getCount()==0){
@@ -80,7 +83,7 @@ public class ConsultarResumenActivity extends AppCompatActivity {
             while(it.hasNext()){
                 r = it.next();
 
-                id_resumen.add(Integer.valueOf(r.getId_resumen()));
+                id_resumen.add(String.valueOf(r.getId_resumen()));
                 dui_docente.add(r.getDui_docente());
                 carnet.add(r.getCarnet());
                 fecha_apertura_expediente.add(r.getFecha_apertura_expediente());

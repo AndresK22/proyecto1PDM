@@ -24,7 +24,7 @@ public class ConsultarDocenteActivityWS extends AppCompatActivity {
     static List<String> nombreDocente;
     EditText txtDui;
     ListView lisViewDocente;
-    FloatingActionButton add_button;
+    FloatingActionButton add_button,delete;
 
     private final String urlHostingGratuito = "https://cc19114pdm115.000webhostapp.com//consultar_docente.php";
     private final String urlHostingGratuito2 = "https://cc19114pdm115.000webhostapp.com//consultar_docente_all.php";
@@ -41,11 +41,20 @@ public class ConsultarDocenteActivityWS extends AppCompatActivity {
         txtDui = (EditText) findViewById(R.id.editText_fecha);
         lisViewDocente = (ListView) findViewById(R.id.listView1);
         add_button = findViewById(R.id.addBut);
+        delete = findViewById(R.id.addBut2);
 
         add_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(ConsultarDocenteActivityWS.this, IngresarDocenteActivityWS.class);
+                startActivity(intent);
+            }
+        });
+
+        delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ConsultarDocenteActivityWS.this, EliminarDocenteActivityWS.class);
                 startActivity(intent);
             }
         });

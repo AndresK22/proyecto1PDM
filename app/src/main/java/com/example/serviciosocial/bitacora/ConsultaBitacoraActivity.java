@@ -18,11 +18,13 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 public class ConsultaBitacoraActivity extends AppCompatActivity {
+
     RecyclerView recyclerViewBitacora;
     FloatingActionButton add_button;
     ControlBitacora helper;
     ImageView empty_imageview;
     TextView no_data;
+
     ArrayList<String> id_bitacora, id_proyecto, carnet, mes, total_horas_realizadas;
     BitacoraAdaptadorActivity bitacoraAdaptadorActivity;
 

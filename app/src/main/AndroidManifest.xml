@@ -13,6 +13,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ServicioSocial">
         <activity
+            android:name=".estudianteWS.EliminarEstudianteActivityWS"
+            android:exported="false" />
+        <activity
+            android:name=".docenteWS.EliminarDocenteActivityWS"
+            android:exported="false" />
+        <activity
             android:name=".resumensocial.CrearResumenActivity"
             android:exported="false" />
         <activity

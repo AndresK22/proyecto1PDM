@@ -59,14 +59,15 @@ public class ModificarDetalleBitacoraActivity extends AppCompatActivity {
         if (verificarCamposLlenos(comp)) {
 
             DetalleBitacora detalleBitacora = new DetalleBitacora();
-
+            String x = extraID;
+            String[] ex={x};
             detalleBitacora.setId_detalle_bitacora(Long.parseLong(txtID.getText().toString()));
             detalleBitacora.setId_bitacora(Long.parseLong(extraId_bitacora));
             detalleBitacora.setActividad(txtA.getText().toString());
             detalleBitacora.setFecha_bitacora(txtF.getText().toString());
 
             helper.abrir();
-            String d = helper.actualizar(detalleBitacora);
+            String d = helper.actualizar(detalleBitacora,ex);
             helper.cerrar();
 
             Toast.makeText(this, d, Toast.LENGTH_SHORT).show();

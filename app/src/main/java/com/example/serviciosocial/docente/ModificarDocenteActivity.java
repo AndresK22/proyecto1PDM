@@ -16,7 +16,7 @@ import com.example.serviciosocial.R;
 public class ModificarDocenteActivity extends AppCompatActivity {
 
     ControlDocente helper;
-    TextView txtDui;
+    EditText txtDui;
     EditText txtN;
     EditText txtA;
     EditText txtEmail;
@@ -35,7 +35,7 @@ public class ModificarDocenteActivity extends AppCompatActivity {
         setContentView(R.layout.activity_modificar_docente);
 
         helper = new ControlDocente(this);
-        txtDui = (TextView) findViewById(R.id.txtDuiM);
+        txtDui = (EditText) findViewById(R.id.txtDuiM);
         txtN = (EditText) findViewById(R.id.txtNDocenteM);
         txtA= (EditText) findViewById(R.id.txtADocenteM);
         txtEmail = (EditText) findViewById(R.id.txtEmailDocenteM);
@@ -62,7 +62,8 @@ public class ModificarDocenteActivity extends AppCompatActivity {
     public void modificarDocente(View v) {
         if (verificarCamposLlenos(comp)) {
             Docente docente = new Docente();
-
+            String x =extraDUI;
+            String[] ex={x};
             docente.setDui_docente(txtDui.getText().toString());
             docente.setNombres_docente(txtN.getText().toString());
             docente.setApellidos_docente(txtA.getText().toString());
@@ -70,7 +71,7 @@ public class ModificarDocenteActivity extends AppCompatActivity {
             docente.setTelefono_docente(txtTelefono.getText().toString());
 
             helper.abrir();
-            String d = helper.actualizar(docente);
+            String d = helper.actualizar(docente,ex);
             helper.cerrar();
 
             Toast.makeText(this, d, Toast.LENGTH_SHORT).show();

@@ -16,15 +16,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="12dp">
+
             <TextView
                 android:id="@+id/txtFechaApertura"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:text="Fecha de apertura"
+                android:textColor="#000000"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                android:textColor="#000000"
                 app:layout_constraintStart_toEndOf="@+id/txtIdResumen"
                 app:layout_constraintTop_toTopOf="@+id/txtIdResumen" />
 
@@ -32,10 +33,12 @@
                 android:id="@+id/txtIdResumen"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="44dp"
+                android:layout_marginTop="4dp"
                 android:text="1"
+                android:textColor="#000000"
                 android:textSize="40sp"
                 android:textStyle="bold"
-                android:textColor="#000000"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 

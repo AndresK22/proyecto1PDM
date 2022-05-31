@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
-        android:backgroundTint="@color/primaryColor"
+        android:background="@color/primaryDarkColor"
         app:borderWidth="0dp"
         android:clickable="true"
         android:focusable="true"
@@ -21,7 +21,20 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/ic_add"
         tools:ignore="ImageContrastCheck" />
-
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btn_trash"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="236dp"
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="@color/primaryDarkColor"
+        android:clickable="true"
+        android:focusable="true"
+        app:borderWidth="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/ic_delete"
+        tools:ignore="ImageContrastCheck" />
     <TextView
         android:id="@+id/textView5"
         android:layout_width="wrap_content"

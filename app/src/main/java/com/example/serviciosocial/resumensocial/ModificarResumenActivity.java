@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -16,24 +17,30 @@ import com.example.serviciosocial.R;
 import com.example.serviciosocial.areaCarrera.AreaCarrera;
 import com.example.serviciosocial.areaCarrera.ConsultarAreaActivity;
 import com.example.serviciosocial.areaCarrera.ModificarAreaActivity;
+import com.example.serviciosocial.docente.ControlDocente;
 import com.example.serviciosocial.docente.Docente;
+import com.example.serviciosocial.estudiante.ControlEstudiante;
+import com.example.serviciosocial.estudiante.Estudiante;
 
+import java.sql.Array;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 public class ModificarResumenActivity extends AppCompatActivity {
 
     ControlResumenSocial helper;
-    Spinner spinnerDuiDocente;
-    Spinner spinnerCarnet;
-    ArrayList<String> dui_docente, nombres_docente, apellidos_docente, email_docente, telefono_docente; // Para el spinner de docente
-    ArrayList<String> carnetEstudiante, nombres_estudiante, apellidos_estudiante, email_estudiante, telefono_estudiante, domicilio, dui;
-    String  extraDui_resumen, extraCarnet_resumen, extraAperturaR, extraEmisionR, extraObservacionesR;
+    ControlEstudiante helperE;
+    ControlDocente helperD;
+    Spinner spinnerDuiDocente, spinnerCarnet;
+    ArrayList<String> dui_docente, carnet;
+    String id_d, id_c;
 
-    int extraId_resumen, id_resumen;
-    String duiD;
+    String extraID, extraD, extraC, extraFechaA, extraFechaE, extraObservaciones;
 
-    EditText txtIdResumen, txtFechaAE, txtFechaE, txtObservaciones;
+    EditText txtId, txtFechaAE, txtFechaEC, txtObservaciones;
+    Button btnModificar, btnEliminar;
+
+    boolean camp = false;
 
     boolean campDoc=false, campEst=false;
     @Override
@@ -42,58 +49,67 @@ public class ModificarResumenActivity extends AppCompatActivity {
         setContentView(R.layout.activity_modificar_resumen);
 
         helper = new ControlResumenSocial(this);
-        //SPINNERS
+        helperD = new ControlDocente(this);
+        helperE = new ControlEstudiante(this);
+        spinnerCarnet = (Spinner) findViewById(R.id.spinnerCarnetE);
         spinnerDuiDocente = (Spinner) findViewById(R.id.spinnerDui_docente);
-        spinnerCarnet = (Spinner) findViewById(R.id.spinnerCarnet);
 
-        extraId_resumen = getIntent().getExtras().getInt("id_resumen");
-        extraDui_resumen = getIntent().getExtras().getString("dui_docente");
-        extraCarnet_resumen = getIntent().getExtras().getString("carnet");
-        extraAperturaR = getIntent().getExtras().getString("fecha_apertura_expediente");
-        extraEmisionR = getIntent().getExtras().getString("fecha_emision_certificado");
-        extraObservacionesR = getIntent().getExtras().getString("observaciones");
+        txtId = (EditText) findViewById(R.id.txtIdResumen);
+        txtFechaAE = (EditText) findViewById(R.id.txtFechaAperturaRS);
+        txtFechaEC = (EditText) findViewById(R.id.txtFechaEmisionRS);
+        txtObservaciones = (EditText) findViewById(R.id.txtObservaciones);
 
-        //Array para spinner docente
-        dui_docente = new ArrayList<>();
-        nombres_docente = new ArrayList<>();
-        apellidos_docente = new ArrayList<>();
-        email_docente = new ArrayList<>();
-        telefono_docente = new ArrayList<>();
-        nombres_docente.add("Seleccione el docente");
-        //Array para spinner carnet
-        carnetEstudiante = new ArrayList<>();
-        nombres_estudiante = new ArrayList<>();
-        apellidos_estudiante = new ArrayList<>();
-        email_estudiante = new ArrayList<>();
-        telefono_estudiante = new ArrayList<>();
-        domicilio = new ArrayList<>();
-        dui = new ArrayList<>();
-        carnetEstudiante.add("Seleccione el carnet");
-        //Pedir Docentes
+        extraID = getIntent().getExtras().getString("id_resumen");
+        extraD = getIntent().getExtras().getString("dui_docente");
+        extraC = getIntent().getExtras().getString("carnet");
+        extraFechaA = getIntent().getExtras().getString("fecha_apertura_expediente");
+        extraFechaE = getIntent().getExtras().getString("fecha_emision_certificado");
+        extraObservaciones = getIntent().getExtras().getString("observaciones");
+
+        txtId.setText(extraID);
+        txtFechaAE.setText(extraFechaA);
+        txtFechaEC.setText(extraFechaE);
+        txtObservaciones.setText(extraObservaciones);
+        //spinnerDuiDocente.setSelection(0);
+        //spinnerCarnet.setSelection(0);
+
+        dui_docente = new ArrayList();
+        carnet = new ArrayList();
+        //Resumen social
         helper.abrir();
-        ArrayList<Resumensocial> itemsSpinnerDocente = helper.consultarResumen();
+        ArrayList<Resumensocial> itemsSpinnerR = helper.consultarResumen();
         helper.cerrar();
+        //Estudiante
+        helperE.abrir();
+        ArrayList<Estudiante> itemsSpinnerE = helperE.consultarEstudiante();
+        helperE.cerrar();
+        //Docente
+        helperD.abrir();
+        ArrayList<Docente> itemsSpinnerD = helperD.consultarDocente();
+        helperD.cerrar();
 
-        //Pedir Carnet
-        helper.abrir();
-        ArrayList<Resumensocial> itemsSpinnerCarnet = helper.consultarResumen();
-        helper.cerrar();
-
-        //Crear el objeto Docente
-        Resumensocial r;
-        Iterator<Resumensocial> it = itemsSpinnerDocente.iterator();
+        Resumensocial a;
+        Iterator<Resumensocial> it = itemsSpinnerR.iterator();
         while(it.hasNext()){
-            r = it.next();
-            //Dui de la tabla docente
-            dui_docente.add(String.valueOf(r.getId_resumen()));
-            //Nombre docente r.getNombreDocente
-            nombres_docente.add(String.valueOf(r.getId_resumen()));
-
+            a = it.next();
+            dui_docente.add(String.valueOf(a.getDui_docente()));
         }
-        ArrayAdapter<CharSequence> adaptadorD = new ArrayAdapter(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, nombres_docente);
-        spinnerDuiDocente.setAdapter(adaptadorD);
-        int aux = dui_docente.indexOf(extraDui_resumen);
+        Estudiante b;
+        Iterator<Estudiante> itE = itemsSpinnerE.iterator();
+        while(itE.hasNext()){
+            b = itE.next();
+            carnet.add(String.valueOf(b.getCarnet()));
+        }
+
+        ArrayAdapter<CharSequence> adaptador = new ArrayAdapter(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, dui_docente);
+        spinnerDuiDocente.setAdapter(adaptador);
+        int aux = dui_docente.indexOf(extraD);
         spinnerDuiDocente.setSelection(aux + 1);
+
+        ArrayAdapter<CharSequence> adaptadorE = new ArrayAdapter(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, carnet);
+        spinnerCarnet.setAdapter(adaptadorE);
+        int auxE = carnet.indexOf(extraC);
+        spinnerCarnet.setSelection(auxE + 1);
 
         //Validaciones de campos vacios
         spinnerDuiDocente.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
@@ -101,10 +117,10 @@ public class ModificarResumenActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 if (i != 0 ){
-                    duiD = dui_docente.get(i -1); //Guarda el dui del docente seleccionado
-                    campDoc = false;
+                    id_d = dui_docente.get(i-1);
+                    camp = false;
                 }else{
-                    campDoc = true;
+                    camp = true;
                 }
             }
 
@@ -113,31 +129,15 @@ public class ModificarResumenActivity extends AppCompatActivity {
 
             }
         });
-        //Crear el objeto Estudiante
-        Resumensocial e;
-        Iterator<Resumensocial> itE = itemsSpinnerCarnet.iterator();
-        while(itE.hasNext()){
-            e = itE.next();
-            //Carnet del estudiante
-            carnetEstudiante.add(String.valueOf(e.getCarnet()));
-            //Nombre del estudiante
-            nombres_estudiante.add(String.valueOf(e.getCarnet()));
-        }
-        ArrayAdapter<CharSequence> adaptadorE = new ArrayAdapter(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, nombres_estudiante);
-        spinnerCarnet.setAdapter(adaptadorE);
-        int aux1 = carnetEstudiante.indexOf(extraCarnet_resumen);
-        spinnerDuiDocente.setSelection(aux + 1);
-
-        //Validaciones de campos vacios
-        spinnerDuiDocente.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
+        spinnerCarnet.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
 
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 if (i != 0 ){
-                    duiD = dui_docente.get(i -1); //Guarda el dui del docente seleccionado
-                    campDoc = false;
+                    id_c = dui_docente.get(i -1);
+                    camp = false;
                 }else{
-                    campDoc = true;
+                    camp = true;
                 }
             }
 
@@ -148,18 +148,19 @@ public class ModificarResumenActivity extends AppCompatActivity {
         });
     }
     public void modificarResumen(View v){
-        if(verificarCamposLlenos(campDoc, campEst)){
+        if(verificarCamposLlenos(camp)){
             Resumensocial resumen = new Resumensocial();
-            resumen.setId_resumen(extraId_resumen);
-            resumen.setDui_docente(extraDui_resumen);
-            resumen.setCarnet(extraCarnet_resumen);
-            resumen.setFecha_apertura_expediente(extraAperturaR);
-            resumen.setFecha_emision_certificado(extraEmisionR);
-            resumen.setObservaciones(extraObservacionesR);
+            resumen.setId_resumen(Integer.parseInt(extraID));
+            resumen.setDui_docente(id_d);
+            resumen.setCarnet(id_c);
+            resumen.setFecha_apertura_expediente(txtFechaAE.getText().toString());
+            resumen.setFecha_emision_certificado(txtFechaEC.getText().toString());
+            resumen.setObservaciones(txtObservaciones.getText().toString());
 
             helper.abrir();
             String resu = helper.actualizar(resumen);
             helper.cerrar();
+
             Toast.makeText(this, resu, Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(this, ConsultarResumenActivity.class);
             startActivity(intent);
@@ -178,7 +179,7 @@ public class ModificarResumenActivity extends AppCompatActivity {
                         // Hicieron click en el botón positivo, así que la acción está confirmada
                         String regEliminadas;
                         Resumensocial resumen = new Resumensocial();
-                        resumen.setId_resumen(extraId_resumen);
+                        resumen.setId_resumen(Integer.parseInt(extraID));
 
                         helper.abrir();
                         regEliminadas = helper.eliminar(resumen);
@@ -199,19 +200,21 @@ public class ModificarResumenActivity extends AppCompatActivity {
                     }
                 })
                 .setTitle("Confirmar") // El título
-                .setMessage("¿Deseas eliminar el resumen '" + extraId_resumen + "'?") // El mensaje
+                .setMessage("¿Deseas eliminar el resumen '" + extraID + "'?") // El mensaje
                 .create();// crea el AlertDialog
 
         dialogo.show();
     }
-    public boolean verificarCamposLlenos(boolean cmp1, boolean cmp2){
-        if (txtIdResumen.getText().toString().isEmpty() || txtIdResumen.getText().toString() == null){
+    public boolean verificarCamposLlenos(boolean cmp){
+        if (txtId.getText().toString().isEmpty() || txtId.getText().toString() == null){
             return false;
         }else if(txtFechaAE.getText().toString().isEmpty() || txtFechaAE.getText().toString() == null){
             return false;
-        }else if(txtFechaE.getText().toString().isEmpty() || txtFechaE.getText().toString() == null){
+        }else if(txtFechaEC.getText().toString().isEmpty() || txtFechaEC.getText().toString() == null){
             return false;
-        }else if(cmp1 || cmp2){
+        }else if(txtObservaciones.getText().toString().isEmpty() || txtObservaciones.getText().toString() == null){
+            return false;
+        }else if(cmp){
             return false;
         }else{
             return true;

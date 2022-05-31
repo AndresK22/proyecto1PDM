@@ -3,26 +3,27 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/andre/AndroidStudioProjects/proyecto1PDM/app/src/main/res/drawable-hdpi/ic_empty.xml" value="0.1315" />
-        <entry key="..\:/Users/andre/AndroidStudioProjects/proyecto1PDM/app/src/main/res/drawable/ic_add.xml" value="0.387" />
-        <entry key="..\:/Users/andre/AndroidStudioProjects/proyecto1PDM/app/src/main/res/layout/activity_consultar_categoria.xml" value="0.1" />
-        <entry key="..\:/Users/andre/AndroidStudioProjects/proyecto1PDM/app/src/main/res/layout/activity_consultar_estado.xml" value="0.33" />
-        <entry key="..\:/Users/andre/AndroidStudioProjects/proyecto1PDM/app/src/main/res/layout/activity_consultar_estados.xml" value="0.1" />
-        <entry key="..\:/Users/andre/AndroidStudioProjects/proyecto1PDM/app/src/main/res/layout/activity_consultar_materia.xml" value="0.36141304347826086" />
-        <entry key="..\:/Users/andre/AndroidStudioProjects/proyecto1PDM/app/src/main/res/layout/activity_consultar_nota.xml" value="0.38697916666666665" />
-        <entry key="..\:/Users/andre/AndroidStudioProjects/proyecto1PDM/app/src/main/res/layout/activity_consultar_record.xml" value="0.38697916666666665" />
-        <entry key="..\:/Users/andre/AndroidStudioProjects/proyecto1PDM/app/src/main/res/layout/activity_crear_estado.xml" value="0.38697916666666665" />
-        <entry key="..\:/Users/andre/AndroidStudioProjects/proyecto1PDM/app/src/main/res/layout/activity_crear_estudiante.xml" value="0.2391304347826087" />
-        <entry key="..\:/Users/andre/AndroidStudioProjects/proyecto1PDM/app/src/main/res/layout/activity_crear_materia.xml" value="0.38697916666666665" />
-        <entry key="..\:/Users/andre/AndroidStudioProjects/proyecto1PDM/app/src/main/res/layout/activity_crear_nota.xml" value="0.1897018970189702" />
-        <entry key="..\:/Users/andre/AndroidStudioProjects/proyecto1PDM/app/src/main/res/layout/activity_modificar_estado.xml" value="0.33" />
-        <entry key="..\:/Users/andre/AndroidStudioProjects/proyecto1PDM/app/src/main/res/layout/activity_modificar_materia.xml" value="0.2375" />
-        <entry key="..\:/Users/andre/AndroidStudioProjects/proyecto1PDM/app/src/main/res/layout/activity_modificar_nota.xml" value="0.1897018970189702" />
-        <entry key="..\:/Users/andre/AndroidStudioProjects/proyecto1PDM/app/src/main/res/layout/activity_modificar_record.xml" value="0.38697916666666665" />
-        <entry key="..\:/Users/andre/AndroidStudioProjects/proyecto1PDM/app/src/main/res/layout/item_list_layout_estado.xml" value="0.1" />
-        <entry key="..\:/Users/andre/AndroidStudioProjects/proyecto1PDM/app/src/main/res/layout/item_list_layout_materia.xml" value="0.38697916666666665" />
-        <entry key="..\:/Users/andre/AndroidStudioProjects/proyecto1PDM/app/src/main/res/layout/item_list_layout_nota.xml" value="0.38697916666666665" />
-        <entry key="..\:/Users/andre/AndroidStudioProjects/proyecto1PDM/app/src/main/res/layout/item_list_layout_record.xml" value="0.38697916666666665" />
+        <entry key="..\:/Users/Alexis/.gradle/caches/transforms-3/02e0bd612fca2a22099e175f45d3c7d6/transformed/appcompat-1.4.1/res/layout/support_simple_spinner_dropdown_item.xml" value="0.1" />
+        <entry key="..\:/Users/Alexis/Desktop/PDMProyecto/app/src/main/res/layout/activity_consulta_bitacora.xml" value="0.1" />
+        <entry key="..\:/Users/Alexis/Desktop/PDMProyecto/app/src/main/res/layout/activity_consultar_area.xml" value="0.1" />
+        <entry key="..\:/Users/Alexis/Desktop/PDMProyecto/app/src/main/res/layout/activity_consultar_carrera.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Alexis/Desktop/PDMProyecto/app/src/main/res/layout/activity_consultar_estudiante.xml" value="0.33" />
+        <entry key="..\:/Users/Alexis/Desktop/PDMProyecto/app/src/main/res/layout/activity_consultar_resumen.xml" value="0.1" />
+        <entry key="..\:/Users/Alexis/Desktop/PDMProyecto/app/src/main/res/layout/activity_crear_area.xml" value="0.1" />
+        <entry key="..\:/Users/Alexis/Desktop/PDMProyecto/app/src/main/res/layout/activity_crear_bitacora.xml" value="0.1" />
+        <entry key="..\:/Users/Alexis/Desktop/PDMProyecto/app/src/main/res/layout/activity_crear_estudiante.xml" value="0.1" />
+        <entry key="..\:/Users/Alexis/Desktop/PDMProyecto/app/src/main/res/layout/activity_crear_modalidad.xml" value="0.1" />
+        <entry key="..\:/Users/Alexis/Desktop/PDMProyecto/app/src/main/res/layout/activity_crear_resumen.xml" value="0.25" />
+        <entry key="..\:/Users/Alexis/Desktop/PDMProyecto/app/src/main/res/layout/activity_gestion_usuario.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Alexis/Desktop/PDMProyecto/app/src/main/res/layout/activity_modificar_area.xml" value="0.1" />
+        <entry key="..\:/Users/Alexis/Desktop/PDMProyecto/app/src/main/res/layout/activity_modificar_estudiante.xml" value="0.33" />
+        <entry key="..\:/Users/Alexis/Desktop/PDMProyecto/app/src/main/res/layout/activity_modificar_resumen.xml" value="0.1" />
+        <entry key="..\:/Users/Alexis/Desktop/PDMProyecto/app/src/main/res/layout/carrera_filas.xml" value="0.1" />
+        <entry key="..\:/Users/Alexis/Desktop/PDMProyecto/app/src/main/res/layout/estudiante_filas.xml" value="0.1" />
+        <entry key="..\:/Users/Alexis/Desktop/PDMProyecto/app/src/main/res/layout/filas_usuario.xml" value="0.33" />
+        <entry key="..\:/Users/Alexis/Desktop/PDMProyecto/app/src/main/res/layout/item_list_layout_area.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Alexis/Desktop/PDMProyecto/app/src/main/res/layout/resumensocial_filas.xml" value="0.33" />
+        <entry key="..\:/Users/andre/AndroidStudioProjects/proyecto1PDM/app/src/main/res/layout/activity_consultar_estado.xml" value="0.38697916666666665" />
         <entry key="..\:/Users/andre/AndroidStudioProjects/proyecto1PDM/app/src/main/res/layout/item_table_layout_estado.xml" value="0.38697916666666665" />
         <entry key="..\:/Users/andre/proyecto1PDM/app/src/main/res/layout/activity_consultar_estado.xml" value="0.1" />
         <entry key="..\:/Users/romero/AndroidStudioProjects/proyecto1PDM/app/src/main/res/drawable-anydpi/ic_contra.xml" value="0.3365" />
@@ -40,12 +41,5 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
-  </component>
-  <component name="VisualizationToolProject">
-    <option name="state">
-      <ProjectState>
-        <option name="scale" value="0.3667334669338677" />
-      </ProjectState>
-    </option>
   </component>
 </project>
