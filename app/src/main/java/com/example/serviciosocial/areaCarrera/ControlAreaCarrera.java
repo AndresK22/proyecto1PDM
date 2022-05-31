@@ -120,9 +120,50 @@ public class ControlAreaCarrera {
         }
         return null;
     }
+    public ArrayList<AreaCarrera> consultarAreaCarrera(String[] id){
+        try {
+            ArrayList<AreaCarrera> lisArea= new ArrayList<AreaCarrera>();
+            Cursor cursor = db.query("area_carrera", camposAreaCarrera, "id_carrera = ?", id, null, null, null);
+
+            if (cursor.moveToFirst()) {
+                do {
+                    AreaCarrera areaCarrera = new AreaCarrera();
+                    areaCarrera.setId_area(cursor.getString(0));
+                    areaCarrera.setId_carrera(cursor.getString(1));
+                    areaCarrera.setDescrip_area(cursor.getString(2));
+                    lisArea.add(areaCarrera);
+                } while (cursor.moveToNext());
+
+                return lisArea;
+            } else {
+                return null;
+            }
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+        return null;
+    }
     public AreaCarrera consultarArea(String[] id){
         try {
             Cursor cursor = db.query("area_carrera", camposAreaCarrera, "id_area = ?", id, null, null, null);
+
+            if (cursor.moveToFirst()) {
+                AreaCarrera areaCarrera = new AreaCarrera();
+                areaCarrera.setId_area(cursor.getString(0));
+                areaCarrera.setId_carrera(cursor.getString(1));
+                areaCarrera.setDescrip_area(cursor.getString(2));
+                return areaCarrera;
+            } else {
+                return null;
+            }
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+    public AreaCarrera consultarAreaPorCarrera(String[] id){
+        try {
+            Cursor cursor = db.query("area_carrera", camposAreaCarrera, "id_carrera = ?", id, null, null, null);
 
             if (cursor.moveToFirst()) {
                 AreaCarrera areaCarrera = new AreaCarrera();

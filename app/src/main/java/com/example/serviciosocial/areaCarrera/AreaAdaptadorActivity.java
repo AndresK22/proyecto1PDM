@@ -21,6 +21,7 @@ public class AreaAdaptadorActivity extends RecyclerView.Adapter<AreaAdaptadorAct
 
     Context context;
     Activity activity;
+
     ArrayList listaId_area, listaId_carrera, lista_des;
 
     AreaAdaptadorActivity(Activity activity, Context context, ArrayList id_area, ArrayList id_carrera, ArrayList descrip_area)

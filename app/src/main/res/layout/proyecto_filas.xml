@@ -18,7 +18,7 @@
             android:padding="12dp">
 
             <TextView
-                android:id="@+id/editTextProyecto"
+                android:id="@+id/editTextProyectoP"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="40dp"
@@ -27,11 +27,11 @@
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                app:layout_constraintStart_toEndOf="@+id/txtIdProyecto"
-                app:layout_constraintTop_toTopOf="@+id/txtIdProyecto" />
+                app:layout_constraintStart_toEndOf="@+id/txtIdProyectoP"
+                app:layout_constraintTop_toTopOf="@+id/txtIdProyectoP" />
 
             <TextView
-                android:id="@+id/txtIdProyecto"
+                android:id="@+id/txtIdProyectoP"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="1"
@@ -40,6 +40,105 @@
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/txtIdCateP"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="12dp"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:visibility="invisible"
+                tools:ignore="MissingConstraints" />
+            <TextView
+                android:id="@+id/txtIdModP"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="12dp"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:visibility="invisible"
+                tools:ignore="MissingConstraints" />
+            <TextView
+                android:id="@+id/txtDuiDocenteP"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="12dp"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:visibility="invisible"
+                tools:ignore="MissingConstraints" />
+            <TextView
+                android:id="@+id/txtIdEstadoP"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="12dp"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:visibility="invisible"
+                tools:ignore="MissingConstraints" />
+            <TextView
+                android:id="@+id/txtCarreraP"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="12dp"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:visibility="invisible"
+                tools:ignore="MissingConstraints" />
+            <TextView
+                android:id="@+id/txtAreaP"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="12dp"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:visibility="invisible"
+                tools:ignore="MissingConstraints" />
+            <TextView
+                android:id="@+id/txtDescripcionP"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="12dp"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:visibility="invisible"
+                tools:ignore="MissingConstraints" />
+            <TextView
+                android:id="@+id/txtLugarP"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="12dp"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:visibility="invisible"
+                tools:ignore="MissingConstraints" />
+            <TextView
+                android:id="@+id/txtRequisitoP"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="12dp"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:visibility="invisible"
+                tools:ignore="MissingConstraints" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>

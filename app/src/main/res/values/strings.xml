@@ -204,4 +204,23 @@
     <string name="btnModificarDetalleRe">Modificar</string>
     <string name="btnEliminarDetalleRe">Eliminar</string>
     <string name="btnGuardarDetalleRe">Guardar</string>
+    <!-- STRINGS DE ESTUDIANTE-PROYECTO-->
+    <string name="proyectoAsignado">Proyecto asignado</string>
+    <string name="proyectoNoAsignado">Proyecto no asignado</string>
+    <string name="proyectoAsignadoTitulo">Proyectos Asignados</string>
+    <string name="estudiantesAsignados">Estudiantes Asignados</string>
+    <string name="txtcarnetEA">Carnet</string>
+    <string name="txtnombreEA">Nombre</string>
+    <string name="txtapellidoEA">Proyecto asignado</string>
+    <string name="txtremover">Remover</string>
+    <string name="txtAsignarEstudiante">Asignar estudiante</string>
+    <string name="modalidadLabel">Modalidad:</string>
+    <string name="docenteLabel">Docente:</string>
+    <string name="estadoLabel">Estado:</string>
+    <string name="carreraLabel">Carrera:</string>
+    <string name="areaLabel">Area:</string>
+    <string name="nombreProyectoLabel">Nombre Proyecto</string>
+    <string name="descripcionLabel">Descripcion</string>
+    <string name="lugarLabel">Lugar</string>
+    <string name="requisito">Requisito de nota</string>
 </resources>

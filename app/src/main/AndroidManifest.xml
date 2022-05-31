@@ -182,6 +182,27 @@
             android:name=".docenteWS.IngresarDocenteActivityWS"
             android:exported="false" />
         <activity
+            android:name=".proyecto_estudiante.ConsultarEstudianteProyectoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".proyecto_estudiante.MainEstudiantesProyectoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".proyecto_estudiante.ConsultarEstudiantesAsignados"
+            android:exported="false" />
+        <activity
+            android:name=".proyecto_estudiante.ModificarEstudiantesAsignadosActivity"
+            android:exported="false" />
+        <activity
+            android:name=".proyecto_estudiante.ConsultarProyectosNoAsignadosActivity"
+            android:exported="false" />
+        <activity
+            android:name=".proyecto_estudiante.AsignarEstudianteActivity"
+            android:exported="false" />
+        <activity
+            android:name=".proyecto_estudiante.AsignarMasEstudiantesActivity"
+            android:exported="false" />
+        <activity
             android:name=".login.LoginActivity"
             android:exported="true"
             android:theme="@style/Theme.ServicioSocial.NoActionBar">

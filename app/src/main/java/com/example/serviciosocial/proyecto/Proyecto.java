@@ -7,7 +7,7 @@ public class Proyecto {
     private int id_modalidad;
     private String dui_docente;
     private int id_estado;
-    private int id_carrera;
+    private String id_carrera;
     private String id_area;
     private String nombre_proyecto;
     private String descripcion_proyecto;
@@ -17,7 +17,7 @@ public class Proyecto {
     public Proyecto() {
     }
 
-    public Proyecto(int id_proyecto, int id_categoria, int id_modalidad, String dui_docente, int id_estado, int id_carrera, String id_area, String nombre_proyecto, String descripcion_proyecto, String lugar, double requisito_nota) {
+    public Proyecto(int id_proyecto, int id_categoria, int id_modalidad, String dui_docente, int id_estado, String id_carrera, String id_area, String nombre_proyecto, String descripcion_proyecto, String lugar, double requisito_nota) {
         this.id_proyecto = id_proyecto;
         this.id_categoria = id_categoria;
         this.id_modalidad = id_modalidad;
@@ -71,11 +71,11 @@ public class Proyecto {
         this.id_estado = id_estado;
     }
 
-    public int getId_carrera() {
+    public String getId_carrera() {
         return id_carrera;
     }
 
-    public void setId_carrera(int id_carrera) {
+    public void setId_carrera(String id_carrera) {
         this.id_carrera = id_carrera;
     }
 

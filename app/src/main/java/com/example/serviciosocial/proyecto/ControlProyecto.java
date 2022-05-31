@@ -13,7 +13,6 @@ import java.util.ArrayList;
 
 public class ControlProyecto {
 
-    private static final String[] camposModalidad = new String[] {"id_modalidad", "nombre_modalidad"};
     private final Context context;
     private DataBaseHelper DBHelper;
     private SQLiteDatabase db;
@@ -38,15 +37,26 @@ public class ControlProyecto {
     }
 
     //INSERT
-    public String insertar(Modalidad modalidad)
+    public String insertar(Proyecto proyecto)
     {
         String regInsertados = "Registro Insertado No = ";
         long contador = 0;
 
         ContentValues mod = new ContentValues();
-        mod.put("id_modalidad", (Integer) null);
-        mod.put("nombre_modalidad", modalidad.getNombre_modalidad());
-        contador = db.insert("modalidad", null, mod);
+        mod.put("id_proyecto", (Integer) null);
+        mod.put("id_categoria", proyecto.getId_categoria());
+        mod.put("id_categoria", proyecto.getId_categoria());
+        mod.put("id_modalidad", proyecto.getId_modalidad());
+        mod.put("dui_docente", proyecto.getDui_docente());
+        mod.put("id_estado", proyecto.getId_estado());
+        mod.put("id_carrera", proyecto.getId_carrera());
+        mod.put("id_area", proyecto.getId_area());
+        mod.put("nombre_proyecto", proyecto.getNombre_proyecto());
+        mod.put("descripcion_proyecto", proyecto.getDescripcion_proyecto());
+        mod.put("lugar", proyecto.getLugar());
+        mod.put("requisito_nota", proyecto.getRequisito_nota());
+
+        contador = db.insert("proyecto", null, mod);
         if(contador == -1 || contador == 0){
             regInsertados = "Error al insertar el registro. Registro duplicado. Verificar insercion";
         } else{
@@ -56,13 +66,22 @@ public class ControlProyecto {
     }
 
     //UPDATES
-    public String actualizar(Modalidad modalidad){
+    public String actualizar(Proyecto proyecto){
         try
         {
-            String[] id = {String.valueOf((modalidad.getId_modalidad()))};
+            String[] id = {String.valueOf((proyecto.getId_proyecto()))};
             ContentValues cv = new ContentValues();
-            cv.put("nombre_modalidad", modalidad.getNombre_modalidad());
-            db.update("modalidad", cv, "id_modalidad = ?",  id);
+            cv.put("id_categoria", proyecto.getId_categoria());
+            cv.put("id_modalidad", proyecto.getId_modalidad());
+            cv.put("dui_docente", proyecto.getDui_docente());
+            cv.put("id_estado", proyecto.getId_estado());
+            cv.put("id_carrera", proyecto.getId_carrera());
+            cv.put("id_area", proyecto.getId_area());
+            cv.put("nombre_proyecto", proyecto.getNombre_proyecto());
+            cv.put("descripcion_proyecto", proyecto.getDescripcion_proyecto());
+            cv.put("lugar", proyecto.getLugar());
+            cv.put("requisito_nota", proyecto.getRequisito_nota());
+            db.update("proyecto", cv, "id_proyecto = ?",  id);
 
             return "Registro Actualizado Correctamente";
         }
@@ -75,15 +94,15 @@ public class ControlProyecto {
 
 
     //DELETES
-    public String eliminar(Modalidad modalidad){
+    public String eliminar(Proyecto proyecto){
         String regAfectados="filas afectadas = ";
         int contador=0;
 
         //Borrar los registros de las tablas relacionadas con un trigger/ o validar trigger que aparezca mensaje que antes tiene que borrar esos registros
 
-        String[] id = {String.valueOf(modalidad.getId_modalidad())};
+        String[] id = {String.valueOf(proyecto.getId_proyecto())};
         try{
-            contador += db.delete("modalidad", "id_modalidad = ?", id);
+            contador += db.delete("proyecto", "id_proyecto = ?", id);
             regAfectados += contador;
 
             return regAfectados;
@@ -94,8 +113,8 @@ public class ControlProyecto {
     }
     //SELECTS
 
-    public Cursor leerTodoModalidad(){
-        String query = "SELECT * FROM modalidad";
+    public Cursor leerTodoProyecto(){
+        String query = "SELECT * FROM proyecto";
         SQLiteDatabase db;
         db = DBHelper.getReadableDatabase();
         Cursor cursor = null;
@@ -109,27 +128,29 @@ public class ControlProyecto {
 
     //Dropdown
 
-    public ArrayList<Modalidad> consultarModalidad(){
-        try {
-            ArrayList<Modalidad> lisModalidad = new ArrayList<Modalidad>();
-            Cursor cursor = db.query("modalidad", camposModalidad, null, null, null, null, null);
+    public Cursor leerProyectosAsignados(){
+        String query = "SELECT * FROM proyecto where id_estado=1";
+        SQLiteDatabase db;
+        db = DBHelper.getReadableDatabase();
+        Cursor cursor = null;
 
-            if (cursor.moveToFirst()) {
-                do {
-                    Modalidad modalidad = new Modalidad();
-                    modalidad.setId_modalidad(cursor.getInt(0));
-                    modalidad.setNombre_modalidad(cursor.getString(1));
-                    lisModalidad.add(modalidad);
-                } while (cursor.moveToNext());
-
-                return lisModalidad;
-            } else {
-                return null;
-            }
-        } catch (SQLException e){
-            e.printStackTrace();
+        if(db != null){
+            cursor = db.rawQuery(query,null);
         }
-        return null;
+
+        return cursor;
+    }
+    public Cursor leerProyectosNoAsignados(){
+        String query = "SELECT * FROM proyecto where id_estado=2";
+        SQLiteDatabase db;
+        db = DBHelper.getReadableDatabase();
+        Cursor cursor = null;
+
+        if(db != null){
+            cursor = db.rawQuery(query,null);
+        }
+
+        return cursor;
     }
 
 
