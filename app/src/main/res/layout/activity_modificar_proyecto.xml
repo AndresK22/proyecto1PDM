@@ -5,44 +5,209 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="24sp"
-    tools:context=".modalidad.ModificarModalidadActivity">
+    tools:context=".proyecto.ModificarProyectoActivity">
 
-    <EditText
-        android:id="@+id/editTextModalidad"
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:text="@string/tituloProyecto"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/labelCategoria"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@+id/textView3"
+        tools:ignore="MissingConstraints" />
+
+    <Spinner
+        android:id="@+id/spCategoria"
         android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:layout_marginTop="28dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="6dp"
+        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        tools:ignore="MissingConstraints,SpeakableTextPresentCheck"
+        />
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:text="@string/modalidadLabel"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@+id/spCategoria"
+        tools:ignore="MissingConstraints" />
+
+    <Spinner
+        android:id="@+id/spModalidad"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginTop="6dp"
+        app:layout_constraintTop_toBottomOf="@+id/textView5"
+        tools:ignore="MissingConstraints,SpeakableTextPresentCheck"
+        />
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:text="@string/docenteLabel"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@+id/spModalidad"
+        tools:ignore="MissingConstraints" />
+
+    <Spinner
+        android:id="@+id/spDocente"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginTop="6dp"
+        app:layout_constraintTop_toBottomOf="@+id/textView6"
+        tools:ignore="MissingConstraints,SpeakableTextPresentCheck"
+        />
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:text="@string/estadoLabel"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@+id/spDocente"
+        tools:ignore="MissingConstraints" />
+
+    <Spinner
+        android:id="@+id/spEstado"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginTop="6dp"
+        app:layout_constraintTop_toBottomOf="@+id/textView7"
+        tools:ignore="MissingConstraints,SpeakableTextPresentCheck"
+        />
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:text="@string/carreraLabel"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@+id/spEstado"
+        tools:ignore="MissingConstraints" />
+
+    <Spinner
+        android:id="@+id/spCarrera"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginTop="6dp"
+        app:layout_constraintTop_toBottomOf="@+id/textView8"
+        tools:ignore="MissingConstraints,SpeakableTextPresentCheck"
+        />
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:text="@string/areaLabel"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@+id/spCarrera"
+        tools:ignore="MissingConstraints" />
+
+    <Spinner
+        android:id="@+id/spArea"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginTop="6dp"
+        app:layout_constraintTop_toBottomOf="@+id/textView9"
+        tools:ignore="MissingConstraints,SpeakableTextPresentCheck"
+        />
+    <EditText
+        android:id="@+id/editTextNombreProyectoM"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="6dp"
         android:autofillHints=""
         android:ems="10"
-        android:hint="@string/editTextCategoria"
+        android:hint="@string/nombreProyectoLabel"
         android:inputType="text"
-        android:maxLength="25"
+        android:maxLength="2500"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.666"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spArea"
         tools:ignore="TextContrastCheck" />
-
-    <Button
-        android:id="@+id/btnModificarModalidad"
+    <EditText
+        android:id="@+id/editTextDescripcionProyectoM"
         android:layout_width="match_parent"
-        android:layout_height="51dp"
-        android:layout_marginTop="36dp"
-        android:text="@string/btnModificarCategoria"
-        android:onClick="modificarModalidad"
+        android:layout_height="40dp"
+        android:layout_marginTop="8dp"
+        android:autofillHints=""
+        android:ems="250"
+        android:hint="@string/descripcionLabel"
+        android:inputType="text"
+        android:maxLength="10"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextModalidad" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextNombreProyectoM"
+        tools:ignore="TextContrastCheck" />
+    <EditText
+        android:id="@+id/editTextLugarM"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="6dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="@string/lugarLabel"
+        android:inputType="text"
+        android:maxLength="250"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextDescripcionProyectoM"
+        tools:ignore="TextContrastCheck" />
+    <EditText
+        android:id="@+id/editTextRequisitoM"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="6dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="@string/requisito"
+        android:inputType="text"
+        android:maxLength="250"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextLugarM"
+        tools:ignore="TextContrastCheck" />
+    <Button
+        android:id="@+id/btnModificarProyecto"
+        android:layout_width="match_parent"
+        android:layout_height="38dp"
+        android:layout_marginTop="3dp"
+        android:text="@string/btnModificarEstado"
+        android:onClick="modificarProyecto"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextRequisitoM" />
 
     <Button
-        android:id="@+id/btnEliminarModalidad"
+        android:id="@+id/btnEliminarProyecto"
         android:layout_width="match_parent"
-        android:layout_height="51dp"
-        android:layout_marginTop="36dp"
-        android:text="@string/btnEliminarCategoria"
-        android:onClick="eliminarModalidad"
+        android:layout_height="38dp"
+        android:layout_marginTop="4dp"
+        android:text="@string/btnEliminarEstado"
+        android:onClick="eliminarProyecto"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.666"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnModificarModalidad" />
+        app:layout_constraintTop_toBottomOf="@+id/btnModificarProyecto" />
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

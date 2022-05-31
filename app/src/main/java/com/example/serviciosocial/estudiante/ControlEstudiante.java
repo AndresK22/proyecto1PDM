@@ -98,6 +98,7 @@ public class ControlEstudiante {
 
         return cursor;
     }
+
     public ArrayList<Estudiante> consultarEstudiante(){
          try{
              ArrayList<Estudiante> lisEstudiante = new ArrayList<Estudiante>();
