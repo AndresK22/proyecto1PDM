@@ -75,14 +75,24 @@ public class ControlMateria {
     public String eliminar(Materia materia){
         String regAfectados="filas afectadas = ";
         int contador=0;
-        //Borrar la nota con un trigger/ o validar trigger que aparezca mensaje que antes tiene que borrar la nota
-
-        String[] id = {String.valueOf(materia.getCod_materia())};
         try{
-            contador += db.delete("materia", "cod_materia = ?", id);
-            regAfectados += contador;
 
-            return regAfectados;
+            String query = "SELECT cod_materia FROM nota WHERE cod_materia = '" + materia.getCod_materia() + "'";
+            SQLiteDatabase db;
+            db = DBHelper.getReadableDatabase();
+            Cursor cursor = null;
+            cursor = db.rawQuery(query,null);
+
+            if(cursor.moveToFirst()){
+                return "Esta materia esta tiene notas asignadas, no es posible eliminarla";
+            } else {
+                String[] id = {String.valueOf(materia.getCod_materia())};
+                contador += db.delete("materia", "cod_materia = ?", id);
+                regAfectados += contador;
+
+                return regAfectados;
+            }
+
         } catch (SQLException e) {
             e.printStackTrace();
         }

@@ -76,14 +76,25 @@ public class ControlEstado {
         String regAfectados="filas afectadas = ";
         int contador=0;
 
-        //Borrar los registros de las tablas relacionadas con un trigger/ o validar trigger que aparezca mensaje que antes tiene que borrar esos registros
-
-        String[] id = {String.valueOf(estado.getId_estado())};
         try{
-            contador += db.delete("estado", "id_estado = ?", id);
-            regAfectados += contador;
 
-            return regAfectados;
+            String query = "SELECT id_proyecto FROM proyecto WHERE id_estado = '" + estado.getId_estado() + "'";
+            SQLiteDatabase db;
+            db = DBHelper.getReadableDatabase();
+            Cursor cursor = null;
+            cursor = db.rawQuery(query,null);
+
+            if(cursor.moveToFirst()){
+                return "Este estado esta asignado en proyectos, no es posible eliminarlo";
+            } else {
+                String[] id = {String.valueOf(estado.getId_estado())};
+
+                contador += db.delete("estado", "id_estado = ?", id);
+                regAfectados += contador;
+
+                return regAfectados;
+            }
+
         } catch (SQLException e) {
             e.printStackTrace();
         }

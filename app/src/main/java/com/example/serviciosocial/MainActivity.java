@@ -223,6 +223,15 @@ public class MainActivity extends AppCompatActivity {
             try{
                 db = DBHelper.getWritableDatabase();
 
+                db.execSQL("DELETE FROM materia;");
+                db.execSQL("DELETE FROM area_carrera;");
+                db.execSQL("DELETE FROM estudiante;");
+                db.execSQL("DELETE FROM docente;");
+                db.execSQL("DELETE FROM categoria;");
+                db.execSQL("DELETE FROM modalidad;");
+                db.execSQL("DELETE FROM carrera;");
+                db.execSQL("DELETE FROM estado;");
+
                 db.execSQL("INSERT INTO estado (id_estado,estado) VALUES (1,'Asignado');");
                 db.execSQL("INSERT INTO estado (id_estado,estado) VALUES (2,'No asignado');");
 

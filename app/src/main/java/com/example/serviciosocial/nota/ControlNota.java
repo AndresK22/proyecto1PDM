@@ -75,8 +75,6 @@ public class ControlNota {
         String regAfectados="filas afectadas = ";
         int contador=0;
 
-        //Borrar los registros de las tablas relacionadas con un trigger/ o validar trigger que aparezca mensaje que antes tiene que borrar esos registros
-
         String[] id = {nota.getCod_materia(), nota.getCarnet()};
         try{
             contador += db.delete("nota", "cod_materia = ? AND carnet = ?", id);
