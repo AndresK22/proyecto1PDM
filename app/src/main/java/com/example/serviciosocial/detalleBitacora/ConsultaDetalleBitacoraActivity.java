@@ -38,17 +38,17 @@ public class ConsultaDetalleBitacoraActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_consulta_detalle_bitacora);
-
+        Bundle extras = getIntent().getExtras();
+        extra = extras.getString("id_bitacora");
         helper = new ControlDetalleBitacora(this);
         id= new ArrayList<>();
         id_bitacora = new ArrayList<>();
         actividad = new ArrayList<>();
         fecha = new ArrayList<>();
 
-        //extra = getIntent().getExtras().getString("id_bitacora");
 
         recyclerViewDeta = findViewById(R.id.recyclerViewDetalle);
-        add_button = findViewById(R.id.addBut2);
+        add_button = findViewById(R.id.addButtt2);
         empty_imageview = findViewById(R.id.empty_imageView);
 
         no_data = findViewById(R.id.no_dataTextView);
@@ -56,8 +56,10 @@ public class ConsultaDetalleBitacoraActivity extends AppCompatActivity {
         add_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Bundle extras = getIntent().getExtras();
+                extra = extras.getString("id_bitacora");
                 Intent intent = new Intent(ConsultaDetalleBitacoraActivity.this, CrearDetalleBitacoraActivity.class);
-                intent.putExtra("id_bitacora",String.valueOf(foo));
+                intent.putExtra("id_bitacora",String.valueOf(extra));
                 startActivity(intent);
             }
         });

@@ -16,6 +16,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.serviciosocial.R;
 import com.example.serviciosocial.estudiante.ControlEstudiante;
 import com.example.serviciosocial.estudiante.Estudiante;
+import com.example.serviciosocial.proyecto.ControlProyecto;
+import com.example.serviciosocial.proyecto.Proyecto;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -23,9 +25,10 @@ import java.util.Iterator;
 public class CrearBitacoraActivity extends AppCompatActivity {
 
     ControlBitacora helper;
+    ControlProyecto helper2;
     ControlEstudiante helper1;
     Spinner spinerProyecto,spinerCarnet;
-    ArrayList<String> id_proyecto, carnet; //para el spinner
+    ArrayList<String> id_proyecto, nombre_proyecto, carnet; //para el spinner
     String id_p,id_c;
 
     EditText txtID;
@@ -42,6 +45,7 @@ public class CrearBitacoraActivity extends AppCompatActivity {
 
         helper = new ControlBitacora(this);
         helper1 = new ControlEstudiante(this);
+        helper2 = new ControlProyecto(this);
         spinerProyecto = (Spinner) findViewById(R.id.spinnerProyecto);
         spinerCarnet= (Spinner) findViewById(R.id.spinnerCarnet);
 
@@ -51,9 +55,8 @@ public class CrearBitacoraActivity extends AppCompatActivity {
         btnGuardar = (Button) findViewById(R.id.btnGuardarBitacora);
 
         id_proyecto = new ArrayList<>();
-
-        // nombre_carrera = new ArrayList<>();
-        //nombre_carrera.add("Seleccione la carrera");
+        nombre_proyecto = new ArrayList<>();
+        nombre_proyecto.add("Seleccione el nombre del proyecto");
 
         carnet= new ArrayList<>();
         carnet.add("Seleccione el carnet del estudiante");
@@ -68,23 +71,25 @@ public class CrearBitacoraActivity extends AppCompatActivity {
         helper.cerrar();
         *
         * */
-        helper.abrir();
-        ArrayList<Bitacora> itemsSpinner = helper.consultarBitacora();
-        helper.cerrar();
+        helper2.abrir();
+        ArrayList<Proyecto> itemsSpinner = helper2.consultarProyecto();
+        helper2.cerrar();
+
         helper1.abrir();
         ArrayList<Estudiante> itemsSpinner2 = helper1.consultarEstudiante();
         helper1.cerrar();
-        Cursor cursor = helper.leerTodoBitacora();
+
+        Cursor cursor = helper2.leerTodoProyecto();
         if (cursor.getCount()==0){
 
         }else {
-            Bitacora a;
-            Iterator<Bitacora> it = itemsSpinner.iterator();
+            Proyecto a;
+            Iterator<Proyecto> it = itemsSpinner.iterator();
             while (it.hasNext()) {
                 a = it.next();
 
                 id_proyecto.add(String.valueOf(a.getId_proyecto()));
-                //nombre_carrera.add(a.getDescrip_area());
+                nombre_proyecto.add(a.getNombre_proyecto());
             }
         }
 
@@ -103,7 +108,7 @@ public class CrearBitacoraActivity extends AppCompatActivity {
         //fin de lo del area
 
 
-        ArrayAdapter<CharSequence> adaptador = new ArrayAdapter(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, id_proyecto);
+        ArrayAdapter<CharSequence> adaptador = new ArrayAdapter(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, nombre_proyecto);
         spinerProyecto.setAdapter(adaptador);
 
         ArrayAdapter<CharSequence> adaptador1 = new ArrayAdapter(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, carnet);
@@ -130,7 +135,7 @@ public class CrearBitacoraActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 if (i != 0) {
-                    id_c = carnet.get(i - 1);
+                    id_c = carnet.get(i);
                     //Guarda el id del carnet seleccionada en la variable global, para usarla en el create
                     camp = false;
                 } else {

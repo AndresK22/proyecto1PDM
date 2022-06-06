@@ -7,11 +7,15 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.example.serviciosocial.DataBaseHelper;
+import com.example.serviciosocial.carrera.Carrera;
 import com.example.serviciosocial.modalidad.Modalidad;
 
 import java.util.ArrayList;
 
 public class ControlProyecto {
+
+    private static final String[] camposProyecto = new String[] {"id_proyecto", "id_categoria", "id_modalidad", "dui_docente",
+    "id_estado","id_carrera","id_area","nombre_proyecto","descripcion_proyecto","lugar","requisito_nota"};
 
     private final Context context;
     private DataBaseHelper DBHelper;
@@ -154,6 +158,38 @@ public class ControlProyecto {
     }
 
 
+    public ArrayList<Proyecto> consultarProyecto(){
+        try{
+            ArrayList<Proyecto> lisPro = new ArrayList<>();
+            Cursor cursor = db.query("proyecto", camposProyecto, null, null, null, null, null);
+
+            if(cursor.moveToFirst()){
+                do{
+                    Proyecto proyecto= new Proyecto();
+                    proyecto.setId_proyecto(cursor.getInt(0));
+                    proyecto.setId_categoria(cursor.getInt(1));
+                    proyecto.setId_modalidad(cursor.getInt(2));
+                    proyecto.setDui_docente(cursor.getString(3));
+                    proyecto.setId_estado(cursor.getInt(4));
+                    proyecto.setId_carrera(cursor.getString(5));
+                    proyecto.setId_area(cursor.getString(6));
+                    proyecto.setNombre_proyecto(cursor.getString(7));
+                    proyecto.setDescripcion_proyecto(cursor.getString(8));
+                    proyecto.setLugar(cursor.getString(9));
+                    proyecto.setRequisito_nota(cursor.getInt(10));
+
+                    lisPro.add(proyecto);
+                }while(cursor.moveToNext());
+
+                return lisPro;
+            }else{
+                return null;
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return null;
+    }
 
 
 }
