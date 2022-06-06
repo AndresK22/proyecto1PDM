@@ -38,8 +38,6 @@ public class ConsultaDetalleBitacoraActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_consulta_detalle_bitacora);
-        Bundle extras = getIntent().getExtras();
-        extra = extras.getString("id_bitacora");
         helper = new ControlDetalleBitacora(this);
         id= new ArrayList<>();
         id_bitacora = new ArrayList<>();

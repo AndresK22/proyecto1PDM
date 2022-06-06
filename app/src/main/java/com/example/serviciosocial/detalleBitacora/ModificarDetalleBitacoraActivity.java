@@ -11,6 +11,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.serviciosocial.R;
+import com.example.serviciosocial.bitacora.ConsultaBitacoraActivity;
 
 public class ModificarDetalleBitacoraActivity extends AppCompatActivity {
 
@@ -98,7 +99,7 @@ public class ModificarDetalleBitacoraActivity extends AppCompatActivity {
                         helper.cerrar();
 
                         Toast.makeText(ModificarDetalleBitacoraActivity.this, regEliminadas, Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(ModificarDetalleBitacoraActivity.this, ConsultaDetalleBitacoraActivity.class);
+                        Intent intent = new Intent(ModificarDetalleBitacoraActivity.this, ConsultaBitacoraActivity.class);
                         startActivity(intent);
 
                     }

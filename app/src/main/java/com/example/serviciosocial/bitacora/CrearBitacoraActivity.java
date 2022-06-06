@@ -186,6 +186,8 @@ public class CrearBitacoraActivity extends AppCompatActivity {
             return false;
         }else if (txtMes.getText().toString().isEmpty() || txtMes.getText().toString() == null) {
             return false;
+        }else if (txtTotal.getText().toString().isEmpty() || txtTotal.getText().toString() == null) {
+            return false;
         }else if (camp) {
             return false;
 
