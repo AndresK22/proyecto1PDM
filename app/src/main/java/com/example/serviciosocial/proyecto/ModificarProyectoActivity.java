@@ -122,7 +122,7 @@ public class ModificarProyectoActivity extends AppCompatActivity {
         id_areaP = getIntent().getExtras().getString("id_area");
         nombre_proyectoP = getIntent().getExtras().getString("nombre_proyecto");
         lugarP = getIntent().getExtras().getString("lugar");
-        descripcion_proyectoP = getIntent().getExtras().getString("id_area");
+        descripcion_proyectoP = getIntent().getExtras().getString("descripcion_proyecto");
         requisito_notaP = getIntent().getExtras().getString("requisito_nota");
 
         modificar = findViewById(R.id.btnModificarProyecto);
@@ -147,16 +147,22 @@ public class ModificarProyectoActivity extends AppCompatActivity {
         helperCat.cerrar();
 
         Categoria cat;
-        Iterator<Categoria> it = itemsSpinnerCat.iterator();
-        while(it.hasNext()) {
-            cat = it.next();
+        if (itemsSpinnerCat == null){
 
-            id_categoria.add(String.valueOf(cat.getId_categoria()));
-            nombre_categoria.add(cat.getNombre_categoria());
+        }
+        else {
+            Iterator<Categoria> it = itemsSpinnerCat.iterator();
+            while (it.hasNext()) {
+                cat = it.next();
+
+                id_categoria.add(String.valueOf(cat.getId_categoria()));
+                nombre_categoria.add(cat.getNombre_categoria());
+            }
         }
         ArrayAdapter<CharSequence> adaptadorCat = new ArrayAdapter(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, nombre_categoria);
         spCategoria.setAdapter(adaptadorCat);
-
+        int aux = id_categoria.indexOf(id_categoriaP);
+        spCategoria.setSelection(aux + 1);
         spCategoria.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
@@ -184,15 +190,23 @@ public class ModificarProyectoActivity extends AppCompatActivity {
         helperModalidad.cerrar();
 
         Modalidad mod;
-        Iterator<Modalidad> itModalidad = itemsSpinnerMod.iterator();
-        while(itModalidad.hasNext()) {
-            mod = itModalidad.next();
+        if (itemsSpinnerMod == null){
 
-            id_modalidad.add(String.valueOf(mod.getId_modalidad()));
-            nombre_modalidad.add(mod.getNombre_modalidad());
+        }
+        else {
+            Iterator<Modalidad> itModalidad = itemsSpinnerMod.iterator();
+            while (itModalidad.hasNext()) {
+                mod = itModalidad.next();
+
+                id_modalidad.add(String.valueOf(mod.getId_modalidad()));
+                nombre_modalidad.add(mod.getNombre_modalidad());
+            }
         }
         ArrayAdapter<CharSequence> adaptadorMod = new ArrayAdapter(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, nombre_modalidad);
         spModalidad.setAdapter(adaptadorMod);
+
+        int auxM = id_modalidad.indexOf(id_modalidadP);
+        spModalidad.setSelection(auxM + 1);
 
         spModalidad.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -220,15 +234,22 @@ public class ModificarProyectoActivity extends AppCompatActivity {
         helperDocente.cerrar();
 
         Docente doc;
-        Iterator<Docente> itDocente = itemsSpinnerDoc.iterator();
-        while(itDocente.hasNext()) {
-            doc = itDocente.next();
+        if (itemsSpinnerDoc == null){
 
-            dui_docente.add(String.valueOf(doc.getDui_docente()));
-            nombres_docente.add(doc.getNombres_docente()+" "+doc.getApellidos_docente());
+        }
+        else {
+            Iterator<Docente> itDocente = itemsSpinnerDoc.iterator();
+            while (itDocente.hasNext()) {
+                doc = itDocente.next();
+
+                dui_docente.add(String.valueOf(doc.getDui_docente()));
+                nombres_docente.add(doc.getNombres_docente() + " " + doc.getApellidos_docente());
+            }
         }
         ArrayAdapter<CharSequence> adaptadorDoc = new ArrayAdapter(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, nombres_docente);
         spDocente.setAdapter(adaptadorDoc);
+        int auxD = dui_docente.indexOf(dui_docenteP);
+        spDocente.setSelection(auxD + 1);
 
         spDocente.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -257,15 +278,23 @@ public class ModificarProyectoActivity extends AppCompatActivity {
         helperEstado.cerrar();
 
         Estado esta;
-        Iterator<Estado> itEstado = itemsSpinnerEst.iterator();
-        while(itEstado.hasNext()) {
-            esta = itEstado.next();
+        if (itemsSpinnerEst == null){
 
-            id_estado.add(String.valueOf(esta.getId_estado()));
-            nombre_estado.add(esta.getEstado());
+        }
+        else {
+            Iterator<Estado> itEstado = itemsSpinnerEst.iterator();
+            while (itEstado.hasNext()) {
+                esta = itEstado.next();
+
+                id_estado.add(String.valueOf(esta.getId_estado()));
+                nombre_estado.add(esta.getEstado());
+            }
         }
         ArrayAdapter<CharSequence> adaptadorEst = new ArrayAdapter(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, nombre_estado);
         spEstado.setAdapter(adaptadorEst);
+
+        int auxE = id_estado.indexOf(id_estadoP);
+        spEstado.setSelection(auxE + 1);
 
         spEstado.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -293,15 +322,23 @@ public class ModificarProyectoActivity extends AppCompatActivity {
         helperCarrera.cerrar();
 
         Carrera carr;
-        Iterator<Carrera> itCarrera = itemsSpinnerCarr.iterator();
-        while(itCarrera.hasNext()) {
-            carr = itCarrera.next();
+        if (itemsSpinnerCarr == null){
 
-            id_carrera.add(String.valueOf(carr.getId_carrera()));
-            nombre_carrera.add(carr.getNombre_carrera());
+        }
+        else {
+            Iterator<Carrera> itCarrera = itemsSpinnerCarr.iterator();
+            while (itCarrera.hasNext()) {
+                carr = itCarrera.next();
+
+                id_carrera.add(String.valueOf(carr.getId_carrera()));
+                nombre_carrera.add(carr.getNombre_carrera());
+            }
         }
         ArrayAdapter<CharSequence> adaptadorCarr = new ArrayAdapter(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, nombre_carrera);
         spCarrera.setAdapter(adaptadorCarr);
+
+        int auxC = id_carrera.indexOf(id_carreraP);
+        spCarrera.setSelection(auxC + 1);
 
         spCarrera.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -331,16 +368,23 @@ public class ModificarProyectoActivity extends AppCompatActivity {
         helperArea.cerrar();
 
         AreaCarrera areaC;
-        Iterator<AreaCarrera> itACarrera = itemsSpinnerACarr.iterator();
-        while(itACarrera.hasNext()) {
-            areaC = itACarrera.next();
+        if (itemsSpinnerACarr == null){
 
-            id_area.add(String.valueOf(areaC.getId_area()));
-            descrip_area.add(areaC.getDescrip_area());
+        }
+        else {
+
+            Iterator<AreaCarrera> itACarrera = itemsSpinnerACarr.iterator();
+            while (itACarrera.hasNext()) {
+                areaC = itACarrera.next();
+
+                id_area.add(String.valueOf(areaC.getId_area()));
+                descrip_area.add(areaC.getDescrip_area());
+            }
         }
         ArrayAdapter<CharSequence> adaptadorACarr = new ArrayAdapter(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, descrip_area);
         spArea.setAdapter(adaptadorACarr);
-
+        int auxAC = id_area.indexOf(id_areaP);
+        spArea.setSelection(auxAC + 1);
         spArea.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
@@ -368,6 +412,7 @@ public class ModificarProyectoActivity extends AppCompatActivity {
             String lugarM = txtLugar.getText().toString();
             double requisito = Double.parseDouble(txtRequisito.getText().toString());
             Proyecto pro = new Proyecto();
+            pro.setId_proyecto(Integer.parseInt(id_proyectoP));
             pro.setId_categoria(Integer.parseInt(id_cate));
             pro.setId_modalidad(Integer.parseInt(id_modal));
             pro.setDui_docente(dui_docentes);

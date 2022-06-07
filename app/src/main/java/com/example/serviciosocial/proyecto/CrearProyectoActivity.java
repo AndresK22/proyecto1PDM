@@ -247,6 +247,10 @@ public class CrearProyectoActivity extends AppCompatActivity {
         nombre_carrera = new ArrayList<>();
         nombre_carrera.add("Seleccione una carrera");
 
+        id_area = new ArrayList<>();
+        descrip_area = new ArrayList<>();
+        descrip_area.add("Seleccione un area");
+
         helperCarrera.abrir();
         ArrayList<Carrera> itemsSpinnerCarr = helperCarrera.consultarCarrera();
         helperCarrera.cerrar();
@@ -280,9 +284,7 @@ public class CrearProyectoActivity extends AppCompatActivity {
             }
         });
         //------------Spinner Area-------------------
-        id_area = new ArrayList<>();
-        descrip_area = new ArrayList<>();
-        descrip_area.add("Seleccione un area");
+
 
         helperArea.abrir();
         String[] id_car ={String.valueOf(id_carr)};

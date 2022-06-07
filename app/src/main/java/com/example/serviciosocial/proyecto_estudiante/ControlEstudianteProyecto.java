@@ -49,7 +49,7 @@ public class ControlEstudianteProyecto {
         cate.put("carnet", estudiantes_proyecto.getCarnet());
         contador = db.insert("estudiantes_proyecto", null, cate);
         if(contador == -1 || contador == 0){
-            regInsertados = "Error al insertar el registro. Registro duplicado. Verificar insercion";
+            regInsertados = "Error al insertar el registro. Verificar insercion";
         } else{
             regInsertados = regInsertados + contador;
             actualizarEstado(estudiantes_proyecto.getId_proyecto());

@@ -7,6 +7,7 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.example.serviciosocial.DataBaseHelper;
+import com.example.serviciosocial.categoria.Categoria;
 
 import java.util.ArrayList;
 
@@ -135,6 +136,28 @@ public class ControlAreaCarrera {
                 } while (cursor.moveToNext());
 
                 return lisArea;
+            } else {
+                return null;
+            }
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+    public ArrayList<AreaCarrera> consultarCarr(String[] id){
+        try {
+            ArrayList<AreaCarrera> lisCarrera = new ArrayList<AreaCarrera>();
+            Cursor cursor = db.query("area_carrera", camposAreaCarrera, "id_carrera=?", id, null, null, null);
+
+            if (cursor.moveToFirst()) {
+                do {
+                    AreaCarrera areaCarrera = new AreaCarrera();
+                    areaCarrera.setId_area(cursor.getString(0));
+                    areaCarrera.setDescrip_area(cursor.getString(1));
+                    lisCarrera.add(areaCarrera);
+                } while (cursor.moveToNext());
+
+                return lisCarrera;
             } else {
                 return null;
             }
