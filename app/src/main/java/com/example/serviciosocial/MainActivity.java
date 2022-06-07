@@ -223,6 +223,14 @@ public class MainActivity extends AppCompatActivity {
             try{
                 db = DBHelper.getWritableDatabase();
 
+                db.execSQL("DELETE FROM det_res_ser_soc;");
+                db.execSQL("DELETE FROM resumen_servicio_social;");
+                db.execSQL("DELETE FROM detalle_bitacora;");
+                db.execSQL("DELETE FROM bitacora;");
+                db.execSQL("DELETE FROM estudiantes_proyecto;");
+                db.execSQL("DELETE FROM proyecto;");
+                db.execSQL("DELETE FROM record_academico;");
+                db.execSQL("DELETE FROM nota;");
                 db.execSQL("DELETE FROM materia;");
                 db.execSQL("DELETE FROM area_carrera;");
                 db.execSQL("DELETE FROM estudiante;");
@@ -231,6 +239,16 @@ public class MainActivity extends AppCompatActivity {
                 db.execSQL("DELETE FROM modalidad;");
                 db.execSQL("DELETE FROM carrera;");
                 db.execSQL("DELETE FROM estado;");
+
+                db.execSQL("DELETE FROM sqlite_sequence WHERE name='det_res_ser_soc';");
+                db.execSQL("DELETE FROM sqlite_sequence WHERE name='resumen_servicio_social';");
+                db.execSQL("DELETE FROM sqlite_sequence WHERE name='detalle_bitacora';");
+                db.execSQL("DELETE FROM sqlite_sequence WHERE name='proyecto';");
+                db.execSQL("DELETE FROM sqlite_sequence WHERE name='record_academico';");
+                db.execSQL("DELETE FROM sqlite_sequence WHERE name='categoria';");
+                db.execSQL("DELETE FROM sqlite_sequence WHERE name='modalidad';");
+                db.execSQL("DELETE FROM sqlite_sequence WHERE name='estado';");
+
 
                 db.execSQL("INSERT INTO estado (id_estado,estado) VALUES (1,'Asignado');");
                 db.execSQL("INSERT INTO estado (id_estado,estado) VALUES (2,'No asignado');");
@@ -306,6 +324,95 @@ public class MainActivity extends AppCompatActivity {
                 db.execSQL("INSERT INTO materia (cod_materia, id_area, nombre_materia) VALUES ('mid115', '09', 'Hidraulicas');");
                 db.execSQL("INSERT INTO materia (cod_materia, id_area, nombre_materia) VALUES ('dem215', '09', 'Maquinas ii');");
 
+
+                db.execSQL("INSERT INTO nota (cod_materia, carnet, calificacion) VALUES ('iai115', 'aa19012', 2.59);");
+                db.execSQL("INSERT INTO nota (cod_materia, carnet, calificacion) VALUES ('prn115', 'aa19012', 9.75);");
+                db.execSQL("INSERT INTO nota (cod_materia, carnet, calificacion) VALUES ('prn215', 'aa19012', 7.58);");
+
+                db.execSQL("INSERT INTO nota (cod_materia, carnet, calificacion) VALUES ('esd115', 'aa19012', 1.74);");
+                db.execSQL("INSERT INTO nota (cod_materia, carnet, calificacion) VALUES ('hdp115', 'aa19012', 10.00);");
+                db.execSQL("INSERT INTO nota (cod_materia, carnet, calificacion) VALUES ('msm115', 'aa19012', 7.86);");
+
+                db.execSQL("INSERT INTO nota (cod_materia, carnet, calificacion) VALUES ('cgr115', 'cc19114', 9.17);");
+                db.execSQL("INSERT INTO nota (cod_materia, carnet, calificacion) VALUES ('mso215', 'cc19114', 3.13);");
+                db.execSQL("INSERT INTO nota (cod_materia, carnet, calificacion) VALUES ('top115', 'cc19114', 6.28);");
+
+                db.execSQL("INSERT INTO nota (cod_materia, carnet, calificacion) VALUES ('dit115', 'hg19010', 9.36);");
+                db.execSQL("INSERT INTO nota (cod_materia, carnet, calificacion) VALUES ('ter215', 'hg19010', 5.59);");
+                db.execSQL("INSERT INTO nota (cod_materia, carnet, calificacion) VALUES ('tfc115', 'hg19010', 4.78);");
+
+                db.execSQL("INSERT INTO nota (cod_materia, carnet, calificacion) VALUES ('prn115', 'rg19041', 10.00);");
+                db.execSQL("INSERT INTO nota (cod_materia, carnet, calificacion) VALUES ('hdp115', 'rg19041', 8.85);");
+                db.execSQL("INSERT INTO nota (cod_materia, carnet, calificacion) VALUES ('fde115', 'rg19041', 5.19);");
+
+
+                db.execSQL("INSERT INTO proyecto (id_categoria, id_modalidad, dui_docente, id_estado, id_carrera, id_area, nombre_proyecto, descripcion_proyecto, lugar, requisito_nota) VALUES (1, 1, '1234567890', 1, 'I10515', '01', 'Proyecto 1', 'Descripcion proyecto 1', 'lugar proyecto 1', 6.00);");
+                db.execSQL("INSERT INTO proyecto (id_categoria, id_modalidad, dui_docente, id_estado, id_carrera, id_area, nombre_proyecto, descripcion_proyecto, lugar, requisito_nota) VALUES (3, 2, '9876543210', 2, 'I10515', '03', 'Proyecto 2', 'Descripcion proyecto 2', 'lugar proyecto 2', 6.00);");
+
+                db.execSQL("INSERT INTO proyecto (id_categoria, id_modalidad, dui_docente, id_estado, id_carrera, id_area, nombre_proyecto, descripcion_proyecto, lugar, requisito_nota) VALUES (2, 2, '1234567891', 1, 'I10501', '04', 'Proyecto 3', 'Descripcion proyecto 3', 'lugar proyecto 3', 6.00);");
+                db.execSQL("INSERT INTO proyecto (id_categoria, id_modalidad, dui_docente, id_estado, id_carrera, id_area, nombre_proyecto, descripcion_proyecto, lugar, requisito_nota) VALUES (4, 1, '1234567892', 2, 'I10501', '05', 'Proyecto 4', 'Descripcion proyecto 4', 'lugar proyecto 4', 6.00);");
+
+                db.execSQL("INSERT INTO proyecto (id_categoria, id_modalidad, dui_docente, id_estado, id_carrera, id_area, nombre_proyecto, descripcion_proyecto, lugar, requisito_nota) VALUES (1, 1, '9876543210', 1, 'I10503', '07', 'Proyecto 5', 'Descripcion proyecto 5', 'lugar proyecto 5', 6.00);");
+                db.execSQL("INSERT INTO proyecto (id_categoria, id_modalidad, dui_docente, id_estado, id_carrera, id_area, nombre_proyecto, descripcion_proyecto, lugar, requisito_nota) VALUES (4, 2, '1234567890', 2, 'I10503', '09', 'Proyecto 6', 'Descripcion proyecto 6', 'lugar proyecto 6', 6.00);");
+
+                db.execSQL("INSERT INTO proyecto (id_categoria, id_modalidad, dui_docente, id_estado, id_carrera, id_area, nombre_proyecto, descripcion_proyecto, lugar, requisito_nota) VALUES (2, 2, '1234567892', 1, 'I10515', '02', 'Proyecto 7', 'Descripcion proyecto 7', 'lugar proyecto 7', 6.00);");
+                db.execSQL("INSERT INTO proyecto (id_categoria, id_modalidad, dui_docente, id_estado, id_carrera, id_area, nombre_proyecto, descripcion_proyecto, lugar, requisito_nota) VALUES (3, 1, '1234567891', 2, 'I10515', '03', 'Proyecto 8', 'Descripcion proyecto 8', 'lugar proyecto 8', 6.00);");
+
+
+                db.execSQL("INSERT INTO estudiantes_proyecto (id_proyecto, carnet) VALUES (1, 'aa19012');");
+                db.execSQL("INSERT INTO estudiantes_proyecto (id_proyecto, carnet) VALUES (3, 'cc19114');");
+                db.execSQL("INSERT INTO estudiantes_proyecto (id_proyecto, carnet) VALUES (5, 'hg19010');");
+                db.execSQL("INSERT INTO estudiantes_proyecto (id_proyecto, carnet) VALUES (7, 'rg19041');");
+
+
+                db.execSQL("INSERT INTO bitacora(id_proyecto, carnet, mes, total_horas_realizadas) VALUES(1, 'aa19012', 'enero', 40);");
+                db.execSQL("INSERT INTO bitacora(id_proyecto, carnet, mes, total_horas_realizadas) VALUES(1, 'aa19012', 'febrero', 150);");
+
+                db.execSQL("INSERT INTO bitacora(id_proyecto, carnet, mes, total_horas_realizadas) VALUES(3, 'cc19114', 'marzo', 60);");
+                db.execSQL("INSERT INTO bitacora(id_proyecto, carnet, mes, total_horas_realizadas) VALUES(3, 'cc19114', 'abril', 75);");
+
+                db.execSQL("INSERT INTO bitacora(id_proyecto, carnet, mes, total_horas_realizadas) VALUES(5, 'hg19010', 'mayo', 200);");
+                db.execSQL("INSERT INTO bitacora(id_proyecto, carnet, mes, total_horas_realizadas) VALUES(5, 'hg19010', 'junio', 25);");
+
+                db.execSQL("INSERT INTO bitacora(id_proyecto, carnet, mes, total_horas_realizadas) VALUES(7, 'rg19041', 'julio', 140);");
+                db.execSQL("INSERT INTO bitacora(id_proyecto, carnet, mes, total_horas_realizadas) VALUES(7, 'rg19041', 'agosto', 80);");
+
+
+                db.execSQL("INSERT INTO detalle_bitacora(id_bitacora, actividad, fecha_bitacora) VALUES(1, 'Actividad de bitacora 1.1', '03/01/2021');");
+                db.execSQL("INSERT INTO detalle_bitacora(id_bitacora, actividad, fecha_bitacora) VALUES(1, 'Actividad de bitacora 1.2', '21/01/2021');");
+
+                db.execSQL("INSERT INTO detalle_bitacora(id_bitacora, actividad, fecha_bitacora) VALUES(2, 'Actividad de bitacora 2.1', '04/02/2021');");
+                db.execSQL("INSERT INTO detalle_bitacora(id_bitacora, actividad, fecha_bitacora) VALUES(2, 'Actividad de bitacora 2.2', '22/02/2021');");
+
+                db.execSQL("INSERT INTO detalle_bitacora(id_bitacora, actividad, fecha_bitacora) VALUES(3, 'Actividad de bitacora 3.1', '05/03/2021');");
+                db.execSQL("INSERT INTO detalle_bitacora(id_bitacora, actividad, fecha_bitacora) VALUES(3, 'Actividad de bitacora 3.2', '23/03/2021');");
+
+                db.execSQL("INSERT INTO detalle_bitacora(id_bitacora, actividad, fecha_bitacora) VALUES(4, 'Actividad de bitacora 4.1', '06/04/2021');");
+                db.execSQL("INSERT INTO detalle_bitacora(id_bitacora, actividad, fecha_bitacora) VALUES(4, 'Actividad de bitacora 4.2', '24/04/2021');");
+
+                db.execSQL("INSERT INTO detalle_bitacora(id_bitacora, actividad, fecha_bitacora) VALUES(5, 'Actividad de bitacora 5.1', '07/05/2021');");
+                db.execSQL("INSERT INTO detalle_bitacora(id_bitacora, actividad, fecha_bitacora) VALUES(5, 'Actividad de bitacora 5.2', '25/05/2021');");
+
+                db.execSQL("INSERT INTO detalle_bitacora(id_bitacora, actividad, fecha_bitacora) VALUES(6, 'Actividad de bitacora 6.1', '08/06/2021');");
+                db.execSQL("INSERT INTO detalle_bitacora(id_bitacora, actividad, fecha_bitacora) VALUES(6, 'Actividad de bitacora 6.2', '26/06/2021');");
+
+                db.execSQL("INSERT INTO detalle_bitacora(id_bitacora, actividad, fecha_bitacora) VALUES(7, 'Actividad de bitacora 7.1', '09/07/2021');");
+                db.execSQL("INSERT INTO detalle_bitacora(id_bitacora, actividad, fecha_bitacora) VALUES(7, 'Actividad de bitacora 7.2', '27/07/2021');");
+
+                db.execSQL("INSERT INTO detalle_bitacora(id_bitacora, actividad, fecha_bitacora) VALUES(8, 'Actividad de bitacora 8.1', '10/08/2021');");
+                db.execSQL("INSERT INTO detalle_bitacora(id_bitacora, actividad, fecha_bitacora) VALUES(8, 'Actividad de bitacora 8.2', '28/08/2021');");
+
+
+                db.execSQL("INSERT INTO resumen_servicio_social(dui_docente, carnet, fecha_apertura_expediente, fecha_emision_certificado, observaciones) VALUES ('1234567890', 'aa19012', '01/01/2019', '01/01/2022', 'observaciones 1');");
+                db.execSQL("INSERT INTO resumen_servicio_social(dui_docente, carnet, fecha_apertura_expediente, fecha_emision_certificado, observaciones) VALUES ('1234567891', 'cc19114', '05/01/2019', '02/01/2022', 'observaciones 2');");
+                db.execSQL("INSERT INTO resumen_servicio_social(dui_docente, carnet, fecha_apertura_expediente, fecha_emision_certificado, observaciones) VALUES ('9876543210', 'hg19010', '10/01/2019', '03/01/2022', 'observaciones 3');");
+                db.execSQL("INSERT INTO resumen_servicio_social(dui_docente, carnet, fecha_apertura_expediente, fecha_emision_certificado, observaciones) VALUES ('1234567892', 'rg19041', '15/01/2019', '04/01/2022', 'observaciones 4');");
+
+
+                db.execSQL("INSERT INTO det_res_ser_soc(id_resumen, id_proyecto, fecha_inicio, fecha_final, horas_asignadas, monto, benef_indir, benef_dir, estado_det) VALUES(1, 1, '02/01/2021', '28/02/2021', 190, 200, 2, 1, 'Finalizado');");
+                db.execSQL("INSERT INTO det_res_ser_soc(id_resumen, id_proyecto, fecha_inicio, fecha_final, horas_asignadas, monto, benef_indir, benef_dir, estado_det) VALUES(2, 3, '02/03/2021', '28/04/2021', 135, 145, 3, 2, 'Finalizado');");
+                db.execSQL("INSERT INTO det_res_ser_soc(id_resumen, id_proyecto, fecha_inicio, fecha_final, horas_asignadas, monto, benef_indir, benef_dir, estado_det) VALUES(3, 5, '02/05/2021', '28/06/2021', 225, 235, 4, 3, 'Finalizado');");
+                db.execSQL("INSERT INTO det_res_ser_soc(id_resumen, id_proyecto, fecha_inicio, fecha_final, horas_asignadas, monto, benef_indir, benef_dir, estado_det) VALUES(4, 7, '02/07/2021', '28/08/2021', 220, 230, 5, 4, 'Finalizado');");
 
                 db.close();
 
@@ -384,7 +491,7 @@ public class MainActivity extends AppCompatActivity {
         if (i==2){
             //Toast.makeText(MainActivity.this,"Posicion "+i,Toast.LENGTH_SHORT).show();
             try{
-                Class<?> clase=Class.forName("com.example.serviciosocial.login.GestionUsuarioActivity");
+                Class<?> clase=Class.forName("com.example.serviciosocial.recordAcademico.ConsultarRecordActivity");
                 Intent intent = new Intent(MainActivity.this,clase);
                 MainActivity.this.startActivity(intent);
             }catch(ClassNotFoundException e){

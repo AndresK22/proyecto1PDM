@@ -7,6 +7,7 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.example.serviciosocial.DataBaseHelper;
+import com.example.serviciosocial.recordAcademico.RecordAcademico;
 
 import java.util.ArrayList;
 
@@ -105,6 +106,28 @@ public class ControlMateria {
             ArrayList<Materia> lisMaterias = new ArrayList<Materia>();
             Cursor cursor = db.query("materia", camposMateria, null, null, null, null, null);
 
+            if (cursor.moveToFirst()) {
+                do {
+                    Materia materia = new Materia();
+                    materia.setCod_materia(cursor.getString(0));
+                    materia.setId_area(cursor.getString(1));
+                    materia.setNombre_materia(cursor.getString(2));
+                    lisMaterias.add(materia);
+                } while (cursor.moveToNext());
+
+                return lisMaterias;
+            } else {
+                return null;
+            }
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+    public ArrayList<Materia> consultarMateriasPorCarrera(String[] idCarrera){
+        try {
+            ArrayList<Materia> lisMaterias = new ArrayList<Materia>();
+            Cursor cursor = db.rawQuery("SELECT mat.cod_materia, mat.id_area, mat.nombre_materia FROM materia mat, area_carrera are, carrera car WHERE(mat.id_area = are.id_area AND are.id_carrera = car.id_carrera AND car.id_carrera = ?);", idCarrera);
             if (cursor.moveToFirst()) {
                 do {
                     Materia materia = new Materia();

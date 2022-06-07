@@ -62,8 +62,8 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
             db.execSQL("CREATE TABLE area_carrera(id_area CHAR(2) NOT NULL,id_carrera CHAR(6) NOT NULL,descrip_area VARCHAR(255) NOT NULL, PRIMARY KEY (id_area,id_carrera));");
             db.execSQL("CREATE TABLE docente(dui_docente CHAR(10) NOT NULL PRIMARY KEY,nombres_docente VARCHAR(100) NOT NULL,apellidos_docente VARCHAR(100) NOT NULL, email_docente VARCHAR(50), telefono_docente VARCHAR(9));");
-            db.execSQL("CREATE TABLE bitacora(id_bitacora INTEGER NOT NULL,id_proyecto INTEGER NOT NULL,carnet CHAR(8) NOT NULL, mes VARCHAR(12),total_horas_realizadas REAL(4,1) ,PRIMARY KEY (id_bitacora,id_proyecto,carnet));");
-            db.execSQL("CREATE TABLE detalle_bitacora(id_detalle_bitacora INTEGER NOT NULL,id_bitacora INTEGER NOT NULL,actividad VARCHAR(255) NOT NULL,fecha_bitacora VARCHAR(10),PRIMARY KEY (id_detalle_bitacora,id_bitacora));");
+            db.execSQL("CREATE TABLE bitacora(id_bitacora INTEGER NOT NULL,id_proyecto INTEGER NOT NULL,carnet CHAR(8) NOT NULL, mes VARCHAR(12),total_horas_realizadas REAL(4,1) ,PRIMARY KEY (id_bitacora));");
+            db.execSQL("CREATE TABLE detalle_bitacora(id_detalle_bitacora INTEGER NOT NULL,id_bitacora INTEGER NOT NULL,actividad VARCHAR(255) NOT NULL,fecha_bitacora VARCHAR(10),PRIMARY KEY (id_detalle_bitacora));");
             db.execSQL("CREATE TABLE categoria (id_categoria INTEGER PRIMARY KEY AUTOINCREMENT, nombre_categoria CHAR(25) NOT NULL);");
             db.execSQL("CREATE TABLE modalidad (id_modalidad INTEGER PRIMARY KEY AUTOINCREMENT, nombre_modalidad CHAR(25) NOT NULL);");
             db.execSQL("CREATE TABLE proyecto (id_proyecto INTEGER PRIMARY KEY AUTOINCREMENT, id_categoria INTEGER NOT NULL,id_modalidad INTEGER NOT NULL,dui_docente CHAR(10) NOT NULL, id_estado INTEGER NOT NULL, id_carrera INTEGER NOT NULL,id_area CHAR(2) NOT NULL,  nombre_proyecto VARCHAR(100) NOT NULL,descripcion_proyecto VARCHAR(100),lugar VARCHAR(100),requisito_nota real(4,2));");
@@ -74,7 +74,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
             db.execSQL("CREATE TABLE carrera (id_carrera char(6) primary key not null, nombre_carrera varchar(50) not null, total_materias  integer not null);");
             db.execSQL("CREATE TABLE estudiante (carnet varchar(7) primary key not null, nombres_estudiante varchar(100), apellidos_estudiante varchar(100), email_estudiante varchar(50), telefono_estudiante varchar(9), domicilio VARCHAR(200), dui varchar(10));");
             db.execSQL("CREATE TABLE resumen_servicio_social ( id_resumen INTEGER  PRIMARY KEY NOT NULL, dui_docente CHAR(10), carnet CHAR(7), fecha_apertura_expediente VARCHAR(10), fecha_emision_certificado VARCHAR(10), observaciones VARCHAR(255));");
-            db.execSQL("CREATE TABLE det_res_ser_soc ( id_det_res INTEGER NOT NULL, id_resumen INTEGER, id_proyecto INTEGER, fecha_inicio VARCHAR(10), fecha_final VARCHAR(10), horas_asignadas DECIMAL(4,1), monto DECIMAL(8,2), benef_indir INTEGER, benef_dir INTEGER, estado_det VARCHAR(30));");
+            db.execSQL("CREATE TABLE det_res_ser_soc ( id_det_res INTEGER PRIMARY KEY NOT NULL, id_resumen INTEGER, id_proyecto INTEGER, fecha_inicio VARCHAR(10), fecha_final VARCHAR(10), horas_asignadas DECIMAL(4,1), monto DECIMAL(8,2), benef_indir INTEGER, benef_dir INTEGER, estado_det VARCHAR(30));");
             db.execSQL("CREATE TABLE estudiantes_proyecto (id_proyecto INTEGER NOT NULL, carnet CHAR(7) NOT NULL ,PRIMARY KEY (id_proyecto,carnet));");
 
             db.execSQL("create unique index AREA_CARRERA_PK on AREA_CARRERA ( " +
@@ -516,7 +516,9 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
 
             //Triggers de actualizacion en cascada
-            db.execSQL("CREATE TRIGGER area_promedio BEFORE INSERT ON estudiantes_proyecto FOR EACH ROW BEGIN SELECT CASE WHEN (((SELECT id_area FROM record_academico WHERE carnet = NEW.carnet)<>(SELECT id_area FROM proyecto WHERE id_proyecto = NEW.id_proyecto)) OR (SELECT promedio FROM record_academico WHERE carnet = NEW.carnet)< (SELECT requisito_nota FROM proyecto WHERE id_proyecto = NEW.id_proyecto)) THEN RAISE(ABORT, 'No cumple con requisito') END; END;");
+
+            //db.execSQL("CREATE TRIGGER area_promedio BEFORE INSERT ON estudiantes_proyecto FOR EACH ROW BEGIN SELECT CASE WHEN (((SELECT id_area FROM record_academico WHERE carnet = NEW.carnet)<>(SELECT id_area FROM proyecto WHERE id_proyecto = NEW.id_proyecto)) OR (SELECT promedio FROM record_academico WHERE carnet = NEW.carnet)< (SELECT requisito_nota FROM proyecto WHERE id_proyecto = NEW.id_proyecto)) THEN RAISE(ABORT, 'No cumple con requisito') END; END;");
+            db.execSQL("CREATE TRIGGER area_promedio BEFORE INSERT ON estudiantes_proyecto BEGIN SELECT CASE WHEN NOT EXISTS (SELECT 1 FROM record_academico WHERE carnet = new.carnet AND id_area = (SELECT id_area FROM proyecto WHERE id_proyecto = NEW.id_proyecto)) OR ((SELECT promedio FROM record_academico WHERE carnet = NEW.carnet AND id_area = (SELECT id_area FROM proyecto WHERE id_proyecto = NEW.id_proyecto) ) < (SELECT requisito_nota FROM proyecto WHERE id_proyecto = NEW.id_proyecto)) THEN RAISE(ABORT, 'No cumple con requisito') END; END;");
 
             db.execSQL("CREATE TRIGGER crear_record1 AFTER INSERT ON nota " +
                     "WHEN NEW.calificacion >= 6 AND NOT EXISTS ( SELECT 1 FROM record_academico WHERE carnet = new.carnet AND id_area = (SELECT id_area FROM materia WHERE cod_materia = new.cod_materia) ) " +
@@ -525,7 +527,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                     "VALUES(NEW.carnet, " +
                     "(SELECT id_area FROM materia WHERE cod_materia = new.cod_materia), 1, " +
                     "(SELECT ROUND(1.00 *100.00/(SELECT total_materias FROM carrera WHERE id_carrera = (SELECT id_carrera FROM area_carrera WHERE id_area = (SELECT id_area FROM materia WHERE cod_materia = new.cod_materia) ) ),2 ) ) , " +
-                    "(SELECT ROUND( (SELECT SUM(calificacion) FROM nota WHERE carnet = new.carnet AND cod_materia IN (SELECT cod_materia FROM materia WHERE id_area = (SELECT id_area FROM materia WHERE cod_materia  = new.cod_materia))) / (SELECT COUNT(carnet) FROM nota WHERE cod_materia IN (SELECT cod_materia FROM materia WHERE id_area = (SELECT id_area FROM materia WHERE cod_materia  = new.cod_materia))) , 2)) ); " +
+                    "(SELECT ROUND( (SELECT SUM(calificacion) FROM nota WHERE carnet = new.carnet AND cod_materia IN (SELECT cod_materia FROM materia WHERE id_area = (SELECT id_area FROM materia WHERE cod_materia  = new.cod_materia))) / (SELECT COUNT(carnet) FROM nota WHERE carnet = new.carnet AND cod_materia IN (SELECT cod_materia FROM materia WHERE id_area = (SELECT id_area FROM materia WHERE cod_materia  = new.cod_materia))) , 2)) ); " +
                     "END;");
 
             db.execSQL("CREATE TRIGGER crear_record2 AFTER INSERT ON nota " +
@@ -533,7 +535,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                     "BEGIN " +
                     "UPDATE record_academico SET materias_aprobadas=materias_aprobadas+1, " +
                     "progreso= (SELECT ROUND((materias_aprobadas+1) *100.00/(SELECT total_materias FROM carrera WHERE id_carrera = (SELECT id_carrera FROM area_carrera WHERE id_area = (SELECT id_area FROM materia WHERE cod_materia = new.cod_materia) ) ),2 ) ) , " +
-                    "promedio= (SELECT ROUND( (SELECT SUM(calificacion) FROM nota WHERE carnet = new.carnet AND cod_materia IN (SELECT cod_materia FROM materia WHERE id_area = (SELECT id_area FROM materia WHERE cod_materia  = new.cod_materia))) / (SELECT COUNT(carnet) FROM nota WHERE cod_materia IN (SELECT cod_materia FROM materia WHERE id_area = (SELECT id_area FROM materia WHERE cod_materia  = new.cod_materia))) , 2)) " +
+                    "promedio= (SELECT ROUND( (SELECT SUM(calificacion) FROM nota WHERE carnet = new.carnet AND cod_materia IN (SELECT cod_materia FROM materia WHERE id_area = (SELECT id_area FROM materia WHERE cod_materia  = new.cod_materia))) / (SELECT COUNT(carnet) FROM nota WHERE carnet = new.carnet AND cod_materia IN (SELECT cod_materia FROM materia WHERE id_area = (SELECT id_area FROM materia WHERE cod_materia  = new.cod_materia))) , 2)) " +
                     "WHERE carnet = new.carnet AND id_area = (SELECT id_area FROM materia WHERE cod_materia = new.cod_materia); " +
                     "END;");
 
@@ -545,13 +547,13 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                     "(SELECT id_area FROM materia WHERE cod_materia = new.cod_materia), " +
                     "0, " +
                     "0.00, " +
-                    "(SELECT ROUND( (SELECT SUM(calificacion) FROM nota WHERE carnet = new.carnet AND cod_materia IN (SELECT cod_materia FROM materia WHERE id_area = (SELECT id_area FROM materia WHERE cod_materia  = new.cod_materia))) / (SELECT COUNT(carnet) FROM nota WHERE cod_materia IN (SELECT cod_materia FROM materia WHERE id_area = (SELECT id_area FROM materia WHERE cod_materia  = new.cod_materia))) , 2)) ); " +
+                    "(SELECT ROUND( (SELECT SUM(calificacion) FROM nota WHERE carnet = new.carnet AND cod_materia IN (SELECT cod_materia FROM materia WHERE id_area = (SELECT id_area FROM materia WHERE cod_materia  = new.cod_materia))) / (SELECT COUNT(carnet) FROM nota WHERE carnet = new.carnet AND cod_materia IN (SELECT cod_materia FROM materia WHERE id_area = (SELECT id_area FROM materia WHERE cod_materia  = new.cod_materia))) , 2)) ); " +
                     "END;");
 
             db.execSQL("CREATE TRIGGER crear_record4 AFTER INSERT ON nota " +
                     "WHEN NEW.calificacion < 6 AND EXISTS ( SELECT 1 FROM record_academico WHERE carnet = new.carnet AND id_area = (SELECT id_area FROM materia WHERE cod_materia = new.cod_materia) ) " +
                     "BEGIN " +
-                    "UPDATE record_academico SET promedio= (SELECT ROUND( (SELECT SUM(calificacion) FROM nota WHERE carnet = new.carnet AND cod_materia IN (SELECT cod_materia FROM materia WHERE id_area = (SELECT id_area FROM materia WHERE cod_materia  = new.cod_materia))) / (SELECT COUNT(carnet) FROM nota WHERE cod_materia IN (SELECT cod_materia FROM materia WHERE id_area = (SELECT id_area FROM materia WHERE cod_materia  = new.cod_materia))) , 2)) " +
+                    "UPDATE record_academico SET promedio= (SELECT ROUND( (SELECT SUM(calificacion) FROM nota WHERE carnet = new.carnet AND cod_materia IN (SELECT cod_materia FROM materia WHERE id_area = (SELECT id_area FROM materia WHERE cod_materia  = new.cod_materia))) / (SELECT COUNT(carnet) FROM nota WHERE carnet = new.carnet AND cod_materia IN (SELECT cod_materia FROM materia WHERE id_area = (SELECT id_area FROM materia WHERE cod_materia  = new.cod_materia))) , 2)) " +
                     "WHERE carnet = new.carnet AND id_area = (SELECT id_area FROM materia WHERE cod_materia = new.cod_materia); " +
                     "END;");
 
@@ -560,7 +562,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                     "BEGIN " +
                     "UPDATE record_academico SET materias_aprobadas=materias_aprobadas+1, " +
                     "progreso= (SELECT ROUND((materias_aprobadas+1) *100.00/(SELECT total_materias FROM carrera WHERE id_carrera = (SELECT id_carrera FROM area_carrera WHERE id_area = (SELECT id_area FROM materia WHERE cod_materia = new.cod_materia) ) ),2 ) ) , " +
-                    "promedio= (SELECT ROUND( (SELECT SUM(calificacion) FROM nota WHERE carnet = new.carnet AND cod_materia IN (SELECT cod_materia FROM materia WHERE id_area = (SELECT id_area FROM materia WHERE cod_materia  = new.cod_materia))) / (SELECT COUNT(carnet) FROM nota WHERE cod_materia IN (SELECT cod_materia FROM materia WHERE id_area = (SELECT id_area FROM materia WHERE cod_materia  = new.cod_materia))) , 2)) " +
+                    "promedio= (SELECT ROUND( (SELECT SUM(calificacion) FROM nota WHERE carnet = new.carnet AND cod_materia IN (SELECT cod_materia FROM materia WHERE id_area = (SELECT id_area FROM materia WHERE cod_materia  = new.cod_materia))) / (SELECT COUNT(carnet) FROM nota WHERE carnet = new.carnet AND cod_materia IN (SELECT cod_materia FROM materia WHERE id_area = (SELECT id_area FROM materia WHERE cod_materia  = new.cod_materia))) , 2)) " +
                     "WHERE carnet = new.carnet AND id_area = (SELECT id_area FROM materia WHERE cod_materia = new.cod_materia); " +
                     "END;");
 
@@ -569,21 +571,21 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                     "BEGIN " +
                     "UPDATE record_academico SET materias_aprobadas=materias_aprobadas-1, " +
                     "progreso= (SELECT ROUND((materias_aprobadas-1) *100.00/(SELECT total_materias FROM carrera WHERE id_carrera = (SELECT id_carrera FROM area_carrera WHERE id_area = (SELECT id_area FROM materia WHERE cod_materia = new.cod_materia) ) ),2 ) ) , " +
-                    "promedio= (SELECT ROUND( (SELECT SUM(calificacion) FROM nota WHERE carnet = new.carnet AND cod_materia IN (SELECT cod_materia FROM materia WHERE id_area = (SELECT id_area FROM materia WHERE cod_materia  = new.cod_materia))) / (SELECT COUNT(carnet) FROM nota WHERE cod_materia IN (SELECT cod_materia FROM materia WHERE id_area = (SELECT id_area FROM materia WHERE cod_materia  = new.cod_materia))) , 2)) " +
+                    "promedio= (SELECT ROUND( (SELECT SUM(calificacion) FROM nota WHERE carnet = new.carnet AND cod_materia IN (SELECT cod_materia FROM materia WHERE id_area = (SELECT id_area FROM materia WHERE cod_materia  = new.cod_materia))) / (SELECT COUNT(carnet) FROM nota WHERE carnet = new.carnet AND cod_materia IN (SELECT cod_materia FROM materia WHERE id_area = (SELECT id_area FROM materia WHERE cod_materia  = new.cod_materia))) , 2)) " +
                     "WHERE carnet = new.carnet AND id_area = (SELECT id_area FROM materia WHERE cod_materia = new.cod_materia); " +
                     "END;");
 
             db.execSQL("CREATE TRIGGER crear_record7 AFTER UPDATE ON nota " +
                     "WHEN new.calificacion >= 6 AND old.calificacion >= 6 " +
                     "BEGIN " +
-                    "UPDATE record_academico SET promedio= (SELECT ROUND( (SELECT SUM(calificacion) FROM nota WHERE carnet = new.carnet AND cod_materia IN (SELECT cod_materia FROM materia WHERE id_area = (SELECT id_area FROM materia WHERE cod_materia  = new.cod_materia))) / (SELECT COUNT(carnet) FROM nota WHERE cod_materia IN (SELECT cod_materia FROM materia WHERE id_area = (SELECT id_area FROM materia WHERE cod_materia  = new.cod_materia))) , 2)) " +
+                    "UPDATE record_academico SET promedio= (SELECT ROUND( (SELECT SUM(calificacion) FROM nota WHERE carnet = new.carnet AND cod_materia IN (SELECT cod_materia FROM materia WHERE id_area = (SELECT id_area FROM materia WHERE cod_materia  = new.cod_materia))) / (SELECT COUNT(carnet) FROM nota WHERE carnet = new.carnet AND cod_materia IN (SELECT cod_materia FROM materia WHERE id_area = (SELECT id_area FROM materia WHERE cod_materia  = new.cod_materia))) , 2)) " +
                     "WHERE carnet = new.carnet AND id_area = (SELECT id_area FROM materia WHERE cod_materia = new.cod_materia); " +
                     "END;");
 
             db.execSQL("CREATE TRIGGER crear_record8 AFTER UPDATE ON nota " +
                     "WHEN new.calificacion < 6 AND old.calificacion < 6 " +
                     "BEGIN " +
-                    "UPDATE record_academico SET promedio= (SELECT ROUND( (SELECT SUM(calificacion) FROM nota WHERE carnet = new.carnet AND cod_materia IN (SELECT cod_materia FROM materia WHERE id_area = (SELECT id_area FROM materia WHERE cod_materia  = new.cod_materia))) / (SELECT COUNT(carnet) FROM nota WHERE cod_materia IN (SELECT cod_materia FROM materia WHERE id_area = (SELECT id_area FROM materia WHERE cod_materia  = new.cod_materia))) , 2)) " +
+                    "UPDATE record_academico SET promedio= (SELECT ROUND( (SELECT SUM(calificacion) FROM nota WHERE carnet = new.carnet AND cod_materia IN (SELECT cod_materia FROM materia WHERE id_area = (SELECT id_area FROM materia WHERE cod_materia  = new.cod_materia))) / (SELECT COUNT(carnet) FROM nota WHERE carnet = new.carnet AND cod_materia IN (SELECT cod_materia FROM materia WHERE id_area = (SELECT id_area FROM materia WHERE cod_materia  = new.cod_materia))) , 2)) " +
                     "WHERE carnet = new.carnet AND id_area = (SELECT id_area FROM materia WHERE cod_materia = new.cod_materia); " +
                     "END;");
 
@@ -592,14 +594,14 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                     "BEGIN " +
                     "UPDATE record_academico SET materias_aprobadas=materias_aprobadas-1, " +
                     "progreso= (SELECT ROUND((materias_aprobadas-1) *100.00/(SELECT total_materias FROM carrera WHERE id_carrera = (SELECT id_carrera FROM area_carrera WHERE id_area = (SELECT id_area FROM materia WHERE cod_materia = old.cod_materia) ) ),2 ) ) , " +
-                    "promedio= (SELECT ROUND( (SELECT SUM(calificacion) FROM nota WHERE carnet = old.carnet AND cod_materia IN (SELECT cod_materia FROM materia WHERE id_area = (SELECT id_area FROM materia WHERE cod_materia  = old.cod_materia))) / (SELECT COUNT(carnet) FROM nota WHERE cod_materia IN (SELECT cod_materia FROM materia WHERE id_area = (SELECT id_area FROM materia WHERE cod_materia  = old.cod_materia))) , 2)) " +
+                    "promedio= (SELECT ROUND( (SELECT SUM(calificacion) FROM nota WHERE carnet = old.carnet AND cod_materia IN (SELECT cod_materia FROM materia WHERE id_area = (SELECT id_area FROM materia WHERE cod_materia  = old.cod_materia))) / (SELECT COUNT(carnet) FROM nota WHERE carnet = old.carnet AND cod_materia IN (SELECT cod_materia FROM materia WHERE id_area = (SELECT id_area FROM materia WHERE cod_materia  = old.cod_materia))) , 2)) " +
                     "WHERE carnet = old.carnet AND id_area = (SELECT id_area FROM materia WHERE cod_materia = old.cod_materia); " +
                     "END;");
 
             db.execSQL("CREATE TRIGGER crear_record10 AFTER DELETE ON nota " +
                     "WHEN old.calificacion < 6 AND EXISTS (SELECT 1 FROM nota WHERE carnet = old.carnet AND cod_materia IN (SELECT cod_materia FROM materia WHERE id_area = (SELECT id_area FROM materia WHERE cod_materia  = old.cod_materia))) " +
                     "BEGIN " +
-                    "UPDATE record_academico SET promedio= (SELECT ROUND( (SELECT SUM(calificacion) FROM nota WHERE carnet = old.carnet AND cod_materia IN (SELECT cod_materia FROM materia WHERE id_area = (SELECT id_area FROM materia WHERE cod_materia  = old.cod_materia))) / (SELECT COUNT(carnet) FROM nota WHERE cod_materia IN (SELECT cod_materia FROM materia WHERE id_area = (SELECT id_area FROM materia WHERE cod_materia  = old.cod_materia))) , 2)) " +
+                    "UPDATE record_academico SET promedio= (SELECT ROUND( (SELECT SUM(calificacion) FROM nota WHERE carnet = old.carnet AND cod_materia IN (SELECT cod_materia FROM materia WHERE id_area = (SELECT id_area FROM materia WHERE cod_materia  = old.cod_materia))) / (SELECT COUNT(carnet) FROM nota WHERE carnet = old.carnet AND cod_materia IN (SELECT cod_materia FROM materia WHERE id_area = (SELECT id_area FROM materia WHERE cod_materia  = old.cod_materia))) , 2)) " +
                     "WHERE carnet = old.carnet AND id_area = (SELECT id_area FROM materia WHERE cod_materia = old.cod_materia); " +
                     "END;");
 
