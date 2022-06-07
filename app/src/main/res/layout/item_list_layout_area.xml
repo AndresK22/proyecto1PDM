@@ -23,7 +23,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/cabeceraArea1"
                 android:textColor="@color/black"
-                android:textSize="35sp"
+                android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />

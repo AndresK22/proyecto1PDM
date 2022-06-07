@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
             //Docente
             "Gestion de proyectos","Grupos de proyectos","Record academico","Resumen Social",
             //Alumno
-            "Gestion de Bitacoras","Resumen Social", "Record academico","Mis Proyectos"};
+            "Gestion de Bitacoras","Resumen Social", " "," "};
 
     @SuppressLint("ResourceAsColor")
     @Override
@@ -491,7 +491,7 @@ public class MainActivity extends AppCompatActivity {
         if (i==2){
             //Toast.makeText(MainActivity.this,"Posicion "+i,Toast.LENGTH_SHORT).show();
             try{
-                Class<?> clase=Class.forName("com.example.serviciosocial.recordAcademico.ConsultarRecordActivity");
+                Class<?> clase=Class.forName("com.example.serviciosocial.MainActivity");
                 Intent intent = new Intent(MainActivity.this,clase);
                 MainActivity.this.startActivity(intent);
             }catch(ClassNotFoundException e){
@@ -501,7 +501,7 @@ public class MainActivity extends AppCompatActivity {
         if (i==3){
             //Toast.makeText(MainActivity.this,"Posicion "+i,Toast.LENGTH_SHORT).show();
             try{
-                Class<?> clase=Class.forName("com.example.serviciosocial.login.GestionUsuarioActivity");
+                Class<?> clase=Class.forName("com.example.serviciosocial.MainActivity");
                 Intent intent = new Intent(MainActivity.this,clase);
                 MainActivity.this.startActivity(intent);
             }catch(ClassNotFoundException e){
